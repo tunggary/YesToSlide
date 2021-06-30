@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <div class="ui_bar">
+        <div class="option1">
+          <img src="./img/bg_slideBar.svg">
+          <img src="./img/button_previous.svg" id="button_previous">
+          <img src="./img/button_next.svg" id="button_next">
+        </div>
+        <div class="option2">
+          <img src="./img/button_autoSlidesShow.svg" id="button_autoSlidesShow">
+          <img src="./img/button_manualSlidesShow.svg" id="button_manualSlidesShow">
+        </div>
+        <div class="option2_hover">
+          <img src="./img/ifHover_manualSlideShow.svg" id="ifHover_manualSlideShow">
+          <img src="./img/ifHover_autoSlideShow.svg" id="ifHover_autoSlideShow">
+        </div>
+        <div class="option3">
+          <img src="./img/button_settings.svg" alt="">
+        </div>
+        <div class="option4">
+          <img src="./img/bg_menuBar.svg" alt="">
+          <img src="./img/button_collecting_On.svg" id="button_collecting_On">
+          <img src="./img/button_collecting_Off.svg" id="button_collecting_Off">
+          <img src="./img/button_images_videos.svg" id="button_images_videos">
+          <img src="./img/button_participants.svg" id="button_participants">
+        </div>
+      </div>
+    </div>
+    </div>
+  </nav>
+  <section class="container-fluid" id="main_section">
+    <div class="leftblur"></div>
+    <div id="background_img"></div>
+    <div class="rightblur"></div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="main_screen.js" async defer></script>
+</body>
+
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .ui_bar {
+    width: max-content;
+    height: 34px;
+    display: flex;
+  }
+
+  #button_previous {
+    width: 30px;
+    position: relative;
+    top: -32px;
+    left: 3px;
+    cursor: pointer;
+  }
+
+  #button_next {
+    width: 30px;
+    position: relative;
+    top: -32px;
+    left: 1px;
+    cursor: pointer;
+  }
+
+
+  #button_collecting_On {
+    display: inline-block;
+    position: relative;
+    top: -32px;
+    left: 10px;
+    cursor: pointer;
+  }
+
+  #button_collecting_Off {
+    display: none;
+    position: relative;
+    top: -32px;
+    left: 10px;
+    cursor: pointer;
+  }
+
+  #button_images_videos {
+    position: relative;
+    top: -32px;
+    left: 10px;
+    cursor: pointer;
+  }
+
+  #button_participants {
+    position: relative;
+    top: -32px;
+    left: 20px;
+    cursor: pointer;
+  }
+
+  #button_autoSlidesShow {
+    display: none;
+  }
+
+  #button_manualSlidesShow {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  #ifHover_manualSlideShow {
+    display: none;
+    position: relative;
+    top: 45px;
+    left: -120px;
+  }
+
+  #ifHover_autoSlideShow {
+    display: none;
+    position: relative;
+    top: 45px;
+    left: -105px;
+  }
+
+  .option2_hover {
+    width: 0;
+  }
+
+  .option1 {
+    width: 69px;
+    height: 34px;
+    margin-right: 4px;
+  }
+
+  .option2 {
+    width: max-content;
+    width: max-content;
+    height: 34px;
+    margin-right: 4px;
+  }
+
+  .option3 {
+    width: 34px;
+    height: 34px;
+    margin-right: 15px;
+  }
+
+  .option4 {
+    width: 118px;
+    height: 34px;
+  }
+
+  #main_section {
+    border: 1px solid black;
+    height: 100vh;
+  }
+
+  .leftblur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%;
+    border: 1px solid red;
+  }
+
+  .rightblur {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 100%;
+    border: 1px solid blue;
+  }
+
+  #background_img {
+    background: url(./img/background.jpg);
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+
+  }
+
+  .navbar {
+    border: 1px solid peru;
+  }
+
+  nav {
+    background: transparent;
+  }
+</style>
