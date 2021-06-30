@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", "Spoqa Han Sans Neo", "serif";
+}
+
+/* HEADER */
+.navbar-brand {
+  padding: 0;
+  width: 345px;
+}
+
+.navbar-brand img {
+  width: 128px;
+  height: 45px;
+}
+
+.message_bar {
+  width: max-content;
+  margin: auto;
+  height: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 13px 5px 8px;
+  border-radius: 17px;
+  background-color: #000000;
+  opacity: 0.7;
+}
+
+#profile {
+  width: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 19px;
+  opacity: 1.3;
+}
+
+#profile_img {
+  border-radius: 22px;
+  margin-right: 5px;
+}
+
+#profile_name {
+  font-weight: 300;
+  font-size: 16px;
+  color: white;
+}
+
+#message {
+  max-width: 400px;
+  font-size: 15px;
+  font-weight: 200;
+  opacity: 1;
+  color: white;
+  border: 1px solid black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.option2_hover {
+  width: 0;
+}
+
+.option1 {
+  width: 69px;
+  height: 34px;
+  margin-right: 4px;
+}
+
+.option2 {
+  width: 95px;
+  height: 34px;
+  text-align: center;
+  margin-right: 4px;
+}
+
+.option3 {
+  width: 34px;
+  height: 34px;
+  margin-right: 20px;
+}
+
+.option4 {
+  width: 118px;
+  height: 34px;
+}
+
+/* MAIN-IMAGE */
+.main-section {
+  width: 100%;
+  height: 100vh;
+}
+
+.background-blur {
+  width: 100%;
+  height: 100%;
+  filter: blur(100px);
+}
+
+.cropping {
+  width: 900px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.background-main {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* OPTION_UI */
+.ui_bar {
+  width: 345px;
+  height: 34px;
+  display: flex;
+  margin-left: 1.2%;
+}
+
+#button_previous {
+  width: 30px;
+  position: relative;
+  top: -32px;
+  left: 3px;
+  cursor: pointer;
+}
+
+#button_next {
+  width: 30px;
+  position: relative;
+  top: -32px;
+  left: 3px;
+  cursor: pointer;
+}
+
+#button_collecting_On {
+  display: inline-block;
+  position: relative;
+  top: -29px;
+  left: 8px;
+  cursor: pointer;
+}
+
+#button_collecting_Off {
+  display: none;
+  position: relative;
+  top: -29px;
+  left: 8px;
+  cursor: pointer;
+}
+
+#button_images_videos {
+  position: relative;
+  top: -29px;
+  left: 12px;
+  cursor: pointer;
+}
+
+#button_settings {
+  cursor: pointer;
+}
+
+#button_participants {
+  position: relative;
+  top: -29px;
+  left: 25px;
+  cursor: pointer;
+}
+
+#button_autoSlidesShow {
+  display: none;
+}
+
+#button_manualSlidesShow {
+  display: inline-block;
+  cursor: pointer;
+}
+
+#ifHover_manualSlideShow {
+  display: none;
+  position: relative;
+  top: 45px;
+  left: -120px;
+}
+
+#ifHover_autoSlideShow {
+  display: none;
+  position: relative;
+  top: 45px;
+  left: -120px;
+}
