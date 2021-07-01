@@ -16,7 +16,6 @@ body {
 
 .navbar-brand img {
   width: 128px;
-  height: 45px;
 }
 
 .message_bar {
@@ -63,7 +62,6 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 .option2_hover {
   width: 0;
 }

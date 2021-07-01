@@ -7,6 +7,7 @@
   <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="./Logos/yestoslide_favicon_high_res.png" type="image/png" sizes="16x16">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -47,7 +48,8 @@
         </div>
         <div class="bottom_option">
           <div class="dropdown">
-            <a class="btn" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="btn shadow-none" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+              aria-expanded="false">
               최신순 정렬
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -58,17 +60,34 @@
           </div>
           <div class="option_checkbox">
             <label class="form-check-label" for="sound_check">소리 알림</label>
-            <input class="form-check-input" type="checkbox" value="" id="sound_check">
+            <input class="form-check-input shadow-none" type="checkbox" value="" id="sound_check">
           </div>
           <div class="option_checkbox">
             <label class="form-check-label" for="anonymous_check">익명 표시</label>
-            <input class="form-check-input" type="checkbox" value="" id="anonymous_check">
+            <input class="form-check-input shadow-none" type="checkbox" value="" id="anonymous_check">
           </div>
-
         </div>
       </div>
       <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">목록컨텐츠</div>
+        <div class="tab-pane show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <ul>
+            <li class="index_container">
+              <div class="index_img">
+                <img src="./img/background.jpg" alt="">
+              </div>
+              <div class="index_info">
+                <div class="profile_img">
+                  <img src="./img/profile.jpg" alt="">
+                </div>
+                <span>
+                  <div class="title">가족들과 함께하는 산책</div>
+                  <div class="profile_name">정성윤</div>
+                </span>
+              </div>
+            </li>
+
+          </ul>
+        </div>
         <div class="tab-pane" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">투표컨텐츠</div>
         <div class="tab-pane" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">동영상만들기컨텐츠</div>
       </div>
