@@ -9,13 +9,14 @@ body {
 }
 
 /* HEADER */
+.navbar {
+  top: -13px;
+  left: -20px;
+}
+
 .navbar-brand {
   padding: 0;
   width: 345px;
-}
-
-.navbar-brand img {
-  width: 128px;
 }
 
 .message_bar {
