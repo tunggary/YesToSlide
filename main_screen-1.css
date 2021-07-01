@@ -8,8 +8,10 @@ body {
   font-family: "Roboto", "Spoqa Han Sans Neo", "serif";
 }
 
+ul,
 li {
   list-style: none;
+  padding: 0;
 }
 
 .sideBar_container {
@@ -20,8 +22,6 @@ li {
 .sideBar {
   width: 375px;
   height: 100vh;
-  margin-top: 61px;
-  margin-right: 133px;
   border: 1px solid #dadce0;
 }
 
@@ -187,6 +187,11 @@ li {
   max-width: 290px;
 }
 
-ul {
-  padding: 0;
+.tab-content {
+  border: 1px solid black;
+  overflow-y: scroll;
+}
+.tab-pane {
+  height: 700px;
+  border: 1px solid red;
 }
