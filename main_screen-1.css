@@ -20,9 +20,10 @@ li {
 }
 
 .sideBar {
+  margin-top: 10px;
+  margin-right: 20px;
   width: 375px;
-  height: 100vh;
-  border: 1px solid #dadce0;
+  height: 95vh;
 }
 
 .top_option {
@@ -32,7 +33,7 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-bottom: 1px solid #dadce0;
+  border: 1px solid #dadce0;
 }
 
 .image_video {
@@ -101,7 +102,8 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #dadce0;
+  border: 1px solid #dadce0;
+  border-top: none;
 }
 .btn {
   width: 169px;
@@ -187,11 +189,21 @@ li {
   max-width: 290px;
 }
 
-.tab-content {
-  border: 1px solid black;
-  overflow-y: scroll;
+.close_button {
+  position: relative;
+  top: -250px;
+  left: 328px;
+  width: 21px;
+  height: 21px;
+  opacity: 0.6;
+  border-radius: 11px;
+  background-color: #000000;
+  cursor: pointer;
 }
-.tab-pane {
-  height: 700px;
-  border: 1px solid red;
+.tab-content {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 75%;
+  border: 1px solid #dadce0;
+  border-top: none;
 }
