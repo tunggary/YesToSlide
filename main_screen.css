@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "Roboto", "Spoqa Han Sans Neo", "serif";
+  font-family: "Roboto", "serif";
 }
 
 /* HEADER */
@@ -53,27 +53,21 @@ body {
 }
 
 #message {
-  max-width: 400px;
+  max-width: 460px;
   font-size: 15px;
   font-weight: 200;
   opacity: 1;
   color: white;
   border: 1px solid black;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 #message2 {
-  max-width: 400px;
+  max-width: 460px;
   font-size: 15px;
   font-weight: 200;
   opacity: 1;
   color: white;
   border: 1px solid black;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .option2_hover {
   width: 0;
