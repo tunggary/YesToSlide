@@ -39,6 +39,7 @@ li {
 .image_video {
   display: flex;
   justify-content: space-between;
+  color: #7c7d80;
 }
 
 .image_video div {
@@ -48,7 +49,6 @@ li {
   font-weight: bold;
   display: flex;
   align-items: center;
-  color: #7c7d80;
 }
 
 .image_video div svg {
@@ -56,13 +56,6 @@ li {
   height: 17.5px;
   margin-right: 8.4px;
   border: 1px solid #7c7d80;
-}
-
-.image_video > img {
-  width: 20px;
-  height: 17.5px;
-  border: 1px solid #7c7d80;
-  background-color: #7c7d80;
 }
 
 .nav {
@@ -136,6 +129,14 @@ li {
   border-radius: 2px;
 }
 
+.filter {
+  position: absolute;
+  width: 358px;
+  height: 256px;
+  border: solid 1px #f28234;
+  background-color: rgba(242, 130, 52, 0.2);
+}
+
 .index_container {
   width: 358px;
   height: 256px;
@@ -199,7 +200,15 @@ li {
   opacity: 0.6;
   border-radius: 11px;
   background-color: #000000;
+  color: white;
   cursor: pointer;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.close_button svg {
+  width: 12px;
+  height: 12px;
 }
 .tab-content {
   overflow-x: hidden;
@@ -207,4 +216,5 @@ li {
   height: 75%;
   border: 1px solid #dadce0;
   border-top: none;
+  position: relative;
 }
