@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "NanumSquare", "Roboto", "sans-serif";
+}
+
+.container {
+  border: 1px solid black;
+  height: 100vh;
+  padding: 0 36px;
+}
+
+#logo {
+  border: 1px solid black;
+  position: relative;
+}
+
+#logo span {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#participant {
+  border: 1px solid black;
+}
+
+#participant p {
+  border: 1px solid black;
+}

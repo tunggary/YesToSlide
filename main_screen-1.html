@@ -20,131 +20,134 @@
 </head>
 
 <body>
-  <section class="sideBar_container">
-    <div class="sideBar">
-      <div class="top_menu">
-        <div class="top_option">
-          <div class="image_video">
-            <div>
+  <section class="sideBar">
+    <div class="top_menu">
+      <div class="top_option">
+        <div class="image_video">
+          <div>
 
-              <img src="" alt="">
-              사진 및 동영상
+            <img src="" alt="">
+            사진 및 동영상
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+            viewBox="0 0 16 16">
+            <path
+              d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+          </svg>
+        </div>
+        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+              type="button" role="tab" aria-controls="pills-home" aria-selected="true">목록</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+              type="button" role="tab" aria-controls="pills-profile" aria-selected="false">투표</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+              type="button" role="tab" aria-controls="pills-contact" aria-selected="false">동영상 만들기</button>
+          </li>
+        </ul>
+      </div>
+      <div class="bottom_option">
+        <div class="dropdown">
+          <a class="btn shadow-none" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            최신순 정렬
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <div class="option_checkbox">
+          <label class="form-check-label" for="sound_check">소리 알림</label>
+          <input class="form-check-input shadow-none" type="checkbox" value="" id="sound_check">
+        </div>
+        <div class="option_checkbox">
+          <label class="form-check-label" for="anonymous_check">익명 표시</label>
+          <input class="form-check-input shadow-none" type="checkbox" value="" id="anonymous_check">
+        </div>
+      </div>
+    </div>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <ul>
+          <div class="filter"></div>
+          <li class="index_container">
+            <div class="index_img">
+              <img src="./img/background.jpg" alt="">
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
-              viewBox="0 0 16 16">
-              <path
-                d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
-            </svg>
-          </div>
-          <ul class="nav nav-pills" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                type="button" role="tab" aria-controls="pills-home" aria-selected="true">목록</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">투표</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                type="button" role="tab" aria-controls="pills-contact" aria-selected="false">동영상 만들기</button>
-            </li>
-          </ul>
-        </div>
-        <div class="bottom_option">
-          <div class="dropdown">
-            <a class="btn shadow-none" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              최신순 정렬
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </div>
-          <div class="option_checkbox">
-            <label class="form-check-label" for="sound_check">소리 알림</label>
-            <input class="form-check-input shadow-none" type="checkbox" value="" id="sound_check">
-          </div>
-          <div class="option_checkbox">
-            <label class="form-check-label" for="anonymous_check">익명 표시</label>
-            <input class="form-check-input shadow-none" type="checkbox" value="" id="anonymous_check">
-          </div>
-        </div>
+            <div class="index_info">
+              <div class="profile_img">
+                <img src="./img/profile.jpg" alt="">
+              </div>
+              <span>
+                <div class="title">가족들과 함께하는 산책</div>
+                <div class="profile_name">정성윤</div>
+              </span>
+            </div>
+            <div class="close_button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                viewBox="0 0 16 16">
+                <path
+                  d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+              </svg>
+            </div>
+          </li>
+          <li class="index_container">
+            <div class="index_img">
+              <img src="./img/background.jpg" alt="">
+            </div>
+            <div class="index_info">
+              <div class="profile_img">
+                <img src="./img/profile.jpg" alt="">
+              </div>
+              <span>
+                <div class="title">가족들과 함께하는 산책</div>
+                <div class="profile_name">정성윤</div>
+              </span>
+            </div>
+            <div class="close_button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                viewBox="0 0 16 16">
+                <path
+                  d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+              </svg>
+            </div>
+          </li>
+          <li class="index_container">
+            <div class="index_img">
+              <img src="./img/background.jpg" alt="">
+            </div>
+            <div class="index_info">
+              <div class="profile_img">
+                <img src="./img/profile.jpg" alt="">
+              </div>
+              <span>
+                <div class="title">가족들과 함께하는 산책</div>
+                <div class="profile_name">정성윤</div>
+              </span>
+            </div>
+            <div class="close_button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                viewBox="0 0 16 16">
+                <path
+                  d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+              </svg>
+            </div>
+          </li>
+        </ul>
       </div>
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-          <ul>
-            <div class="filter"></div>
-            <li class="index_container">
-              <div class="index_img">
-                <img src="./img/background.jpg" alt="">
-              </div>
-              <div class="index_info">
-                <div class="profile_img">
-                  <img src="./img/profile.jpg" alt="">
-                </div>
-                <span>
-                  <div class="title">가족들과 함께하는 산책</div>
-                  <div class="profile_name">정성윤</div>
-                </span>
-              </div>
-              <div class="close_button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
-                </svg>
-              </div>
-            </li>
-            <li class="index_container">
-              <div class="index_img">
-                <img src="./img/background.jpg" alt="">
-              </div>
-              <div class="index_info">
-                <div class="profile_img">
-                  <img src="./img/profile.jpg" alt="">
-                </div>
-                <span>
-                  <div class="title">가족들과 함께하는 산책</div>
-                  <div class="profile_name">정성윤</div>
-                </span>
-              </div>
-              <div class="close_button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
-                </svg>
-              </div>
-            </li>
-            <li class="index_container">
-              <div class="index_img">
-                <img src="./img/background.jpg" alt="">
-              </div>
-              <div class="index_info">
-                <div class="profile_img">
-                  <img src="./img/profile.jpg" alt="">
-                </div>
-                <span>
-                  <div class="title">가족들과 함께하는 산책</div>
-                  <div class="profile_name">정성윤</div>
-                </span>
-              </div>
-              <div class="close_button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
-                </svg>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="tab-pane" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">투표컨텐츠</div>
-        <div class="tab-pane" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">동영상만들기컨텐츠</div>
-      </div>
+      <div class="tab-pane" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">투표컨텐츠</div>
+      <div class="tab-pane" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">동영상만들기컨텐츠</div>
+    </div>
+  </section>
+  <section class="modal">
+    <div class="modal_container">
+
     </div>
   </section>
 

@@ -6,6 +6,7 @@
 
 body {
   font-family: "Roboto", "Spoqa Han Sans Neo", "serif";
+  display: flex;
 }
 
 ul,
@@ -15,8 +16,6 @@ li {
 }
 
 .sideBar_container {
-  display: flex;
-  justify-content: flex-end;
 }
 
 .sideBar {
@@ -217,4 +216,15 @@ li {
   border: 1px solid #dadce0;
   border-top: none;
   position: relative;
+}
+
+.modal_container {
+  width: 335px;
+  height: 581px;
+  padding: 16px 0 0;
+  margin-left: 500px;
+  opacity: 0.7;
+  border-radius: 17px;
+  background-color: black;
+  z-index: 1000;
 }
