@@ -5,7 +5,7 @@
 }
 
 .aaa {
-  background-image: url(/Logos/yestoslide_all_logo.png);
+  background-image: url(https://tunggary.github.io/YesToSlide/Logos/yestoslide_all_logo.png);
   width: 200px;
   height: 100px;
 }
@@ -40,7 +40,7 @@ body {
 #logo div {
   width: 171px;
   height: 79px;
-  background-image: url(/Logos/yestoslide_all_logo.png);
+  background-image: url(https://tunggary.github.io/YesToSlide/Logos/yestoslide_all_logo@2x.png);
 }
 #logo span {
   width: 50px;
