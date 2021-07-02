@@ -53,21 +53,17 @@ body {
 }
 
 #message {
-  max-width: 460px;
   font-size: 15px;
   font-weight: 200;
   opacity: 1;
   color: white;
-  border: 1px solid black;
 }
 
 #message2 {
-  max-width: 460px;
   font-size: 15px;
   font-weight: 200;
   opacity: 1;
   color: white;
-  border: 1px solid black;
 }
 .option2_hover {
   width: 0;

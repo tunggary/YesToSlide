@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "NanumSquare", "Roboto", "sans-serif";
+  font-family: "NanumSquare", sans-serif !important;
 }
 
 .container {
@@ -14,9 +14,21 @@ body {
   padding: 0 36px;
 }
 
+.row:nth-child(1) {
+  height: 20%;
+}
+
+.row:nth-child(2) {
+  height: 80%;
+}
+
 #logo {
   border: 1px solid black;
   position: relative;
+}
+
+#logo img {
+  border: 1px solid black;
 }
 
 #logo span {
@@ -26,10 +38,43 @@ body {
   font-weight: 500;
 }
 
-#participant {
-  border: 1px solid black;
+.title {
+  font-weight: 800;
+  color: #ff8836;
+  margin-bottom: 15px;
 }
 
-#participant p {
-  border: 1px solid black;
+.input {
+  margin-bottom: 10px;
+}
+
+.input label {
+  font-weight: 800;
+}
+
+.input input {
+  border: 1px solid #707070;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
+.coordinator_info {
+  margin-top: 40px;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  height: 41px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #ff8836;
+  font-weight: bold;
+  padding: 10px auto;
+  margin-top: 40px;
+}
+
+.row {
+  border: 1px solid darkcyan;
 }
