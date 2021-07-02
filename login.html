@@ -15,15 +15,17 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 text-center" id="logo">
-        <div class="logo_img"></div>
+  <div class="container justify-content-center">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-6 text-center" id="logo">
+        <div class="logo_img">
+          <img src="./Logos/yestoslide_all_logo.png" width="171" height="79" alt="">
+        </div>
         <span>v.1.0.0</span>
       </div>
     </div>
-    <div class="row">
-      <form class="col-xs-12">
+    <div class="row justify-content-center">
+      <form class="col-sm-12 col-md-6 ">
         <div class="participant_info">
           <div class="title">참가자</div>
           <div class="input_container">
@@ -42,7 +44,7 @@
         <div class="coordinator_info">
           <div class="title">코디네이터</div>
           <div class="input_container">
-            <label for="coordinator_name">이름</label>
+            <label for="coordinator_name" id="_name">이름</label>
             <div class="input" id="coordi_input">
               <input id="coordinator_name" type="text" placeholder="코디네이터 Gmail을 입력하세요">
             </div>
@@ -55,7 +57,6 @@
           </div>
         </div>
         <button type="submit">확인</button>
-        <div class="aaa"></div>
       </form>
     </div>
   </div>

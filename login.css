@@ -4,12 +4,6 @@
   box-sizing: border-box;
 }
 
-.aaa {
-  background-image: url(https://tunggary.github.io/YesToSlide/Logos/yestoslide_all_logo.png);
-  width: 200px;
-  height: 100px;
-}
-
 body {
   font-family: "NanumSquare", sans-serif !important;
 }
@@ -24,7 +18,7 @@ body {
 }
 
 .row:nth-child(1) {
-  height: 20%;
+  height: 15%;
 }
 
 .row:nth-child(2) {
@@ -37,11 +31,16 @@ body {
   align-items: center;
   justify-content: center;
 }
-#logo div {
-  width: 171px;
-  height: 79px;
-  background-image: url(https://tunggary.github.io/YesToSlide/Logos/yestoslide_all_logo@2x.png);
+/* #logo div {
+  width: 194px;
+  height: 85px;
+  background-image: url(https://tunggary.github.io/YesToSlide/Logos/yestoslide_all_logo.png);
+}  */
+
+#logo div img {
+  margin-left: 50px;
 }
+
 #logo span {
   width: 50px;
   margin-top: 30px;
@@ -66,7 +65,7 @@ body {
 }
 
 label {
-  width: 50px;
+  width: 60px;
   height: 32px;
   margin-right: 8px;
   font-size: 16px;
@@ -111,37 +110,35 @@ button[type="submit"] {
 }
 
 @media (min-width: 768px) {
-  .title {
-    font-size: 22px;
-  }
-
-  .input {
-    margin-bottom: 20px;
-  }
-
+  /* #logo div {
+    width: 342px;
+    height: 158px;
+    background-image: url(https://tunggary.github.io/YesToSlide/Logos/yestoslide_all_logo@2x.png);
+  } */
   label {
-    width: 60px;
-    height: 40px;
-    margin-right: 16px;
-    font-size: 20px;
+    margin-right: 70px;
   }
-
   input {
-    font-size: 18px;
-  }
-
-  .coordinator_info {
-    margin-top: 70px;
+    padding-left: 20px;
   }
 
   #location {
-    width: 50px;
-    height: 40px;
-    margin-left: 10px;
+    width: 55px;
+    margin-left: 13px;
+  }
+  #_name {
+    width: 66px;
   }
 
   button[type="submit"] {
-    font-size: 22px;
     margin-top: 100px;
+  }
+
+  .input {
+    margin-bottom: 6px;
+  }
+
+  .coordinator_info {
+    margin-top: 10px;
   }
 }
