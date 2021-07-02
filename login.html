@@ -26,20 +26,32 @@
       <form class="col-xs-12">
         <div class="participant_info">
           <div class="title">참가자</div>
-          <div class="input">
+          <div class="input_container">
             <label for="participant_email">Gmail</label>
-            <input id="participant_email" type="email" value="gsy1656@gmail.com">
+            <div class="input">
+              <input id="participant_email" type="text" value="gsy1656@gmail.com">
+            </div>
           </div>
-          <div class="input">
-            <label for="partiname">이름</label>
-            <input id="partiname" type="text" placeholder="본인 이름을 입력하세요">
+          <div class="input_container">
+            <label for="participant_name">이름</label>
+            <div class="input">
+              <input id="participant_name" type="text" placeholder="본인 이름을 입력하세요">
+            </div>
           </div>
         </div>
         <div class="coordinator_info">
           <div class="title">코디네이터</div>
-          <div class="input">
-            <label for="coordinator_email">Gmail</label>
-            <input id="coordinator_email" type="text" placeholder="코디네이터 Gmail을 입력하세요">
+          <div class="input_container">
+            <label for="coordinator_name">이름</label>
+            <div class="input" id="coordi_input">
+              <input id="coordinator_name" type="text" placeholder="코디네이터 Gmail을 입력하세요">
+            </div>
+            <button id="location">
+              <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor"
+                class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+              </svg>
+            </button>
           </div>
         </div>
         <button type="submit">확인</button>

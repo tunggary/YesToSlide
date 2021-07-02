@@ -9,7 +9,6 @@ body {
 }
 
 .container {
-  border: 1px solid black;
   height: 100vh;
   padding: 0 36px;
 }
@@ -23,22 +22,28 @@ body {
 }
 
 #logo {
-  border: 1px solid black;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #logo img {
-  border: 1px solid black;
+  margin-left: 50px;
 }
 
 #logo span {
-  position: absolute;
-  bottom: 0;
+  width: 50px;
+  margin-top: 30px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
+.input_container {
+  display: flex;
+}
 .title {
+  font-size: 18px;
   font-weight: 800;
   color: #ff8836;
   margin-bottom: 15px;
@@ -46,20 +51,38 @@ body {
 
 .input {
   margin-bottom: 10px;
+  width: 100%;
+  height: 41px;
 }
 
-.input label {
+label {
+  width: 50px;
+  height: 32px;
+  margin-right: 8px;
+  font-size: 16px;
   font-weight: 800;
 }
 
-.input input {
+input {
+  font-size: 14px;
   border: 1px solid #707070;
   border-radius: 5px;
-  padding-left: 5px;
+  padding: 5px;
+  width: 100%;
 }
 
 .coordinator_info {
   margin-top: 40px;
+}
+
+#location {
+  width: 41px;
+  height: 34px;
+  margin-left: 5px;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  background-color: white;
+  color: #ff8836;
 }
 
 button[type="submit"] {
@@ -72,9 +95,5 @@ button[type="submit"] {
   background-color: #ff8836;
   font-weight: bold;
   padding: 10px auto;
-  margin-top: 40px;
-}
-
-.row {
-  border: 1px solid darkcyan;
+  margin-top: 50px;
 }
