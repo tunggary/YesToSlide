@@ -12,8 +12,6 @@ body {
 .container {
   height: 100vh;
   padding: 0 36px;
-  /* width: 450px; */
-  border: 1px solid black;
 }
 
 .row {
@@ -49,11 +47,11 @@ body {
   display: flex;
 }
 .title {
-  font-size: 18pt;
+  font-size: 16pt;
   font-weight: 800;
   color: #ff8836;
   margin-bottom: 15px;
-  margin-top: 15px;
+  margin-top: 40px;
 }
 
 .input {
@@ -63,15 +61,15 @@ body {
 }
 
 label {
-  width: 80px;
+  width: 70px;
   margin-right: 8px;
-  font-size: 16pt;
+  font-size: 14pt;
   font-weight: 600;
-  margin-top: 2px;
+  margin-top: 6px;
 }
 
 input {
-  font-size: 13pt;
+  font-size: 12pt;
   border: 1px solid #707070;
   border-radius: 18pt;
   padding-left: 10px;
@@ -108,34 +106,28 @@ button[type="submit"] {
 }
 
 #_name {
-  width: 95px;
+  width: 87px;
 }
 
-@media (min-width: 450px) {
+@media (min-width: 460px) {
   .container {
-    width: 450px;
+    width: 460px;
   }
-  label {
-    margin-right: 70px;
-  }
-  input {
-    padding-left: 20px;
-  }
-
-  #location {
-    width: 55px;
-    margin-left: 13px;
+}
+@media (min-width: 696px) {
+  .container {
+    width: 696px;
   }
 
   button[type="submit"] {
-    margin-top: 120px;
+    margin-top: 140px;
   }
 
-  .input {
-    margin-bottom: 6px;
+  .title {
+    margin-top: 0px;
   }
 
-  .coordinator_info {
-    margin-top: 10px;
+  #location {
+    width: 38pt;
   }
 }
