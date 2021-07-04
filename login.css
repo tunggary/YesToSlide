@@ -6,11 +6,14 @@
 
 body {
   font-family: "NanumSquare", sans-serif !important;
+  background-color: #fafbfc;
 }
 
 .container {
   height: 100vh;
   padding: 0 36px;
+  width: 450px;
+  border: 1px solid black;
 }
 
 .row {
@@ -31,19 +34,15 @@ body {
   align-items: center;
   justify-content: center;
 }
-/* #logo div {
-  width: 194px;
-  height: 85px;
-  background-image: url(https://tunggary.github.io/YesToSlide/Logos/yestoslide_all_logo.png);
-}  */
 
 #logo div img {
-  margin-left: 50px;
+  /* margin-left: 50px; */
 }
 
 #logo span {
-  width: 50px;
-  margin-top: 30px;
+  position: absolute;
+  top: 100px;
+  left: 320px;
   font-size: 12px;
   font-weight: 600;
 }
@@ -52,45 +51,46 @@ body {
   display: flex;
 }
 .title {
-  font-size: 18px;
+  font-size: 18pt;
   font-weight: 800;
   color: #ff8836;
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .input {
   margin-bottom: 10px;
   width: 100%;
-  height: 41px;
+  height: 36pt;
 }
 
 label {
-  width: 60px;
-  height: 32px;
+  width: 80px;
   margin-right: 8px;
-  font-size: 16px;
-  font-weight: 800;
-  margin-top: 4px;
+  font-size: 16pt;
+  font-weight: 600;
+  margin-top: 2px;
 }
 
 input {
-  font-size: 14px;
+  font-size: 13pt;
   border: 1px solid #707070;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 18pt;
+  padding-left: 10px;
   width: 100%;
+  height: 30pt;
 }
 
 .coordinator_info {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 #location {
-  width: 41px;
+  width: 50px;
   height: 34px;
   margin-left: 5px;
   border: 1px solid #707070;
-  border-radius: 5px;
+  border-radius: 25px;
   background-color: white;
   color: #ff8836;
 }
@@ -100,21 +100,20 @@ button[type="submit"] {
   width: 100%;
   height: 41px;
   border: none;
-  border-radius: 5px;
+  border-radius: 21pt;
   color: white;
   background-color: #ff8836;
   font-weight: bold;
   padding: 10px auto;
   font-size: 18px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
-@media (min-width: 768px) {
-  /* #logo div {
-    width: 342px;
-    height: 158px;
-    background-image: url(https://tunggary.github.io/YesToSlide/Logos/yestoslide_all_logo@2x.png);
-  } */
+#_name {
+  width: 66px;
+}
+
+/* @media (min-width: 768px) {
   label {
     margin-right: 70px;
   }
@@ -125,9 +124,6 @@ button[type="submit"] {
   #location {
     width: 55px;
     margin-left: 13px;
-  }
-  #_name {
-    width: 66px;
   }
 
   button[type="submit"] {
@@ -141,4 +137,4 @@ button[type="submit"] {
   .coordinator_info {
     margin-top: 10px;
   }
-}
+} */
