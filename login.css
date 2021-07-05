@@ -14,12 +14,8 @@ body {
   padding: 0 36px;
 }
 
-.row {
-  margin: 0 auto;
-}
-
 .row:nth-child(1) {
-  height: 15%;
+  height: max-content;
 }
 
 .row:nth-child(2) {
@@ -51,7 +47,6 @@ body {
   font-weight: 800;
   color: #ff8836;
   margin-bottom: 15px;
-  margin-top: 40px;
 }
 
 .input {
@@ -75,6 +70,7 @@ input {
   padding-left: 10px;
   width: 100%;
   height: 30pt;
+  outline: none;
 }
 
 .coordinator_info {
@@ -122,11 +118,6 @@ button[type="submit"] {
   button[type="submit"] {
     margin-top: 140px;
   }
-
-  .title {
-    margin-top: 0px;
-  }
-
   #location {
     width: 38pt;
   }
