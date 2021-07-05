@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="20" viewBox="0 0 34 20">
+  <defs>
+    <clipPath id="clip-button_collecting_On">
+      <rect width="34" height="20"/>
+    </clipPath>
+  </defs>
+  <g id="button_collecting_On" clip-path="url(#clip-button_collecting_On)">
+    <g id="그룹_253" data-name="그룹 253" transform="translate(3511.287 1342.953) rotate(180)">
+      <rect id="사각형_1299" data-name="사각형 1299" width="34" height="20" rx="10" transform="translate(3477.287 1322.953)" fill="#f28234"/>
+      <rect id="사각형_1300" data-name="사각형 1300" width="16" height="16" rx="8" transform="translate(3479.287 1324.953)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

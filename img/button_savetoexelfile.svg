@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="button_savetoexelfile" width="156" height="26" viewBox="0 0 156 26">
+    <defs>
+        <style>
+            .cls-3,.cls-4{font-family:Roboto-Medium,Roboto;font-weight:500}.cls-4{font-family:AppleSDGothicNeo-Medium,Apple SD Gothic Neo}
+        </style>
+    </defs>
+    <rect id="사각형_658" width="156" height="26" fill="#fff" rx="13"/>
+    <text id="Excel_파일로_저장하기" font-family="Roboto-Regular, Roboto" font-size="12px" transform="translate(34 6)">
+        <tspan x="0" y="11">Excel</tspan><tspan y="11" class="cls-3"> </tspan><tspan y="11" class="cls-4">파일로</tspan><tspan y="11" class="cls-3"> </tspan><tspan y="11" class="cls-4">저장하기</tspan>
+    </text>
+    <g id="save_alt_white_24dp" transform="translate(11 4)">
+        <path id="패스_157" fill="none" d="M0 0h19v19H0z"/>
+        <path id="패스_158" d="M14.556 9.5v5.056H4.444V9.5H3v5.056A1.449 1.449 0 0 0 4.444 16h10.112A1.449 1.449 0 0 0 16 14.556V9.5zm-4.333.484l1.871-1.863 1.018 1.018L9.5 12.75 5.889 9.139l1.018-1.018 1.871 1.863V3h1.444z" transform="translate(0 0)"/>
+    </g>
+</svg>

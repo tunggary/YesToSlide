@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", "serif";
+  background-color: lightgray;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+}
+
+.attendance {
+  position: absolute;
+  width: 375px;
+  top: 65px;
+  right: 20px;
+}
+
+.tri {
+  height: 5px;
+}
+
+.att_container {
+  width: 375px;
+  border-radius: 26px;
+  color: #313233;
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 20px;
+  background-color: #ffffff;
+}
+
+.title_coordinator {
+  width: 315px;
+  height: 16px;
+  margin: 0 40px 0 20px;
+}
+
+.cordinator_gmail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+  width: 375px;
+  height: 66px;
+  border-bottom: 1px solid #c9c9c9;
+}
+.att_middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 16px 0 20px;
+}
+.att_bottom .label {
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #c9c9c9;
+  position: relative;
+}
+
+.att_bottom .content {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  overflow-y: auto;
+}
+
+.att_bottom.active .content {
+  height: 618px;
+}
+.att_excel,
+.att_bottom .label span,
+.att_bottom img {
+  cursor: pointer;
+}
+
+.participants_list {
+  width: 343px;
+  height: 52px;
+  margin: 0 0 8px 16px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.participants_list:hover {
+  background-color: rgba(0, 255, 255, 0.5);
+}
+
+.participants_name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #313233;
+}
+
+.participants_email {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile_img img {
+  border-radius: 17px;
+  width: 34px;
+  height: 34px;
+  margin: 0 10px;
+}
+
+.content::-webkit-scrollbar {
+  width: 4px;
+  opacity: 0.2;
+  border-radius: 4px;
+}
+.content::-webkit-scrollbar-thumb {
+  background-color: rgb(163, 163, 163);
+  border-radius: 4px;
+}
+.content::-webkit-scrollbar-track {
+  background-color: rgb(202, 201, 201);
+  border-radius: 4px;
+}
