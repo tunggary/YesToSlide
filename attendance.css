@@ -98,13 +98,17 @@ li {
   background-color: rgba(0, 255, 255, 0.5);
 }
 
+.participants_list.active {
+  background-color: blueviolet;
+}
+
 .participants_name {
   font-size: 16px;
   font-weight: bold;
-  color: #313233;
 }
 
 .participants_email {
+  width: 250px;
   font-size: 14px;
   font-weight: 400;
 }
@@ -114,6 +118,12 @@ li {
   width: 34px;
   height: 34px;
   margin: 0 10px;
+}
+
+.close_btn {
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
 }
 
 .content::-webkit-scrollbar {
