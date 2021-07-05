@@ -14,14 +14,6 @@ body {
   padding: 0 36px;
 }
 
-.row:nth-child(1) {
-  height: max-content;
-}
-
-.row:nth-child(2) {
-  height: 80%;
-}
-
 #logo {
   display: flex;
   align-items: center;
@@ -78,7 +70,7 @@ input {
 }
 
 #location {
-  width: 45pt;
+  width: 42pt;
   height: 30pt;
   margin-left: 5px;
   border: 1px solid #707070;
