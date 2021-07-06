@@ -20,6 +20,7 @@ const dark_background = document.getElementsByClassName("dark_background");
 const all_delete_btn = document.getElementById("all_delete_btn");
 const all_delete_modal = document.getElementById("all_delete_modal");
 all_delete_btn.addEventListener("click", () => {
+  console.log("dsf");
   all_delete_modal.style.display = "block";
   dark_background[0].style.display = "block";
 });
@@ -28,6 +29,7 @@ all_delete_btn.addEventListener("click", () => {
 const close_button = document.querySelectorAll(".image_list svg");
 const image_delete_modal = document.getElementById("image_delete_modal");
 for (let i = 0; i < close_button.length; i++) {
+  console.log("dsf");
   close_button[i].addEventListener("click", () => {
     image_delete_modal.style.display = "block";
     dark_background[0].style.display = "block";
@@ -39,6 +41,7 @@ const delete_btn = document.getElementsByClassName("delete_btn");
 const negative_btn = document.getElementsByClassName("negative_btn");
 const par_back_img = document.getElementsByClassName("par_back_img");
 for (let i = 0; i < delete_btn.length; i++) {
+  console.log("dsf");
   delete_btn[i].addEventListener("click", () => {
     par_back_img[i].style.display = "none";
     dark_background[0].style.display = "none";
