@@ -29,21 +29,21 @@ li {
   width: 100%;
   height: 823px;
   border-radius: 26px;
+  overflow: hidden;
   -webkit-backdrop-filter: blur(50px);
   backdrop-filter: blur(50px);
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid blue;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .top-content {
   height: 50px;
   padding: 16px 16px 8px 16px;
   border-bottom: 1px solid #c9c9c9;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .tab-content {
   height: 772px;
-  /* border: 1px solid red; */
 }
 
 .nav {
@@ -76,6 +76,7 @@ li {
 .option_sorting {
   display: flex;
   padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .btn {
   font-size: 12px;
@@ -97,17 +98,53 @@ li {
 
 .list_content {
   height: 679px;
-  border: 1px solid firebrick;
   overflow: scroll;
   overflow-x: hidden;
 }
 
 .image_list {
+  position: relative;
   width: 343px;
   height: 246px;
   margin: 16px 14px 0 14px;
   border-radius: 13px;
-  border: 1px solid burlywood;
+  overflow: hidden;
+}
+
+.image_list svg {
+  position: absolute;
+  top: 5px;
+  left: 318px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.image_info {
+  position: absolute;
+  top: 190px;
+  width: 100%;
+  height: 56px;
+  padding: 11px 0 14px 10px;
+  display: flex;
+  background-color: #ffffff;
+}
+
+.image_info img {
+  width: 31px;
+  height: 31px;
+  margin-right: 10px;
+  border-radius: 16px;
+}
+
+.image_title {
+  font-size: 12px;
+  font-weight: 500;
+  color: #313233;
+}
+
+.image_name {
+  font-size: 10px;
+  font-weight: 500;
 }
 
 .list_content::-webkit-scrollbar {
@@ -122,4 +159,18 @@ li {
 .list_content::-webkit-scrollbar-track {
   background-color: rgb(202, 201, 201);
   border-radius: 4px;
+}
+
+.bottom_content {
+  width: 100%;
+  height: 51px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom_content img {
+  cursor: pointer;
 }
