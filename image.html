@@ -160,21 +160,21 @@
   </section>
   <script>
     //사진 선택하면 주황색 테두리 띄우기
-    const activeImage = document.getElementsByClassName("active");
-    const image_list = document.getElementsByClassName("image_list");
-    for (let i = 0; i < image_list.length; i++) {
-      image_list[i].addEventListener("click", () => {
-        checkRadio();
-        image_list[i].classList.toggle("active");
-      });
-    }
-    function checkRadio() {
-      for (let i = 0; i < image_list.length; i++) {
-        if (image_list[i].className == "image_list active") {
-          image_list[i].classList.remove("active");
-        }
-      }
-    }
+    // const activeImage = document.getElementsByClassName("active");
+    // const image_list = document.getElementsByClassName("image_list");
+    // for (let i = 0; i < image_list.length; i++) {
+    //   image_list[i].addEventListener("click", () => {
+    //     checkRadio();
+    //     image_list[i].classList.toggle("active");
+    //   });
+    // }
+    // function checkRadio() {
+    //   for (let i = 0; i < image_list.length; i++) {
+    //     if (image_list[i].className == "image_list active") {
+    //       image_list[i].classList.remove("active");
+    //     }
+    //   }
+    // }
 
     // 모두삭제버튼 누르면 모달 띄우기 & 검은색 뒷배경 띄우기
     const dark_background = document.getElementsByClassName("dark_background");
