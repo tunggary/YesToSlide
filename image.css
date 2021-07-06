@@ -100,9 +100,9 @@ li {
 }
 
 .list_content {
+  width: 375px;
   height: 679px;
-  overflow: scroll;
-  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .image_list {
@@ -120,9 +120,10 @@ li {
 
 .image_list svg {
   position: absolute;
+  color: black;
   top: 5px;
   left: 310px;
-  opacity: 0.6;
+  opacity: 0.7;
   cursor: pointer;
 }
 
