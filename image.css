@@ -46,6 +46,9 @@ li {
   height: 772px;
 }
 
+.tab-pane {
+  position: relative;
+}
 .nav {
   width: max-content;
   font-size: 12px;
@@ -177,4 +180,57 @@ li {
 
 .bottom_content img {
   cursor: pointer;
+}
+
+/* modal */
+.par_back_img {
+  background: url("img/사각형\ 1653.png");
+  width: 311px;
+  height: 197px;
+  position: absolute;
+  top: 250px;
+  left: 30px;
+  display: none;
+}
+
+.x_img {
+  margin-top: 16px;
+  background: url("img/modal_icon_expel.png");
+  width: 74px;
+  height: 74px;
+  margin-left: 120px;
+}
+.yes_no {
+  margin-top: 12.5px;
+  display: flex;
+  justify-content: center;
+}
+
+.crap_img {
+  margin-top: 16px;
+  background: url("img/modal_icon_deleteall.png");
+  width: 74px;
+  height: 74px;
+  margin-left: 120px;
+}
+.del_img {
+  margin-top: 16px;
+  background: url("img/modal_icon_delete_imageorvideo.png");
+  width: 74px;
+  height: 74px;
+  margin-left: 120px;
+}
+
+.yes_no img {
+  cursor: pointer;
+}
+
+.dark_background {
+  width: 375px;
+  height: 828px;
+  background-color: #313233;
+  opacity: 0.3;
+  position: absolute;
+  top: -50px;
+  display: none;
 }
