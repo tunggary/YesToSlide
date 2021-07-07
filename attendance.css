@@ -23,9 +23,15 @@ li {
 }
 
 .tri {
-  height: 5px;
+  position: relative;
+  left: 302px;
+  width: 0px;
+  height: 0px;
+  border-top: 5px solid none;
+  border-bottom: 5px solid #ffffff;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
 }
-
 .att_container {
   width: 375px;
   border-radius: 26px;
