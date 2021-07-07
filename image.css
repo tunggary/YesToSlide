@@ -163,6 +163,13 @@ li {
   font-weight: 500;
 }
 
+.image_scroll_veil {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 190px;
+}
+
 .list_content::-webkit-scrollbar {
   width: 4px;
   opacity: 0.2;
