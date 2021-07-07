@@ -48,3 +48,17 @@ for (let i = 0; i < delete_btn.length; i++) {
     dark_background[0].style.display = "none";
   });
 }
+
+for (let i = 0; i < image_list.length; i++) {
+  image_list[i].addEventListener("mousewheel", (e) => {
+    e.stopPropagation();
+  });
+}
+
+const iframe = document.getElementsByTagName("iframe");
+const list_content = document.getElementsByClassName("list_content");
+
+list_content[0].addEventListener("mousewheel", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+});
