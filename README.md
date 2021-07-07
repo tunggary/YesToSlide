@@ -1,3 +1,5 @@
-# attendace => 출석부
+# main.html => iframe으로 합쳐놓음
+attendace.html => 출석부
+ / image.html => 사진창
 
-# image => 사진창
+
