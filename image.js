@@ -1,14 +1,14 @@
 //사진 선택하면 주황색 테두리 띄우기
-const activeImage = document.getElementsByClassName("active");
 const image_list = document.getElementsByClassName("image_list");
-for (let i = 0; i < image_list.length; i++) {
-  image_list[i].addEventListener("click", () => {
+const image_scroll_veil = document.getElementsByClassName("image_scroll_veil");
+for (let i = 0; i < image_scroll_veil.length; i++) {
+  image_scroll_veil[i].addEventListener("click", () => {
     checkRadio();
     image_list[i].classList.toggle("active");
   });
 }
 function checkRadio() {
-  for (let i = 0; i < image_list.length; i++) {
+  for (let i = 0; i < image_scroll_veil.length; i++) {
     if (image_list[i].className == "image_list active") {
       image_list[i].classList.remove("active");
     }
