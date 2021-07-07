@@ -65,7 +65,7 @@ li {
 }
 
 .file_list.active {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .file_num {
