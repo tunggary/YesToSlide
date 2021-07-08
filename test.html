@@ -24,7 +24,6 @@
     send_imageOrVideo.addEventListener("change", function () {
       const file = send_imageOrVideo.files[0];
       console.log(file.type)
-      h1.innerHTML = file.type
       if (
         file.type === "video/mp4" ||
         file.type === "video/avi" ||
