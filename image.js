@@ -56,6 +56,7 @@ const player = document.getElementsByClassName("player");
 send_imageOrVideo.addEventListener("change", function () {
   const file = send_imageOrVideo.files[0];
   console.log(file.type);
+  console.log(URL.createObjectURL(file));
   if (
     file.type === "video/mp4" ||
     file.type === "video/avi" ||
