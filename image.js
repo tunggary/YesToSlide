@@ -48,3 +48,31 @@ for (let i = 0; i < delete_btn.length; i++) {
     dark_background[0].style.display = "none";
   });
 }
+
+//image,video 업로드
+const send_imageOrVideo = document.getElementById("send_imageOrVideo");
+const player = document.getElementsByClassName("player");
+
+send_imageOrVideo.addEventListener("change", function () {
+  const file = send_imageOrVideo.files[0];
+  console.log(file.type);
+  if (
+    file.type === "video/mp4" ||
+    file.type === "video/avi" ||
+    file.type === "video/x-ms-wmv" ||
+    file.type === "video/x-matroska" ||
+    file.type === "video/quicktime" ||
+    file.type === "video/mpeg"
+  ) {
+    const videourl = URL.createObjectURL(file);
+    player[0].innerHTML = `<video id="videoPlay" width="800" height="450" controls>
+      <source type="video/mp4" src="" type="video/mp4" />
+      <source src="${videourl}" type="video/ogg" id="vvvv">
+      </video>`;
+  }
+
+  if (file.type === "image/jpeg" || file.type === "image/png") {
+    const imageURL = URL.createObjectURL(file);
+    player[0].innerHTML = `<img src="${imageURL}" width="800" height="450">`;
+  }
+});
