@@ -23,6 +23,7 @@
 
     send_imageOrVideo.addEventListener("change", function () {
       const file = send_imageOrVideo.files[0];
+      const URL_Selected = URL.createObjectURL(file);
       console.log(file.type)
       if (
         file.type === "video/mp4" ||
@@ -33,16 +34,15 @@
         file.type === "video/mpeg" ||
         file.type === "audio/x-m4a"
       ) {
-        const videourl = URL.createObjectURL(file);
         player[0].innerHTML =
           `<video id="videoPlay" width="800" height="450" controls>
-            <source type="video/mp4" src="${videourl}" type="video/mp4" />           
+            <source type="video/mp4" src="${URL_Selected}" type="video/mp4" />           
           </video>`;
       }
 
       if (file.type === "image/jpeg" || file.type === "image/png") {
-        const imageURL = URL.createObjectURL(file);
-        player[0].innerHTML = `<img src="${imageURL}" width="800" height="450">`;
+
+        player[0].innerHTML = `<img src="${URL_Selected}" width="800" height="450">`;
       }
     });
   </script>

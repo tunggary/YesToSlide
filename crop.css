@@ -1,0 +1,10 @@
+body {
+  background-color: #c9c9c9;
+}
+.con {
+  display: block;
+
+  /* This rule is very important, please don't ignore this */
+  width: 500px;
+  height: 500px;
+}
