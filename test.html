@@ -14,7 +14,6 @@
   <label for="send_imageOrVideo"><img src="./img/button_send_imagesorvideos.png"></label>
   <input type="file" name="send_imageOrVideo" id="send_imageOrVideo" style="display: none;">
   <div class="player" style="width: 800px; height: 450px; background: black; color: white; margin: 40px;"> screen</div>
-  <h1 id="h1"></h1>
 
   <script>
     //image,video 업로드
@@ -32,12 +31,13 @@
         file.type === "video/x-ms-wmv" ||
         file.type === "video/x-matroska" ||
         file.type === "video/quicktime" ||
-        file.type === "video/mpeg"
+        file.type === "video/mpeg" ||
+        file.type === "audio/x-m4a"
       ) {
         const videourl = URL.createObjectURL(file);
         player[0].innerHTML =
           `<video id="videoPlay" width="800" height="450" controls>
-          <source src="${videourl}">
+            <source type="video/mp4" src="${videourl}" type="video/mp4" />           
           </video>`;
       }
 
