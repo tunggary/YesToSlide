@@ -20,6 +20,7 @@
 </head>
 
 <body>
+  <div class="player" style="width: 800px; height: 450px; background: black; color: white;"> screen</div>
   <section class="imageTab">
     <div class="tri"></div>
     <div class="image_container">
@@ -95,7 +96,36 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
   <script src="image_slideData.js"></script>
-  <script src="image.js" async defer></script>
+  <script src="image.js"></script>
+  <script>
+    //image,video 업로드
+    const send_imageOrVideo = document.getElementById("send_imageOrVideo");
+    const player = document.getElementsByClassName("player");
+
+    send_imageOrVideo.addEventListener("change", function () {
+      const file = send_imageOrVideo.files[0];
+      if (
+        file.type === "video/mp4" ||
+        file.type === "video/avi" ||
+        file.type === "video/x-ms-wmv" ||
+        file.type === "video/x-matroska" ||
+        file.type === "video/quicktime" ||
+        file.type === "video/mpeg"
+      ) {
+        const videourl = URL.createObjectURL(file);
+        player[0].innerHTML = `<video id="videoPlay" width="800" height="450" controls>
+      <source type="video/mp4" src="" type="video/mp4" />
+      <source src="${videourl}" type="video/ogg" id="vvvv">
+      </video>`;
+      }
+
+      if (file.type === "image/jpeg" || file.type === "image/png") {
+        const imageURL = URL.createObjectURL(file);
+        player[0].innerHTML = `<img src="${imageURL}" width="800" height="450">`;
+      }
+    });
+
+  </script>
 </body>
 
 </html>
