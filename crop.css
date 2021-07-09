@@ -5,6 +5,20 @@ body {
 .cropped_selector {
   width: 500px;
   height: 500px;
+  position: relative;
+}
+
+.button_UI {
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.button_UI label {
+  margin: 5px;
+  cursor: pointer;
 }
 
 /*   cropper   */
