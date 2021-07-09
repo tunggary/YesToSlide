@@ -38,3 +38,14 @@ for (let i = 0; i < delete_btn.length; i++) {
     dark_background[0].style.display = "none";
   });
 }
+
+function scroll_func() {
+  const file_list = document.getElementsByClassName("file_list");
+  const content = document.getElementsByClassName("content");
+  if (file_list.length >= 14) {
+    content[0].style.overflowY = "scroll";
+  } else {
+    content[0].style.overflowY = "hidden";
+  }
+}
+scroll_func();

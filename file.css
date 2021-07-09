@@ -46,7 +46,7 @@ li {
   margin-top: 20px;
   padding: 0 16px;
   height: 780px;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .file_list {

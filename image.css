@@ -104,21 +104,17 @@ li {
   background: url(./img/dropdown_button.png) no-repeat 98% 50%;
 }
 
-option {
-  margin: 3px;
-}
-
 .list_content {
   width: 375px;
-  height: 679px;
-  overflow-y: scroll;
+  height: 680px;
+  overflow: hidden;
 }
 
 .image_list {
   position: relative;
   width: 343px;
   height: 246px;
-  margin: 16px 14px 0 14px;
+  margin: 16px auto 0 auto;
   border-radius: 13px;
   overflow: hidden;
 }
