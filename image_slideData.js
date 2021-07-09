@@ -53,6 +53,8 @@ function setImage() {
     <div class="image_delete_btn">
       <img src="./img/그룹 230.png" width="12" height="12">
     </div>
+    <label class="form-check-label" for="sound_check"></label>
+    <input class="form-check-input shadow-none" type="checkbox" id="sound_check">
   </li>`;
   }
   document.querySelector(".list_content ul").innerHTML = html;
