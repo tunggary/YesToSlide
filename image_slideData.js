@@ -59,3 +59,5 @@ function setImage() {
   }
   document.querySelector(".list_content ul").innerHTML = html;
 }
+
+setImage();
