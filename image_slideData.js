@@ -30,13 +30,13 @@ const slide_info = [
 ];
 
 function setImage() {
-  if (for_length >= 3) {
+  if (slide_info.length >= 3) {
     document.querySelector(".list_content").style.overflowY = "scroll";
   } else {
     document.querySelector(".list_content").style.overflowY = "hidden";
   }
   let html = "";
-  for (let i = 0; i < for_length; i++) {
+  for (let i = 0; i < slide_info.length; i++) {
     html += `<li class="image_list">
     <iframe class="image"
       src="${slide_info[i].slideUrl}"
@@ -59,16 +59,3 @@ function setImage() {
   }
   document.querySelector(".list_content ul").innerHTML = html;
 }
-
-let for_length = slide_info.length;
-
-function up() {
-  for_length++;
-  setImage();
-}
-
-function down() {
-  for_length--;
-  setImage();
-}
-setImage();

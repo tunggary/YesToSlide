@@ -1,15 +1,9 @@
 const send_imageOrVideo = document.getElementById("send_imageOrVideo");
 const send_label = document.getElementById("send_label");
-
 const image = document.getElementById("image");
-let count_ = 0;
+const cropped_data = document.getElementsByClassName("cropped_data");
 
 send_imageOrVideo.addEventListener("change", function () {
-  if (count_ > 0) {
-    location.reload();
-  }
-  count_ += count_ + 1;
-
   const file = send_imageOrVideo.files[0];
   const URL_Selected = URL.createObjectURL(file);
   image.setAttribute("src", URL_Selected);
@@ -22,16 +16,27 @@ send_imageOrVideo.addEventListener("change", function () {
 });
 
 function init_func() {
-  const cropper = new Cropper(image, {
+  cropper = new Cropper(image, {
+    viewMode: 2,
+    dragMode: "none",
     aspectRatio: 16 / 9,
-    crop(event) {
-      console.log(event.detail.x);
-      console.log(event.detail.y);
-      console.log(event.detail.width);
-      console.log(event.detail.height);
-      console.log(event.detail.rotate);
-      console.log(event.detail.scaleX);
-      console.log(event.detail.scaleY);
-    },
+    center: false,
+    highlight: false,
+    background: false,
+    autoCropArea: 1,
   });
 }
+
+const destroy = document.getElementById("destroy");
+destroy.addEventListener("click", () => {
+  cropper.destroy();
+  cropper = null;
+  image.setAttribute("src", " ");
+  cropped_data[0].setAttribute("src", " ");
+});
+
+const crop = document.getElementById("crop");
+crop.addEventListener("click", () => {
+  const html = cropper.getCroppedCanvas().toDataURL("image/jpeg");
+  cropped_data[0].setAttribute("src", html);
+});

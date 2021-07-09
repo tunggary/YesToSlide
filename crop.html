@@ -15,15 +15,16 @@
   <div class="con">
     <label for="send_imageOrVideo" id="send_label"><img src="./img/button_send_imagesorvideos.png"></label>
     <input type="file" name="send_imageOrVideo" id="send_imageOrVideo" style="display: none;">
-    <img id="image" src="">
+    <input type="button" value="destroy" id="destroy">
+    <input type="button" value="crop" id="crop">
+    <div class="cropped_selector">
+      <img id="image" src="">
+    </div>
   </div>
+  <img class="cropped_data" width="800" height="450">cropped_image
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
   <script src="crop.js"></script>
-
-</body>
-
-</html>
 
 </body>
 
