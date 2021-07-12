@@ -85,9 +85,33 @@ li {
 
 .option {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 8px 13px 8px 16px;
   background-color: rgba(255, 255, 255, 0.4);
+}
+
+.all_select_option {
+  position: relative;
+  margin-right: 7px;
+  width: 60px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.background {
+  position: absolute;
+  z-index: -1;
+  width: 60px;
+  height: 25px;
+}
+
+.separate_bar {
+  border-right: 1px solid #c9c9c9;
+  height: 18px;
 }
 
 .dropdown {
@@ -95,7 +119,7 @@ li {
   font-size: 12px;
   font-weight: 500;
   color: #313233;
-  width: 168px;
+  width: 133px;
   height: 26px;
   padding: 2px 5px 0 12px;
   border: 1px solid #c9c9c9;
@@ -212,25 +236,31 @@ li {
   display: none;
 }
 
-.form-check-input:checked {
+#selected_check:checked,
+#all_check:checked {
   background-color: #f28234;
   border-color: #f28234;
 }
-.form-check-input {
+#selected_check {
   position: absolute;
   top: 0px;
   left: 8px;
   width: 22px;
   height: 22px;
   margin-top: 6px;
+  border-radius: 5px;
 }
-.form-check-label {
+#selected_check_label,
+#all_check {
   z-index: 200;
   font-size: 12px;
   font-weight: 500;
   margin-bottom: 5px;
 }
 
-.form-check-input[type="checkbox"] {
+#all_check {
+  width: 22px;
+  height: 22px;
+  margin-top: 6px;
   border-radius: 5px;
 }

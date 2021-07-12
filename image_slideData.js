@@ -1,5 +1,6 @@
 //slide data
-const slide_info = [
+var slide_info = [
+  /*
   {
     slideUrl:
       "https://docs.google.com/presentation/d/1wJeY0T4ZGlCSyo2YnKiNRSvai84FDd-CdaC9FUJrU-c/preview?rm=minimal&slide=id.SLIDES_API1655905382_0",
@@ -27,17 +28,17 @@ const slide_info = [
     category: "image",
     date: "2021-07-07",
   },
+  */
 ];
 
 function setImage() {
-  if (slide_info.length >= 3) {
-    document.querySelector(".list_content").style.overflowY = "scroll";
-  } else {
-    document.querySelector(".list_content").style.overflowY = "hidden";
-  }
+  console.log(slide_info);
   let html = "";
   for (let i = 0; i < slide_info.length; i++) {
-    html += `<li class="image_list">
+    html +=
+      `<li class="image_list" id="` +
+      slide_info[i].slideId +
+      `">
     <iframe class="image"
       src="${slide_info[i].slideUrl}"
       frameborder="0" width="345" height="194" allowfullscreen="true" mozallowfullscreen="true"
@@ -60,4 +61,7 @@ function setImage() {
   document.querySelector(".list_content ul").innerHTML = html;
 }
 
-setImage();
+function add_slide_info(each) {
+  //console.log(each);
+  slide_info.push(each);
+}

@@ -1,0 +1,66 @@
+body {
+  background-color: #c9c9c9;
+}
+
+.cropped_selector {
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+
+.button_UI {
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.button_UI label {
+  margin: 5px;
+  cursor: pointer;
+}
+
+/*   cropper   */
+.cropper-modal {
+  opacity: 0.7;
+}
+
+.cropper-dashed {
+  border: #ff8836 1px solid;
+  opacity: 1;
+}
+
+.cropper-dashed.dashed-h {
+  border-right: none;
+  border-left: none;
+}
+
+.cropper-dashed.dashed-v {
+  border-top: none;
+  border-bottom: none;
+}
+
+.cropper-view-box {
+  outline: none;
+}
+
+.cropper-line {
+  background: none;
+}
+
+.cropper-point {
+  display: none;
+}
+
+.cropper-point.point-se {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff8836;
+  display: block;
+}
+
+.cropped_data {
+  background: black;
+}

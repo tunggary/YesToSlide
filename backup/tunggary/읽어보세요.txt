@@ -1,0 +1,84 @@
+수정된 파일 및 내용
+1.image_slideData.js
+    초기 slide_info 의 내용을 지우고
+    아래 함수를 추가 해서 메인 쪽에서 slide_info를 생성하게 하고 
+    모두 추가후 setImage()를 실행했습니다
+
+    function add_slide_info(each)
+    {
+    //console.log(each);
+    slide_info.push(each);
+    }
+
+2.image.js
+    slide_info가 생성된 후에 
+    (사진 선택하면 주황색 테두리 띄우기,모두삭제버튼 누르면 모달 띄우기 & 검은색 뒷배경 띄우기 등등의) 코드가 실행 되어야 하므로
+    각각을 함수로 만들어서 slide_info이 모두 생성된후  아래 함수를 호출 해주었습니다
+
+    function do_after_adding_all_images()
+    {
+        prepare_show_outline();
+        prepare_open_delete_all_modal();
+        prepare_open_delete_modal();
+        prepare_cancel_delete_modal();
+
+    }
+
+
+3.attendance.html
+    jquery 추가 <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"></script>  
+
+4.attendance.js
+
+    image.js와 유사합니다
+    참석자를  add_attendance(each)로 추가 한후에 
+    do_after_adding_all_attendances()를 마지막에 호출 합니다
+
+    function add_attendance(each)
+    {
+        console.log(each);
+
+
+        var cnt = document.getElementById("attendanceUl").childElementCount ;
+        cnt ++;
+        var template = `<li class="participants_list">
+            <div class="profile_img">
+            <img src="./img/profile.jpg">
+            </div>
+            <div class="profile_info">
+            <div class="participants_name">`+each["name"]+`</div>
+            <div class="participants_email">`+each["email"]+`</div>
+            </div>
+            <div class="participants_delete_btn">
+            <img src="./img/close_white_24dp.png">
+            </div>
+        </li>`;
+
+        $("#attendanceUl").append(template);
+
+
+    }
+
+    function do_after_adding_all_attendances()
+    {
+        add_click_listener_to_attendances();
+        prepare_open_expel_modal();
+        prepare_cancel_expel_modal();
+    }
+
+5.file.js
+    image.js와 유사합니다
+    
+    add_each_file(each)으로 모든 파일을 추가한후에
+    function do_after_adding_all_files() 을 호출 했습니다
+
+    {
+        add_click_listener_to_presentatin_list()
+        prepare_open_delete_modal()
+        prepare_cancel_delete_modal()
+
+    }
+    
+
+6.file.html
+    <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"></script>  

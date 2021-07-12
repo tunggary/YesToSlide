@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+  <link rel="stylesheet" href="crop.css">
+</head>
+
+<body>
+  <div class="con">
+    <label for="send_imageOrVideo" id="send_label"><img src="./img/button_send_imagesorvideos.png"></label>
+    <input type="file" name="send_imageOrVideo" id="send_imageOrVideo" style="display: none;">
+    <div class="cropped_selector">
+      <img id="image" src="">
+      <div class="button_UI">
+        <label for="left_rotate"><img src="./cropImg/leftrotate.svg"></label>
+        <input type="button" value="left_rotate" id="left_rotate" style="display: none;">
+        <label for="right_rotate"><img src="./cropImg/rightrotate.svg"></label>
+        <input type="button" value="right_rotate" id="right_rotate" style="display: none;">
+        <label for="crop"><img src="./cropImg/checkbutton.svg"></label>
+        <input type="button" value="crop" id="crop" style="display: none;">
+        <label for="destroy"><img src="./cropImg/undobutton.svg"></label>
+        <input type="button" value="destroy" id="destroy" style="display: none;">
+      </div>
+    </div>
+    <div class="data"></div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+  <script src="crop.js"></script>
+
+</body>
+
+</html>
