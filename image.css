@@ -208,7 +208,7 @@ li {
   left: 40px;
   width: 66px;
   height: 22px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   display: none;
 }
