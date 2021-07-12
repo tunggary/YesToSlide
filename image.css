@@ -130,7 +130,7 @@ li {
 
 .list_content {
   width: 375px;
-  height: 680px;
+  height: 672px;
   overflow: hidden;
 }
 
@@ -199,6 +199,20 @@ li {
   height: 100%;
 }
 
+.image_voting_number {
+  position: absolute;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 11px;
+  top: 7px;
+  left: 40px;
+  width: 66px;
+  height: 22px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: none;
+}
+
 .list_content::-webkit-scrollbar {
   width: 4px;
   opacity: 0.2;
@@ -226,13 +240,20 @@ li {
 .bottom_content img {
   cursor: pointer;
 }
+
+#button_after_voting,
+#button_duplicable_voting_active {
+  display: none;
+}
+
 .dark_background {
   width: 375px;
   height: 828px;
   background-color: #313233;
   opacity: 0.3;
   position: absolute;
-  top: -50px;
+  top: 0;
+  z-index: 200;
   display: none;
 }
 

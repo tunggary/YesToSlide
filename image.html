@@ -36,125 +36,76 @@
         </ul>
       </div>
       <div class="tab-content" id="pills-tabContent">
+        <div class="option">
+          <div class="all_select_option">
+            <input class=" form-check-input shadow-none" type="checkbox" id="all_check" value="unchecked">
+            <label class=" form-check-label" for="all_check">ALL</label>
+            <div class="separate_bar"></div>
+            <div class="background" onclick="all_check();"></div>
+          </div>
+          <select class="dropdown" id="option_sort">
+            <option value="1">최신순 정렬</option>
+            <option value="2">시간순 정렬</option>
+            <option value="3">이름순 정렬</option>
+          </select>
+          <select class="dropdown" id="option_vote" style="display: none;">
+            <option value="1">득표순 정렬</option>
+          </select>
+          <select class="dropdown" id="option_filter">
+            <option value="1">사진만 보기</option>
+            <option value="2">동영상만 보기</option>
+            <option value="3">전체 보기</option>
+          </select>
+        </div>
+        <div class="list_content">
+          <ul>
+          </ul>
+        </div>
         <div class="tab-pane active" id="pills-list" role="tabpanel" aria-labelledby="pills-home-tab">
-          <div class="option">
-            <div class="all_select_option">
-              <input class=" form-check-input shadow-none" type="checkbox" id="all_check" value="unchecked">
-              <label class=" form-check-label" for="all_check">ALL</label>
-              <div class="separate_bar"></div>
-              <div class="background" onclick="all_check();"></div>
-            </div>
-            <select class="dropdown" id="option_sort">
-              <option value="1">최신순 정렬</option>
-              <option value="2">시간순 정렬</option>
-              <option value="3">이름순 정렬</option>
-            </select>
-            <select class="dropdown" id="option_filter">
-              <option value="1">사진만 보기</option>
-              <option value="2">동영상만 보기</option>
-              <option value="3">전체 보기</option>
-            </select>
-          </div>
-          <div class="list_content">
-            <ul>
-              <li class="image_list">
-                <iframe class="image"
-                  src="https://docs.google.com/presentation/d/1wJeY0T4ZGlCSyo2YnKiNRSvai84FDd-CdaC9FUJrU-c/preview?rm=minimal&slide=id.SLIDES_API1655905382_0"
-                  frameborder="0" width="345" height="194" allowfullscreen="true" mozallowfullscreen="true"
-                  webkitallowfullscreen="true"></iframe>
-                <div class="image_info">
-                  <img src="./img/profile.jpg">
-                  <div>
-                    <div class="image_title">지난 해 추석 외가집 친척들과 함께 모였던 사진</div>
-                    <div class="image_name">정성윤</div>
-                  </div>
-                </div>
-                <div class="image_scroll_veil"></div>
-                <div class="image_delete_btn">
-                  <img src="./img/그룹 230.png" width="12" height="12">
-                </div>
-                <label class="form-check-label" for="selected_check"></label>
-                <input class="form-check-input shadow-none selected_check_label" type="checkbox" id="selected_check">
-              </li>
-              <li class="image_list">
-                <iframe class="image"
-                  src="https://docs.google.com/presentation/d/1wJeY0T4ZGlCSyo2YnKiNRSvai84FDd-CdaC9FUJrU-c/preview?rm=minimal&slide=id.ge29cb1c65e_0_2"
-                  frameborder="0" width="345" height="194" allowfullscreen="true" mozallowfullscreen="true"
-                  webkitallowfullscreen="true"></iframe>
-                <div class="image_info">
-                  <img src="./img/profile.jpg">
-                  <div>
-                    <div class="image_title">지난 해 추석 외가집 친척들과 함께 모였던 사진</div>
-                    <div class="image_name">정성윤</div>
-                  </div>
-                </div>
-                <div class="image_scroll_veil"></div>
-                <div class="image_delete_btn">
-                  <img src="./img/그룹 230.png" width="12" height="12">
-                </div>
-                <label class="form-check-label" for="selected_check"></label>
-                <input class="form-check-input shadow-none selected_check_label" type="checkbox" id="selected_check">
-                <script>
-
-                </script>
-              </li>
-              <li class="image_list">
-                <iframe class="image"
-                  src="https://docs.google.com/presentation/d/1wJeY0T4ZGlCSyo2YnKiNRSvai84FDd-CdaC9FUJrU-c/preview?rm=minimal&slide=id.ge29cb1c65e_0_8"
-                  frameborder="0" width="345" height="194" allowfullscreen="true" mozallowfullscreen="true"
-                  webkitallowfullscreen="true"></iframe>
-                <div class="image_info">
-                  <img src="./img/profile.jpg">
-                  <div>
-                    <div class="image_title">지난 해 추석 외가집 친척들과 함께 모였던 사진</div>
-                    <div class="image_name">정성윤</div>
-                  </div>
-                </div>
-                <div class="image_scroll_veil"></div>
-                <div class="image_delete_btn">
-                  <img src="./img/그룹 230.png" width="12" height="12">
-                </div>
-                <label class="form-check-label" for="selected_check"></label>
-                <input class="form-check-input shadow-none selected_check_label" type="checkbox" id="selected_check">
-              </li>
-            </ul>
-          </div>
           <div class="bottom_content">
             <label for="send_imageOrVideo"><img src="./img/button_send_imagesorvideos.png"></label>
             <input type="file" name="send_imageOrVideo" id="send_imageOrVideo" style="display: none;">
             <img src="./img/button_deleteall.png" id="all_delete_btn">
           </div>
-          <!-- 모달 -->
-          <div class="dark_background"></div>
-          <div class="par_back_img" id="all_delete_modal">
-            <div class="crap_img"></div>
-            <img src="img/메시지 및 동영상을  모두 삭제하시겠습니까_.png">
-            <div class="yes_no">
-              <img src="img/modal_button_positive1.png" class="delete_btn">
-              <div style="width: 7px;"></div>
-              <img src="img/modal_button_negative.png" class="negative_btn">
-            </div>
-          </div>
-          <div class="par_back_img" id="image_delete_modal">
-            <div class="del_img"></div>
-            <img src="img/해당 사진을  삭제하시겠습니까_.png">
-            <div class="yes_no">
-              <img src="img/modal_button_positive2.png" class="delete_btn">
-              <div style="width: 7px;"></div>
-              <img src="img/modal_button_negative.png" class="negative_btn">
-            </div>
-          </div>
-          <div class="par_back_img" id="video_delete_modal">
-            <div class="del_img"></div>
-            <img src="img/해당 동영상을  삭제하시겠습니까_.png">
-            <div class="yes_no">
-              <img src="img/modal_button_positive2.png" class="delete_btn">
-              <div style="width: 7px;"></div>
-              <img src="img/modal_button_negative.png" class="negative_btn">
-            </div>
+        </div>
+        <div class="tab-pane" id="pills-vote" role="tabpanel" aria-labelledby="pills-vote-tab">
+          <div class="bottom_content">
+            <img src="./img/button_before_voting.png" id="button_before_voting" onclick="voting()">
+            <img src="./img/button_after_voting.png" id="button_after_voting" onclick="voting()">
+            <img src="./img/button_duplicablevoting.png" id="button_duplicable_voting" onclick="duplicating()">
+            <img src="./img/button_duplicablevoting_active.png" id="button_duplicable_voting_active"
+              onclick="duplicating()">
           </div>
         </div>
-        <div class="tab-pane" id="pills-vote" role="tabpanel" aria-labelledby="pills-vote-tab">투표컨텐츠</div>
+      </div>
+      <!-- 모달 -->
+      <div class="dark_background"></div>
+      <div class="par_back_img" id="all_delete_modal">
+        <div class="crap_img"></div>
+        <img src="img/메시지 및 동영상을  모두 삭제하시겠습니까_.png">
+        <div class="yes_no">
+          <img src="img/modal_button_positive1.png" class="delete_btn">
+          <div style="width: 7px;"></div>
+          <img src="img/modal_button_negative.png" class="negative_btn">
+        </div>
+      </div>
+      <div class="par_back_img" id="image_delete_modal">
+        <div class="del_img"></div>
+        <img src="img/해당 사진을  삭제하시겠습니까_.png">
+        <div class="yes_no">
+          <img src="img/modal_button_positive2.png" class="delete_btn">
+          <div style="width: 7px;"></div>
+          <img src="img/modal_button_negative.png" class="negative_btn">
+        </div>
+      </div>
+      <div class="par_back_img" id="video_delete_modal">
+        <div class="del_img"></div>
+        <img src="img/해당 동영상을  삭제하시겠습니까_.png">
+        <div class="yes_no">
+          <img src="img/modal_button_positive2.png" class="delete_btn">
+          <div style="width: 7px;"></div>
+          <img src="img/modal_button_negative.png" class="negative_btn">
+        </div>
       </div>
     </div>
   </section>

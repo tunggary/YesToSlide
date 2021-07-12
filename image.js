@@ -108,12 +108,12 @@ function prepare_all_check_button() {
 function all_check() {
   ckeck_State();
   if (all_check_btn.checked) {
-    //checked된 상태 모든 버튼 checked
+    //checked된 상태, 모든 버튼 checked
     for (let i = 0; i < selected_check_label.length; i++) {
       selected_check_label[i].checked = true;
     }
   } else {
-    //unchecked된 상태 모든 버튼 unchecked
+    //unchecked된 상태, 모든 버튼 unchecked
     for (let i = 0; i < selected_check_label.length; i++) {
       selected_check_label[i].checked = false;
     }
@@ -139,12 +139,71 @@ function ckeck_State() {
   }
 }
 
+//목록,투표 중 어떤 탭이 선택되었는지 확인 후 드롭다운 옵션 보이기
+let nav_link = document.getElementsByClassName("nav-link");
+let option_sort = document.getElementById("option_sort");
+let option_vote = document.getElementById("option_vote");
+function prepare_tab_check() {
+  //목록탭이 선택되었을때 option 2가지 보이기
+  nav_link[0].addEventListener("click", () => {
+    option_sort.style.display = "block";
+    option_vote.style.display = "none";
+  });
+  //투표탭이 선택되었을때 option 2가지 보이기
+  nav_link[1].addEventListener("click", () => {
+    option_sort.style.display = "none";
+    option_vote.style.display = "block";
+  });
+}
+
+//투표시작, 끝내기
+let image_voting_number = document.getElementsByClassName("image_voting_number");
+let button_before_voting = document.getElementById("button_before_voting");
+let button_after_voting = document.getElementById("button_after_voting");
+let voting_actived = false;
+function voting() {
+  if (voting_actived) {
+    voting_actived = false;
+    for (let i = 0; i < image_voting_number.length; i++) {
+      image_voting_number[i].style.display = "none";
+    }
+    button_before_voting.style.display = "block";
+    button_after_voting.style.display = "none";
+  } else {
+    voting_actived = true;
+    for (let i = 0; i < image_voting_number.length; i++) {
+      image_voting_number[i].style.display = "block";
+    }
+    button_before_voting.style.display = "none";
+    button_after_voting.style.display = "block";
+  }
+}
+
+//중복투표 활성화, 비활성화
+let button_duplicable_voting = document.getElementById("button_duplicable_voting");
+let button_duplicable_voting_active = document.getElementById("button_duplicable_voting_active");
+let duplicating_active = false;
+function duplicating() {
+  if (duplicating_active) {
+    duplicating_active = false;
+    button_duplicable_voting.style.display = "block";
+    button_duplicable_voting_active.style.display = "none";
+  } else {
+    duplicating_active = true;
+    button_duplicable_voting.style.display = "none";
+    button_duplicable_voting_active.style.display = "block";
+  }
+}
+
 function do_after_adding_all_images() {
   prepare_show_outline();
   prepare_open_delete_all_modal();
   prepare_open_delete_modal();
   prepare_cancel_delete_modal();
+
+  //2021-07-12 추가
   prepare_set_scroll();
   prepare_all_check_button();
+  prepare_tab_check();
 }
 do_after_adding_all_images();

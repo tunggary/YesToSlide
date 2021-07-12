@@ -1,6 +1,5 @@
 //slide data
 var slide_info = [
-  /*
   {
     slideUrl:
       "https://docs.google.com/presentation/d/1wJeY0T4ZGlCSyo2YnKiNRSvai84FDd-CdaC9FUJrU-c/preview?rm=minimal&slide=id.SLIDES_API1655905382_0",
@@ -28,11 +27,9 @@ var slide_info = [
     category: "image",
     date: "2021-07-07",
   },
-  */
 ];
 
 function setImage() {
-  console.log(slide_info);
   let html = "";
   for (let i = 0; i < slide_info.length; i++) {
     html +=
@@ -54,13 +51,14 @@ function setImage() {
     <div class="image_delete_btn">
       <img src="./img/그룹 230.png" width="12" height="12">
     </div>
-    <label class="form-check-label" for="sound_check"></label>
-    <input class="form-check-input shadow-none" type="checkbox" id="sound_check">
-  </li>`;
+    <label class="form-check-label" for="selected_check"></label>
+    <input class="form-check-input shadow-none selected_check_label" type="checkbox" id="selected_check">
+    <div class="image_voting_number">15표 (1등)</div>
+    </li>`;
   }
   document.querySelector(".list_content ul").innerHTML = html;
 }
-
+setImage();
 function add_slide_info(each) {
   //console.log(each);
   slide_info.push(each);
