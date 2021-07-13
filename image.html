@@ -21,8 +21,11 @@
 
 <body>
   <section class="imageTab">
+    <!-- 삼각형 화살표 -->
     <div class="tri"></div>
+    <!-- 메인 컨테이너 -->
     <div class="image_container">
+      <!-- 최상단 탭 -->
       <div class="top-content">
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -36,6 +39,7 @@
         </ul>
       </div>
       <div class="tab-content" id="pills-tabContent">
+        <!-- 상단 옵션 -->
         <div class="option">
           <div class="all_select_option">
             <input class=" form-check-input shadow-none" type="checkbox" id="all_check" value="unchecked">
@@ -52,23 +56,26 @@
             <option value="1">득표순 정렬</option>
           </select>
           <select class="dropdown" id="option_filter">
-            <option value="1">사진만 보기</option>
-            <option value="2">동영상만 보기</option>
-            <option value="3">전체 보기</option>
+            <option value="view_image">사진만 보기</option>
+            <option value="view_video">동영상만 보기</option>
+            <option value="view_select">선택항목만 보기</option>
+            <option value="view_all">전체 보기</option>
           </select>
         </div>
+        <!-- 사진 및 동영상 컨텐츠 -->
         <div class="list_content">
           <ul>
           </ul>
         </div>
         <div class="tab-pane active" id="pills-list" role="tabpanel" aria-labelledby="pills-home-tab">
+          <!-- 목록탭 하단 컨텐츠 -->
           <div class="bottom_content">
-            <label for="send_imageOrVideo"><img src="./img/button_send_imagesorvideos.png"></label>
-            <input type="file" name="send_imageOrVideo" id="send_imageOrVideo" style="display: none;">
+            <img src="./img/button_send_imagesorvideos.png" id="send_imageOrVideo">
             <img src="./img/button_deleteall.png" id="all_delete_btn">
           </div>
         </div>
         <div class="tab-pane" id="pills-vote" role="tabpanel" aria-labelledby="pills-vote-tab">
+          <!-- 투표탭 하단 컨텐츠 -->
           <div class="bottom_content">
             <img src="./img/button_before_voting.png" id="button_before_voting" onclick="voting()">
             <img src="./img/button_after_voting.png" id="button_after_voting" onclick="voting()">
@@ -105,6 +112,33 @@
           <img src="img/modal_button_positive2.png" class="delete_btn">
           <div style="width: 7px;"></div>
           <img src="img/modal_button_negative.png" class="negative_btn">
+        </div>
+      </div>
+      <div id="send_imageOrVideo_modal">
+        <div class="send_imageOrVideo_modal_top">
+          <img src="./img/보내기_아이콘.png" width="24" height="24">
+          <img src="./img/사진 및 동영상 보내기.png">
+          <img src="./img/modal_icon_expel.png" id="close_btn">
+        </div>
+        <div class="send_imageOrVideo_modal_middle">
+          <div class="upload_box">
+            <img src="./img/icon_upload.png">
+            <div class="upload_text">
+              업로드하기
+            </div>
+          </div>
+          <div class="upload_UI">
+            <img src="./img/button_rotate_left.png">
+            <img src="./img/button_rotate_right.png">
+            <img src="./img/button_undo.png">
+            <img src="./img/button_confirm.png">
+          </div>
+          <div class="upload_message">
+            <input type="text" id="upload_message" placeholder="최대 30자의 메시지를 입력할 수 있습니다.">
+          </div>
+        </div>
+        <div class="send_imageOrVideo_modal_bottom">
+          <img src="./img/button_send.png">
         </div>
       </div>
     </div>

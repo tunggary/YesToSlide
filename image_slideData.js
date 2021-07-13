@@ -29,22 +29,23 @@ var slide_info = [
   },
 ];
 
-function setImage() {
+//210713 수정
+function setImage(slide, checked = false) {
   let html = "";
-  for (let i = 0; i < slide_info.length; i++) {
+  for (let i = 0; i < slide.length; i++) {
     html +=
       `<li class="image_list" id="` +
-      slide_info[i].slideId +
-      `">
+      slide[i].slideId +
+      `" style="display:block;">
     <iframe class="image"
-      src="${slide_info[i].slideUrl}"
+      src="${slide[i].slideUrl}"
       frameborder="0" width="345" height="194" allowfullscreen="true" mozallowfullscreen="true"
       webkitallowfullscreen="true"></iframe>
     <div class="image_info">
-      <img src="${slide_info[i].profileImage}">
+      <img src="${slide[i].profileImage}">
       <div>
-        <div class="image_title">${slide_info[i].title}</div>
-        <div class="image_name">${slide_info[i].name}</div>
+        <div class="image_title">${slide[i].title}</div>
+        <div class="image_name">${slide[i].name}</div>
       </div>
     </div>
     <div class="image_scroll_veil"></div>
@@ -52,13 +53,17 @@ function setImage() {
       <img src="./img/그룹 230.png" width="12" height="12">
     </div>
     <label class="form-check-label" for="selected_check"></label>
-    <input class="form-check-input shadow-none selected_check_label" type="checkbox" id="selected_check">
+    <input class="form-check-input shadow-none selected_check_label" type="checkbox" id="selected_check" ${
+      checked ? "checked" : null
+    }>
     <div class="image_voting_number">15표 (1등)</div>
     </li>`;
   }
   document.querySelector(".list_content ul").innerHTML = html;
 }
-setImage();
+
+setImage(slide_info);
+
 function add_slide_info(each) {
   //console.log(each);
   slide_info.push(each);

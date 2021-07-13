@@ -41,3 +41,73 @@
 .yes_no img {
   cursor: pointer;
 }
+
+#send_imageOrVideo_modal {
+  width: 345px;
+  height: 380px;
+  position: absolute;
+  z-index: 201;
+  top: 200px;
+  left: 15px;
+  background-color: #ffffff;
+  border-radius: 25px;
+  display: none;
+}
+
+.send_imageOrVideo_modal_top {
+  margin: 20px 14px 0 14px;
+}
+
+#close_btn {
+  cursor: pointer;
+}
+.send_imageOrVideo_modal_middle {
+  margin: 20px 14px 0 14px;
+  width: 314px;
+}
+
+.upload_box {
+  width: 100%;
+  height: 175px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  padding-top: 50px;
+  background-image: url(./img/image_box.png);
+  cursor: pointer;
+}
+
+.upload_UI {
+  width: 100%;
+  height: 32px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.upload_UI img {
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+.upload_UI img:nth-child(3) {
+  margin-left: 10px;
+}
+
+#upload_message {
+  width: 314px;
+  margin-top: 12px;
+  font-size: 10px;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(173, 175, 179);
+}
+#upload_message::placeholder {
+  color: rgb(173, 175, 179);
+  text-align: center;
+}
+
+.send_imageOrVideo_modal_bottom {
+  margin: 13px 14px 0 14px;
+  cursor: pointer;
+}

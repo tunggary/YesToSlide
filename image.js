@@ -67,14 +67,28 @@ function prepare_open_delete_modal() {
   }
 }
 
-// 삭제,취소버튼 누르면 모달 없애기 & 검은색 뒷배경 없애기
+// 사진 및 동영상 보내기버튼 누르면 모달 띄우기 & 검은색 뒷배경 띄우기
+var send_imageOrVideo = null;
+var send_imageOrVideo_modal = null;
+function prepare_open_send_modal() {
+  send_imageOrVideo = document.getElementById("send_imageOrVideo");
+  send_imageOrVideo_modal = document.getElementById("send_imageOrVideo_modal");
+  send_imageOrVideo.addEventListener("click", () => {
+    send_imageOrVideo_modal.style.display = "block";
+    dark_background[0].style.display = "block";
+  });
+}
+
+// 삭제,취소,x버튼 누르면 모달 없애기 & 검은색 뒷배경 없애기
 var delete_btn = null;
 var negative_btn = null;
 var par_back_img = null;
+var close_btn = null;
 function prepare_cancel_delete_modal() {
   delete_btn = document.getElementsByClassName("delete_btn");
   negative_btn = document.getElementsByClassName("negative_btn");
   par_back_img = document.getElementsByClassName("par_back_img");
+  close_btn = document.getElementById("close_btn");
   for (let i = 0; i < delete_btn.length; i++) {
     delete_btn[i].addEventListener("click", () => {
       par_back_img[i].style.display = "none";
@@ -85,11 +99,19 @@ function prepare_cancel_delete_modal() {
       dark_background[0].style.display = "none";
     });
   }
+  close_btn.addEventListener("click", () => {
+    send_imageOrVideo_modal.style.display = "none";
+    dark_background[0].style.display = "none";
+  });
 }
 
 //scroll bar setting
 function prepare_set_scroll() {
-  if (image_list.length >= 3) {
+  let count = 0;
+  for (let i = 0; i < image_list.length; i++) {
+    if (image_list[i].style.display === "block") count += 1;
+  }
+  if (count >= 3) {
     document.getElementsByClassName("list_content")[0].style.overflowY = "scroll";
   } else {
     document.getElementsByClassName("list_content")[0].style.overflowY = "hidden";
@@ -139,7 +161,7 @@ function ckeck_State() {
   }
 }
 
-//목록,투표 중 어떤 탭이 선택되었는지 확인 후 드롭다운 옵션 보이기
+//목록,투표 중 어떤 탭이 선택되었는지 확인 후 드롭다운 옵션 보이기, 선택된 사진만 투표창에 보이기
 let nav_link = document.getElementsByClassName("nav-link");
 let option_sort = document.getElementById("option_sort");
 let option_vote = document.getElementById("option_vote");
@@ -148,11 +170,17 @@ function prepare_tab_check() {
   nav_link[0].addEventListener("click", () => {
     option_sort.style.display = "block";
     option_vote.style.display = "none";
+    //전체 목록탭에 보이기
+    option_filter.value = "view_all";
+    filtering();
   });
   //투표탭이 선택되었을때 option 2가지 보이기
   nav_link[1].addEventListener("click", () => {
     option_sort.style.display = "none";
     option_vote.style.display = "block";
+    // 선택된 사진만 투표창에 보이기
+    option_filter.value = "view_select";
+    filtering();
   });
 }
 
@@ -195,6 +223,44 @@ function duplicating() {
   }
 }
 
+//select 옵션
+let option_filter = null;
+function prepare_option_filter() {
+  option_filter = document.getElementById("option_filter");
+  option_filter.addEventListener("change", () => {
+    filtering();
+  });
+}
+function filtering() {
+  if (option_filter.value === "view_video") {
+    for (let i = 0; i < selected_check_label.length; i++) {
+      image_list[i].style.display = "block";
+      if (slide_info[i].category !== "video") {
+        image_list[i].style.display = "none";
+      }
+    }
+  } else if (option_filter.value === "view_image") {
+    for (let i = 0; i < selected_check_label.length; i++) {
+      image_list[i].style.display = "block";
+      if (slide_info[i].category !== "image") {
+        image_list[i].style.display = "none";
+      }
+    }
+  } else if (option_filter.value === "view_select") {
+    for (let i = 0; i < selected_check_label.length; i++) {
+      image_list[i].style.display = "block";
+      if (!selected_check_label[i].checked) {
+        image_list[i].style.display = "none";
+      }
+    }
+  } else {
+    for (let i = 0; i < selected_check_label.length; i++) {
+      image_list[i].style.display = "block";
+    }
+  }
+  prepare_set_scroll();
+}
+
 function do_after_adding_all_images() {
   prepare_show_outline();
   prepare_open_delete_all_modal();
@@ -205,5 +271,7 @@ function do_after_adding_all_images() {
   prepare_set_scroll();
   prepare_all_check_button();
   prepare_tab_check();
+  prepare_open_send_modal();
+  prepare_option_filter();
 }
 do_after_adding_all_images();
