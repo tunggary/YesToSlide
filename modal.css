@@ -78,6 +78,7 @@
 }
 
 .upload_UI {
+  position: relative;
   width: 100%;
   height: 32px;
   text-align: center;
@@ -91,6 +92,15 @@
 
 .upload_UI img:nth-child(3) {
   margin-left: 10px;
+}
+
+.upload_UI_veil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 #upload_message {

@@ -2,6 +2,7 @@ let showPic = document.querySelector(".showPic");
 let upload_box = document.querySelector(".upload_box");
 let result = document.querySelector(".result");
 let upload_message = document.querySelector("#upload_message");
+let upload_UI_veil = document.querySelector(".upload_UI_veil");
 let cropper = null;
 function load_image(input) {
   var newImage = document.createElement("img");
@@ -15,6 +16,7 @@ function load_image(input) {
   newImage.style.objectFit = "contain";
   upload_box.classList.toggle("d-none");
   showPic.classList.toggle("d-none");
+  upload_UI_veil.classList.toggle("d-none");
   edit_image();
 }
 
