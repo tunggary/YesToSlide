@@ -111,3 +111,48 @@
   margin: 13px 14px 0 14px;
   cursor: pointer;
 }
+
+.showPic {
+  width: 314px;
+  height: 176.5px;
+  background-color: black;
+}
+
+.result {
+  width: 314px;
+  height: 176.5px;
+  background-color: black;
+}
+
+/* cropper */
+.cropper-modal {
+  background-color: #464646;
+  opacity: 0.7;
+}
+.cropper-dashed {
+  border: #ff8836 1px solid;
+  opacity: 1;
+}
+.cropper-dashed.dashed-h {
+  border: none;
+}
+.cropper-dashed.dashed-v {
+  border: none;
+}
+.cropper-view-box {
+  outline-color: #ff8836;
+  outline-width: 2px;
+}
+.cropper-line {
+  background: none;
+}
+.cropper-point {
+  display: none;
+}
+.cropper-point.point-se {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff8836;
+  display: block;
+}

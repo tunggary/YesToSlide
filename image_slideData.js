@@ -30,7 +30,7 @@ var slide_info = [
 ];
 
 //210713 수정
-function setImage(slide, checked = false) {
+function setImage(slide) {
   let html = "";
   for (let i = 0; i < slide.length; i++) {
     html +=
@@ -53,9 +53,7 @@ function setImage(slide, checked = false) {
       <img src="./img/그룹 230.png" width="12" height="12">
     </div>
     <label class="form-check-label" for="selected_check"></label>
-    <input class="form-check-input shadow-none selected_check_label" type="checkbox" id="selected_check" ${
-      checked ? "checked" : null
-    }>
+    <input class="form-check-input shadow-none selected_check_label" type="checkbox" id="selected_check">
     <div class="image_voting_number">15표 (1등)</div>
     </li>`;
   }
