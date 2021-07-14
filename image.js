@@ -198,6 +198,11 @@ function voting() {
     button_before_voting.style.display = "block";
     button_after_voting.style.display = "none";
   } else {
+    if (none_checked()) {
+      dark_background[0].style.display = "block";
+      document.getElementById("select_image_modal").style.display = "block";
+      return;
+    }
     voting_actived = true;
     for (let i = 0; i < image_voting_number.length; i++) {
       image_voting_number[i].style.display = "block";
@@ -205,6 +210,12 @@ function voting() {
     button_before_voting.style.display = "none";
     button_after_voting.style.display = "block";
   }
+}
+function none_checked() {
+  for (let i = 0; i < selected_check_label.length; i++) {
+    if (selected_check_label[i].checked) return false;
+  }
+  return true;
 }
 
 //중복투표 활성화, 비활성화

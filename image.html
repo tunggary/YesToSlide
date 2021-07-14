@@ -115,6 +115,14 @@
           <img src="img/modal_button_negative.png" class="negative_btn">
         </div>
       </div>
+      <div class="par_back_img" id="select_image_modal">
+        <div class="image_img"></div>
+        <img src="img/투표 진행할 사진을  선택해주세요..png">
+        <div class="yes_no">
+          <img src="img/확인.png" class="delete_btn">
+          <div class="negative_btn"></div>
+        </div>
+      </div>
       <div id="send_imageOrVideo_modal">
         <div class="send_imageOrVideo_modal_top">
           <img src="./img/보내기_아이콘.png" width="24" height="24">
@@ -134,10 +142,19 @@
           <div class="showPic d-none"></div>
           <div class="result d-none"></div>
           <div class="upload_UI">
-            <img src="./img/button_rotate_left.png" onclick="rotateLeft()">
-            <img src="./img/button_rotate_right.png" onclick="rotateRight()">
-            <img src="./img/button_undo.png" onclick="undo()">
-            <img src="./img/button_confirm.png" onclick="get_image()">
+            <input type="file" class="d-none" id="change_image" onchange="close_modal(); load_image(this)">
+            <label for="change_image">
+              <img src="./img/button_change_picture.png">
+            </label>
+            <img src="./img/toggle_grid_on.png" onclick="toggle_grid()" value="on" id="toggle_grid_btn">
+            <div>
+              <img src="./img/button_rotate_left.png" onclick="rotateLeft()">
+              <img src="./img/button_rotate_right.png" onclick="rotateRight()">
+            </div>
+            <div>
+              <img src="./img/button_undo.png" onclick="undo()">
+              <img src="./img/button_confirm.png" onclick="get_image()">
+            </div>
             <div class="upload_UI_veil"></div>
           </div>
           <div class="upload_message">
