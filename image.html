@@ -140,9 +140,16 @@
           </div>
           <input type="file" class="d-none" id="upload_image" onchange="load_image(this)">
           <div class="showPic d-none"></div>
-          <div class="result d-none"></div>
+          <div class="cropped_image d-none">
+            <div class="result"></div>
+            <span class="frame" id="left-top"></span>
+            <span class="frame" id="left-bottom"></span>
+            <span class="frame" id="right-top"></span>
+            <span class="frame" id="right-bottom"></span>
+          </div>
           <div class="upload_UI">
-            <input type="file" class="d-none" id="change_image" onchange="close_modal(); load_image(this)">
+            <input type="file" class="d-none" id="change_image"
+              onchange="if(this.files[0]){close_modal();load_image(this)}">
             <label for="change_image">
               <img src="./img/button_change_picture.png">
             </label>

@@ -133,6 +133,36 @@
   background-color: black;
 }
 
+.cropped_image {
+  position: relative;
+  border: 2px solid #ff8836;
+  width: max-content;
+  height: max-content;
+}
+
+.frame {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+}
+#left-top {
+  top: 0;
+  background-image: url(./img/frame-left-top.png);
+}
+#left-bottom {
+  bottom: 0;
+  background-image: url(./img/frame-left-bottom.png);
+}
+#right-top {
+  top: 0;
+  right: 0;
+  background-image: url(./img/frame-right-top.png);
+}
+#right-bottom {
+  bottom: 0;
+  right: 0;
+  background-image: url(./img/frame-right-bottom.png);
+}
 .result {
   width: 314px;
   height: 176.5px;

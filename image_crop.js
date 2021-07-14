@@ -1,17 +1,17 @@
 let showPic = document.querySelector(".showPic");
 let upload_box = document.querySelector(".upload_box");
 let result = document.querySelector(".result");
+let cropped_image = document.querySelector(".cropped_image");
 let upload_message = document.querySelector("#upload_message");
 let upload_UI_veil = document.querySelector(".upload_UI_veil");
 let toggle_grid_btn = document.getElementById("toggle_grid_btn");
-let grid_h = null;
-let grid_v = null;
 let cropper = null;
+let file;
 
 function load_image(input) {
   var newImage = document.createElement("img");
   newImage.setAttribute("id", "newPic");
-  var file = input.files[0];
+  file = input.files[0];
   newImage.src = URL.createObjectURL(file);
   showPic.appendChild(newImage);
 
@@ -38,17 +38,21 @@ function edit_image() {
 }
 
 function rotateLeft() {
-  cropper.rotate(-90);
+  if (gridding && !viewing) {
+    cropper.rotate(-90);
+  }
 }
 
 function rotateRight() {
-  cropper.rotate(90);
+  if (gridding && !viewing) {
+    cropper.rotate(90);
+  }
 }
 
 let newCanvas = null;
 let viewing = false;
 function get_image() {
-  if (!viewing) {
+  if (!viewing & gridding) {
     viewing = true;
 
     newCanvas = document.createElement("canvas");
@@ -60,17 +64,24 @@ function get_image() {
     });
 
     showPic.classList.toggle("d-none");
-    result.classList.toggle("d-none");
+    cropped_image.classList.toggle("d-none");
     result.innerHTML = "";
     result.appendChild(newCanvas);
   }
 }
 
 function undo() {
-  if (viewing) {
+  if (viewing && gridding) {
     viewing = false;
     showPic.classList.toggle("d-none");
-    result.classList.toggle("d-none");
+    cropped_image.classList.toggle("d-none");
+  }
+  if (!viewing && !gridding) {
+    toggle_grid_btn.setAttribute("src", "./img/toggle_grid_on.png");
+    toggle_grid_btn.setAttribute("value", "on");
+    gridding = true;
+    showPic.classList.toggle("d-none");
+    cropped_image.classList.toggle("d-none");
   }
 }
 
@@ -80,10 +91,10 @@ function close_modal() {
     cropper = null;
   }
   viewing = false;
-
+  gridding = true;
   upload_message.value = null;
-
   toggle_grid_btn.setAttribute("src", "./img/toggle_grid_on.png");
+  toggle_grid_btn.setAttribute("value", "on");
 
   if (upload_UI_veil.classList.contains("d-none")) {
     upload_UI_veil.classList.remove("d-none");
@@ -96,8 +107,8 @@ function close_modal() {
     showPic.classList.add("d-none");
   }
   result.innerHTML = "";
-  if (!result.classList.contains("d-none")) {
-    result.classList.add("d-none");
+  if (!cropped_image.classList.contains("d-none")) {
+    cropped_image.classList.add("d-none");
   }
 }
 
@@ -107,36 +118,34 @@ function sending() {
     alert("메시지를 입력하세요");
     return;
   }
-  if (newCanvas == null) {
+  if (!viewing && gridding) {
     alert("영역을 선택하세요");
     return;
   }
 }
 
+let gridding = true;
 function toggle_grid() {
-  if (toggle_grid_btn.getAttribute("value") === "on") {
-    set_grid(true);
-  } else {
-    set_grid(false);
-  }
-}
+  if (!viewing) {
+    if (toggle_grid_btn.getAttribute("value") === "on") {
+      const src_info = document.getElementById("newPic").src;
+      var newImage = document.createElement("img");
+      newImage.setAttribute("src", src_info);
+      newImage.style.width = "100%";
+      newImage.style.height = "100%";
+      newImage.style.objectFit = "contain";
 
-function set_grid(param) {
-  grid_h = document.querySelector(".cropper-dashed.dashed-h");
-  grid_v = document.querySelector(".cropper-dashed.dashed-v");
-  if (param) {
-    grid_h.style.border = "none";
-    grid_v.style.border = "none";
-    toggle_grid_btn.setAttribute("value", "off");
-    toggle_grid_btn.setAttribute("src", "./img/toggle_grid_off.png");
-  } else {
-    grid_h.style.border = "#ff8836 1px solid";
-    grid_v.style.border = "#ff8836 1px solid";
-    grid_h.style.borderRight = "none";
-    grid_h.style.borderLeft = "none";
-    grid_v.style.borderTop = "none";
-    grid_v.style.borderBottom = "none";
-    toggle_grid_btn.setAttribute("value", "on");
-    toggle_grid_btn.setAttribute("src", "./img/toggle_grid_on.png");
+      result.innerHTML = "";
+      result.appendChild(newImage);
+      toggle_grid_btn.setAttribute("src", "./img/toggle_grid_off.png");
+      toggle_grid_btn.setAttribute("value", "off");
+      gridding = false;
+    } else {
+      toggle_grid_btn.setAttribute("src", "./img/toggle_grid_on.png");
+      toggle_grid_btn.setAttribute("value", "on");
+      gridding = true;
+    }
+    showPic.classList.toggle("d-none");
+    cropped_image.classList.toggle("d-none");
   }
 }
