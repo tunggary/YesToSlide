@@ -57,10 +57,10 @@
             <option value="1">득표순 정렬</option>
           </select>
           <select class="dropdown" id="option_filter">
+            <option value="view_all">전체 보기</option>
             <option value="view_image">사진만 보기</option>
             <option value="view_video">동영상만 보기</option>
             <option value="view_select">선택항목만 보기</option>
-            <option value="view_all">전체 보기</option>
           </select>
         </div>
         <!-- 사진 및 동영상 컨텐츠 -->
@@ -165,7 +165,7 @@
             <div class="upload_UI_veil"></div>
           </div>
           <div class="upload_message">
-            <input type="text" id="upload_message" placeholder="최대 30자의 메시지를 입력할 수 있습니다." autocomplete="off" maxlength="30">
+            <input type="text" id="upload_message" placeholder="최대 30자의 메시지를 입력할 수 있습니다." maxlength="30">
           </div>
         </div>
         <div class="send_imageOrVideo_modal_bottom">
@@ -181,9 +181,6 @@
   <script src="image_slideData.js"></script>
   <script src="image.js" async defer></script>
   <script src="image_crop.js"></script>
-
-
-
 </body>
 <script>
   function d() {

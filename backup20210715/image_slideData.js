@@ -1,9 +1,7 @@
 //slide data
 var slide_info = [];
 
-//210713 수정
 function setImage() {
-  console.log(slide_info);
   let html = "";
   for (let i = 0; i < slide_info.length; i++) {
     html +=
@@ -37,6 +35,7 @@ function add_slide_info(each) {
   console.log(each);
   slide_info.push(each);
 }
+
 function clear() {
   slide_info = [];
   setImage();

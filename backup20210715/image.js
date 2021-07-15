@@ -10,20 +10,37 @@ function prepare_show_outline() {
       image_list[i].classList.toggle("active");
       // console.log(image_list[i]);
 
-      parent.parent.sunny.find_comment_from_spreadsheet_using_google_slideID(image_list[i].id,function(info){
-        if(info.length==0)
-        {
-           //alert("no info for this picture");
-           parent.parent.sunny.update_main_slide_image(image_list[i].id, null,parent.parent.main_iframe,"image_content","chat_boxID","chat_box_name","chat_box_comment","chat_profileID");
-           //return;
+      parent.parent.sunny.find_comment_from_spreadsheet_using_google_slideID(
+        image_list[i].id,
+        function (info) {
+          if (info.length == 0) {
+            //alert("no info for this picture");
+            parent.parent.sunny.update_main_slide_image(
+              image_list[i].id,
+              null,
+              parent.parent.main_iframe,
+              "image_content",
+              "chat_boxID",
+              "chat_box_name",
+              "chat_box_comment",
+              "chat_profileID"
+            );
+            //return;
+          } else {
+            console.log(info[0]);
+            parent.parent.sunny.update_main_slide_image(
+              image_list[i].id,
+              info[0],
+              parent.parent.main_iframe,
+              "image_content",
+              "chat_boxID",
+              "chat_box_name",
+              "chat_box_comment",
+              "chat_profileID"
+            );
+          }
         }
-        else
-        {
-          console.log(info[0]);
-          parent.parent.sunny.update_main_slide_image(image_list[i].id, info[0],parent.parent.main_iframe,"image_content","chat_boxID","chat_box_name","chat_box_comment","chat_profileID");
-        }
-        
-      });
+      );
     });
   }
 }

@@ -67,7 +67,7 @@ function add_each_file(each) {
   var template =
     `<li class="file_list">
   <div class="file_num">` +
-    parent.parent.sunny.padLeadingZeros(cnt, 2) +
+    parent.sunny.padLeadingZeros(cnt, 2) +
     `</div>
   <div class="file_img">
     <img src="./img/icon_google_slide.png" width="25" height="34">
@@ -93,3 +93,4 @@ function do_after_adding_all_files() {
   prepare_open_delete_modal();
   prepare_cancel_delete_modal();
 }
+do_after_adding_all_files();
