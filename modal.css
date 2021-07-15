@@ -170,9 +170,6 @@
 }
 
 /* cropper */
-.cropper-crop-box {
-  border: black 1px solid;
-}
 .cropper-modal {
   background-color: #464646;
   opacity: 0.7;
@@ -184,12 +181,10 @@
 .cropper-dashed.dashed-h {
   border-right: none;
   border-left: none;
-  /* border: none; */
 }
 .cropper-dashed.dashed-v {
   border-top: none;
   border-bottom: none;
-  /* border: none; */
 }
 .cropper-view-box {
   outline-color: #ff8836;
@@ -202,9 +197,44 @@
   display: none;
 }
 .cropper-point.point-se {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #ff8836;
+  border-bottom: 6px solid #ff8836;
+  border-right: 6px solid #ff8836;
+  width: 16px;
+  height: 16px;
+  margin: 0 2.5px 3px 0;
+  background-color: transparent;
   display: block;
+}
+
+.cropper-point.point-sw {
+  border-bottom: 6px solid #ff8836;
+  border-left: 6px solid #ff8836;
+  width: 16px;
+  height: 16px;
+  margin: 0 0 3px 2.5px;
+  background-color: transparent;
+  display: block;
+}
+
+.cropper-point.point-nw {
+  border-top: 6px solid #ff8836;
+  border-left: 6px solid #ff8836;
+  width: 16px;
+  height: 16px;
+  margin: 3px 0 0 2.5px;
+  background-color: transparent;
+  display: block;
+}
+
+.cropper-point.point-ne {
+  border-top: 6px solid #ff8836;
+  border-right: 6px solid #ff8836;
+  width: 16px;
+  height: 16px;
+  margin: 3px 2.5px 0 0;
+  background-color: transparent;
+  display: block;
+}
+.cropper-point {
+  opacity: 1;
 }

@@ -138,7 +138,7 @@
               </div>
             </label>
           </div>
-          <input type="file" class="d-none" id="upload_image" onchange="load_image(this)">
+          <input type="file" class="d-none" id="upload_image" onchange="if(this.files[0]){load_image(this)}">
           <div class="showPic d-none"></div>
           <div class="cropped_image d-none">
             <div class="result"></div>
@@ -182,5 +182,11 @@
   <script src="image.js" async defer></script>
   <script src="image_crop.js"></script>
 </body>
+<script>
+  function d() {
+    console.log(document.getElementsByClassName("cropper-view-box")[0]);
+
+  }
+</script>
 
 </html>
