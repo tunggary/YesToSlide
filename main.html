@@ -18,7 +18,12 @@
 </style>
 <script>
   window.onload = () => {
-    console.log(document.querySelector("#imageTabs").contentWindow.document.querySelectorAll("iframe")[0].src);
+    const image_url_1 = document.querySelector("#imageTabs").contentWindow.document.querySelectorAll("iframe")[0].src
+    const image_url_2 = document.querySelector("#imageTabs").contentWindow.document.querySelectorAll("iframe")[1].src
+    const image_url_3 = document.querySelector("#imageTabs").contentWindow.document.querySelectorAll("iframe")[2].src
+    console.log(image_url_1);
+    console.log(image_url_2);
+    console.log(image_url_3);
   }
 
 </script>
