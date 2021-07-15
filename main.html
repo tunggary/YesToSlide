@@ -1,7 +1,7 @@
 <body>
-  <iframe src="./image.html" frameborder="0" width="375" height="828" scrolling="no"></iframe>
-  <iframe src="./attendance.html" frameborder="0" width="375" height="828" scrolling="no"></iframe>
-  <iframe src="./file.html" frameborder="0" width="375" height="828" scrolling="no"></iframe>
+  <iframe id="imageTabs" src="./image.html" frameborder="0" width="375" height="828" scrolling="no"></iframe>
+  <iframe id="attendanceTabs" src="./attendance.html" frameborder="0" width="375" height="828" scrolling="no"></iframe>
+  <iframe id="fileTabs" src="./file.html" frameborder="0" width="375" height="828" scrolling="no"></iframe>
 </body>
 <style>
   * {
@@ -17,5 +17,8 @@
   }
 </style>
 <script>
+  window.onload = () => {
+    console.log(document.querySelector("#imageTabs").contentWindow.document.querySelectorAll("iframe")[0].src);
+  }
 
 </script>

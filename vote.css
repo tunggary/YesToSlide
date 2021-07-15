@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "NanumSquareRound", sans-serif;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+}
+
+.voteTab {
+  width: 300px;
+  height: 365px;
+  border: 1px solid black;
+}
+
+.list_content {
+  margin: 8px 9px 0 9px;
+  /* border: 0.5px solid blue; */
+}
+
+.content {
+  width: 282px;
+  height: 206px;
+  /* border: 0.5px solid red; */
+}

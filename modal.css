@@ -94,6 +94,9 @@
   display: flex;
   justify-content: space-between;
 }
+#change_image_label {
+  margin-right: 68px;
+}
 
 .upload_UI img {
   cursor: pointer;
