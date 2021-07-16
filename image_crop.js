@@ -28,7 +28,7 @@ function load_image(input) {
 function edit_image() {
   const image = document.getElementById("newPic");
   cropper = new Cropper(image, {
-    viewMode: 0,
+    viewMode: 1,
     dragMode: "move",
     aspectRatio: 16 / 9,
     center: false,

@@ -45,10 +45,17 @@ li {
   overflow: hidden;
 }
 
+.att_top {
+}
 .title_coordinator {
   width: 315px;
   height: 19px;
   margin: 0 40px 0 20px;
+  display: inline;
+}
+.logout_btn {
+  cursor: pointer;
+  margin-left: 183px;
 }
 
 .cordinator_gmail {
