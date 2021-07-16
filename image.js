@@ -10,20 +10,37 @@ function prepare_show_outline() {
       image_list[i].classList.toggle("active");
       // console.log(image_list[i]);
 
-      parent.parent.sunny.find_comment_from_spreadsheet_using_google_slideID(image_list[i].id,function(info){
-        if(info.length==0)
-        {
-           //alert("no info for this picture");
-           parent.parent.sunny.update_main_slide_image(image_list[i].id, null,parent.parent.main_iframe,"image_content","chat_boxID","chat_box_name","chat_box_comment","chat_profileID");
-           //return;
+      parent.parent.sunny.find_comment_from_spreadsheet_using_google_slideID(
+        image_list[i].id,
+        function (info) {
+          if (info.length == 0) {
+            //alert("no info for this picture");
+            parent.parent.sunny.update_main_slide_image(
+              image_list[i].id,
+              null,
+              parent.parent.main_iframe,
+              "image_content",
+              "chat_boxID",
+              "chat_box_name",
+              "chat_box_comment",
+              "chat_profileID"
+            );
+            //return;
+          } else {
+            console.log(info[0]);
+            parent.parent.sunny.update_main_slide_image(
+              image_list[i].id,
+              info[0],
+              parent.parent.main_iframe,
+              "image_content",
+              "chat_boxID",
+              "chat_box_name",
+              "chat_box_comment",
+              "chat_profileID"
+            );
+          }
         }
-        else
-        {
-          console.log(info[0]);
-          parent.parent.sunny.update_main_slide_image(image_list[i].id, info[0],parent.parent.main_iframe,"image_content","chat_boxID","chat_box_name","chat_box_comment","chat_profileID");
-        }
-        
-      });
+      );
     });
   }
 }
@@ -165,54 +182,71 @@ let option_vote = document.getElementById("option_vote");
 function prepare_tab_check() {
   //목록탭이 선택되었을때 option 2가지 보이기
   nav_link[0].addEventListener("click", () => {
-    option_sort.style.display = "block";
-    option_vote.style.display = "none";
-    //전체 목록탭에 보이기
-    option_filter.value = "view_all";
-    filtering();
+    //투표탭에서 나올때 투표진행중인지 확인
+    if (voting_state) {
+      alert("현재 투표가 진행중입니다. 투표를 종료해 주세요.");
+      nav_link[1].click();
+    } else {
+      option_sort.style.display = "block";
+      option_vote.style.display = "none";
+      all_check_btn.removeAttribute("disabled"); //all체크 버튼 활성화
+      for (let i = 0; i < image_voting_number.length; i++) {
+        image_voting_number[i].style.display = "none";
+      }
+      //전체 목록탭에 보이기
+      option_filter.value = "view_all";
+      filtering();
+    }
   });
   //투표탭이 선택되었을때 option 2가지 보이기
   nav_link[1].addEventListener("click", () => {
-    option_sort.style.display = "none";
-    option_vote.style.display = "block";
-    // 선택된 사진만 투표창에 보이기
-    option_filter.value = "view_select";
-    filtering();
-  });
-}
-
-//투표시작, 끝내기
-let image_voting_number = document.getElementsByClassName("image_voting_number");
-let button_before_voting = document.getElementById("button_before_voting");
-let button_after_voting = document.getElementById("button_after_voting");
-let voting_actived = false;
-function voting() {
-  if (voting_actived) {
-    voting_actived = false;
-    for (let i = 0; i < image_voting_number.length; i++) {
-      image_voting_number[i].style.display = "none";
-    }
-    button_before_voting.style.display = "block";
-    button_after_voting.style.display = "none";
-  } else {
+    //체크가 안되어 있으면 모달창 띄우기
     if (none_checked()) {
       dark_background[0].style.display = "block";
       document.getElementById("select_image_modal").style.display = "block";
-      return;
+      nav_link[0].click();
+    } else {
+      option_sort.style.display = "none";
+      option_vote.style.display = "block";
+      all_check_btn.setAttribute("disabled", "disabled"); //all체크 버튼 비활성화
+      // 선택된 사진만 투표창에 보이기
+      option_filter.value = "view_select";
+      filtering();
     }
-    voting_actived = true;
-    for (let i = 0; i < image_voting_number.length; i++) {
-      image_voting_number[i].style.display = "block";
-    }
-    button_before_voting.style.display = "none";
-    button_after_voting.style.display = "block";
-  }
+  });
 }
 function none_checked() {
   for (let i = 0; i < selected_check_label.length; i++) {
     if (selected_check_label[i].checked) return false;
   }
   return true;
+}
+
+//투표시작, 끝내기
+let image_voting_number = document.getElementsByClassName("image_voting_number");
+let button_before_voting = document.getElementById("button_before_voting");
+let button_after_voting = document.getElementById("button_after_voting");
+let voting_state = false;
+function voting(parameter) {
+  if (!voting_state) {
+    //투표시작하기
+    voting_state = true;
+    for (let i = 0; i < image_voting_number.length; i++) {
+      selected_check_label[i].checked
+        ? (image_voting_number[i].style.display = "block")
+        : (image_voting_number[i].style.display = "none");
+    }
+    button_before_voting.style.display = "none";
+    button_after_voting.style.display = "block";
+  } else {
+    //투표끝내기
+    voting_state = false;
+    // for (let i = 0; i < image_voting_number.length; i++) {
+    //   image_voting_number[i].style.display = "none";
+    // }
+    button_before_voting.style.display = "block";
+    button_after_voting.style.display = "none";
+  }
 }
 
 //중복투표 활성화, 비활성화
