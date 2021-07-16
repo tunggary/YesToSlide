@@ -17,3 +17,15 @@ function touchend(event) {
   // document.getElementsByClassName("info")[0].innerHTML += `<br>end: ${x} / ${y}`;
   document.getElementsByClassName("info")[0].innerHTML += `<br>gesture end`;
 }
+
+var myElement = document.getElementById("screen");
+var pz = new PinchZoom.default(myElement, {
+  draggableUnzoomed: false,
+  minZoom: 1,
+  onZoomStart: function (object, event) {
+    console.log("start");
+  },
+  onZoomEnd: function (object, event) {
+    console.log("end");
+  },
+});
