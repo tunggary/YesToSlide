@@ -93,3 +93,4 @@ function do_after_adding_all_files() {
   prepare_open_delete_modal();
   prepare_cancel_delete_modal();
 }
+do_after_adding_all_files();

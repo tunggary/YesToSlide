@@ -103,3 +103,5 @@ function do_after_adding_all_attendances() {
 function clear() {
   document.getElementById("attendanceUl").innerHTML = "";
 }
+
+do_after_adding_all_attendances();
