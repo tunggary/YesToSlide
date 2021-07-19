@@ -227,6 +227,7 @@ li {
 
 .column_2 .image_delete_btn {
   background-color: #ffffff;
+  border: 1px solid #c9c9c9;
   border-radius: 11px;
   width: 22px;
   height: 22px;
@@ -241,6 +242,8 @@ li {
 .column_2 .image_delete_btn img {
   width: 10px;
   height: 10px;
+  position: relative;
+  top: -2px;
 }
 
 .column_2 .image_list.active .image_delete_btn {

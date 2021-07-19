@@ -1,7 +1,7 @@
 <body>
   <iframe id="imageTabs" src="./image.html" frameborder="0" width="375" height="828" scrolling="no"></iframe>
-  <iframe id="attendanceTabs" src="./attendance.html" frameborder="0" width="375" height="828" scrolling="no"></iframe>
-  <iframe id="fileTabs" src="./file.html" frameborder="0" width="375" height="828" scrolling="no"></iframe>
+  <!-- <iframe id="attendanceTabs" src="./attendance.html" frameborder="0" width="375" height="828" scrolling="no"></iframe>
+  <iframe id="fileTabs" src="./file.html" frameborder="0" width="375" height="828" scrolling="no"></iframe> -->
 </body>
 
 <style>
@@ -17,15 +17,3 @@
     width: 100%;
   }
 </style>
-<script>
-  window.onload = () => {
-    const image_url_1 = document.querySelector("#imageTabs").contentWindow.document.querySelectorAll("iframe")[0].src
-    const image_url_2 = document.querySelector("#imageTabs").contentWindow.document.querySelectorAll("iframe")[1].src
-    const image_url_3 = document.querySelector("#imageTabs").contentWindow.document.querySelectorAll("iframe")[2].src
-
-    console.log(image_url_1);
-    console.log(image_url_2);
-    console.log(image_url_3);
-  }
-
-</script>

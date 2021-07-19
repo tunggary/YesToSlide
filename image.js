@@ -340,6 +340,28 @@ function change_column(param) {
   prepare_set_scroll();
 }
 
+// function is_mobile() {
+//   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+//     return true;
+//   }
+
+//   if (typeof window.orientation !== "undefined") {
+//     return true;
+//   }
+
+//   var iOSios = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+//   if (iOSios) return true;
+
+//   return false;
+// }
+
+// function prepare_set_mobile_screen() {
+//   if (is_mobile()) {
+//     document.getElementsByClassName("bottom_content")[0].style.position = "fixed";
+//     document.getElementsByClassName("bottom_content")[0].style.bottom = "125px";
+//     document.getElementsByClassName("bottom_content")[0].style.backgroundColor = "white";
+//   }
+// }
 function do_after_adding_all_images() {
   prepare_show_outline();
   prepare_open_delete_all_modal();
