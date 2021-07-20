@@ -7,11 +7,12 @@ let upload_UI_veil = document.querySelector(".upload_UI_veil");
 let toggle_grid_btn = document.getElementById("toggle_grid_btn");
 let cropper = null;
 let file;
-
+var original_image_file = null;
 function load_image(input) {
   var newImage = document.createElement("img");
   newImage.setAttribute("id", "newPic");
   file = input.files[0];
+  original_image_file = file;
   newImage.src = URL.createObjectURL(file);
   showPic.appendChild(newImage);
 
@@ -27,7 +28,7 @@ function load_image(input) {
 function edit_image() {
   const image = document.getElementById("newPic");
   cropper = new Cropper(image, {
-    viewMode: 0,
+    viewMode: 1,
     dragMode: "move",
     aspectRatio: 16 / 9,
     center: false,
@@ -122,6 +123,37 @@ function sending() {
     alert("영역을 선택하세요");
     return;
   }
+
+  send_imageOrVideo_modal.style.display = "none";
+  dark_background[0].style.display = "none";
+  try {
+    if (gridding) {
+      try {
+        parent.parent.sunny.uploadToGD_base64(newCanvas.toDataURL("image/PNG", 1), msg);
+      } catch (err) {}
+    } else {
+      //try{
+      parent.parent.document.getElementById("sunny_spinner").classList.remove("d-none");
+      {
+        parent.parent.sunny.send_orginal_image_v2(
+          "",
+          original_image_file,
+          "Canvas1",
+          "Canvas2",
+          msg,
+          function (rst) {}
+        );
+      }
+      //}
+      //catch(err)
+      //{
+
+      //}
+    }
+  } catch (err) {}
+
+  alert("보내기 완료");
+  close_modal();
 }
 
 let gridding = true;

@@ -134,7 +134,8 @@ li {
   overflow: hidden;
 }
 
-.image_list {
+/* column_1 */
+.column_1 .image_list {
   position: relative;
   width: 343px;
   height: 246px;
@@ -143,11 +144,14 @@ li {
   overflow: hidden;
 }
 
-.image_list.active {
+.column_1 .image_list.active {
   border: 4px solid #f28234;
 }
-
-.image_delete_btn {
+.column_1 iframe {
+  width: 345px;
+  height: 194px;
+}
+.column_1 .image_delete_btn {
   background-image: url(img/사각형\ 1379.png);
   width: 26px;
   height: 26px;
@@ -159,12 +163,17 @@ li {
   cursor: pointer;
 }
 
-.image_list.active .image_delete_btn {
+.column_1 .image_delete_btn img {
+  width: 12px;
+  height: 12px;
+}
+
+.column_1 .image_list.active .image_delete_btn {
   top: 5px;
   left: 305px;
 }
 
-.image_info {
+.column_1 .image_info {
   position: absolute;
   top: 190px;
   width: 100%;
@@ -174,22 +183,98 @@ li {
   background-color: #ffffff;
 }
 
-.image_info img {
+.column_1 .image_info img {
   width: 31px;
   height: 31px;
   margin-right: 10px;
   border-radius: 16px;
 }
 
-.image_title {
+.column_1 .image_title {
   font-size: 12px;
   font-weight: 500;
   color: #313233;
 }
 
-.image_name {
+.column_1 .image_name {
   font-size: 10px;
   font-weight: 500;
+  color: rgb(131, 131, 132);
+}
+
+/* column_2 */
+.column_2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+.column_2 .image_list {
+  position: relative;
+  width: 165px;
+  height: 148px;
+  margin: 16px 5px 0 5px;
+  border-radius: 13px;
+  overflow: hidden;
+}
+.column_2 iframe {
+  width: 167px;
+  height: 94px;
+}
+
+.column_2 .image_list.active {
+  border: 2px solid #f28234;
+}
+
+.column_2 .image_delete_btn {
+  background-color: #ffffff;
+  border: 1px solid #c9c9c9;
+  border-radius: 11px;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+  position: absolute;
+  color: black;
+  top: 7px;
+  left: 137px;
+  cursor: pointer;
+}
+
+.column_2 .image_delete_btn img {
+  width: 10px;
+  height: 10px;
+  position: relative;
+  top: -2px;
+}
+
+.column_2 .image_list.active .image_delete_btn {
+  left: 135px;
+}
+
+.column_2 .image_info {
+  position: absolute;
+  top: 93px;
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #ffffff;
+}
+
+.column_2 .image_info img {
+  display: none;
+}
+
+.column_2 .image_title {
+  font-size: 12px;
+  font-weight: 500;
+  color: #313233;
+}
+
+.column_2 .image_name {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgb(131, 131, 132);
 }
 
 .image_scroll_veil {
@@ -243,6 +328,7 @@ li {
 }
 
 #button_after_voting,
+#button_voting,
 #button_duplicable_voting_active {
   display: none;
 }

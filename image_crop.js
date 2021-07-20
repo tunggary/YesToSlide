@@ -28,7 +28,7 @@ function load_image(input) {
 function edit_image() {
   const image = document.getElementById("newPic");
   cropper = new Cropper(image, {
-    viewMode: 1,
+    viewMode: 0,
     dragMode: "move",
     aspectRatio: 16 / 9,
     center: false,
@@ -126,33 +126,85 @@ function sending() {
 
   send_imageOrVideo_modal.style.display = "none";
   dark_background[0].style.display = "none";
+
   try {
     if (gridding) {
-      try {
-        parent.parent.sunny.uploadToGD_base64(newCanvas.toDataURL("image/PNG", 1), msg);
-      } catch (err) {}
-    } else {
-      //try{
-      parent.parent.document.getElementById("sunny_spinner").classList.remove("d-none");
-      {
-        parent.parent.sunny.send_orginal_image_v2(
-          "",
-          original_image_file,
-          "Canvas1",
-          "Canvas2",
-          msg,
-          function (rst) {}
-        );
+      var thumbnailCanvas = document.getElementById("thumbnail");
+      var tbumbnailContext = thumbnailCanvas.getContext("2d");
+
+      thumbnailCanvas.width = "343";
+      thumbnailCanvas.height = "191";
+      tbumbnailContext.clearRect(0, 0, thumbnailCanvas.width, thumbnailCanvas.height);
+
+      tbumbnailContext.drawImage(newCanvas, 0, 0, 343, 191);
+      var thumbnailData = thumbnailCanvas.toDataURL("image/jpeg", 0.7);
+
+      //enlarge cropped one
+      var canvas = document.getElementById("Canvas2");
+      var canvasContext = canvas.getContext("2d");
+      canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+      canvasContext.drawImage(newCanvas, 0, 0, canvas.width, canvas.height);
+
+      //parent.sunny.uploadToGD_base64(newCanvas.toDataURL("image/PNG",1),msg,thumbnailData);
+      parent.parent.sunny.uploadToGD_base64(
+        thumbnailData,
+        msg,
+        canvas.toDataURL("image/PNG", 1),
+        "image"
+      );
+      /*
+      try{
+        parent.parent.sunny.uploadToGD_base64(newCanvas.toDataURL("image/PNG",1),msg);
       }
+      catch(err)
+      {
+
+      }
+      */
+    } else {
+      parent.parent.sunny.send_orginal_image_v2(
+        "main_iframe",
+        original_image_file,
+        "Canvas1",
+        "Canvas2",
+        msg,
+        function (org_canvas) {
+          console.log(org_canvas);
+          var thumbnailCanvas = document.getElementById("thumbnail");
+          var tbumbnailContext = thumbnailCanvas.getContext("2d");
+
+          thumbnailCanvas.width = "343";
+          thumbnailCanvas.height = "191";
+          tbumbnailContext.clearRect(0, 0, thumbnailCanvas.width, thumbnailCanvas.height);
+
+          tbumbnailContext.drawImage(org_canvas, 0, 0, 343, 191);
+          var thumbnailData = thumbnailCanvas.toDataURL("image/jpeg", 0.7);
+
+          parent.parent.sunny.uploadToGD_base64(
+            thumbnailData,
+            msg,
+            org_canvas.toDataURL("image/PNG", 1),
+            "image"
+          );
+        }
+      );
+
+      /*
+      //try{
+        parent.parent.document.getElementById("sunny_spinner").classList.remove("d-none");
+        {
+          parent.parent.sunny.send_orginal_image_v2("",original_image_file,"Canvas1","Canvas2",msg,function(rst){
+          });
+        
+        }
       //}
       //catch(err)
       //{
 
       //}
+      */
     }
   } catch (err) {}
-
-  alert("보내기 완료");
   close_modal();
 }
 

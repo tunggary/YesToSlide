@@ -17,8 +17,6 @@ li {
 
 .imageTab {
   position: absolute;
-  width: 375px;
-  height: 828px;
   top: 0;
   right: 0;
 }
@@ -33,7 +31,7 @@ li {
   border-left: 5px solid transparent;
 }
 .image_container {
-  width: 100%;
+  width: 375px;
   height: 823px;
   border-radius: 26px;
   overflow: hidden;
@@ -50,12 +48,10 @@ li {
 }
 
 .tab-content {
-  height: 772px;
+  position: absolute;
+  top: 50px;
 }
 
-.tab-pane {
-  position: relative;
-}
 .nav {
   width: max-content;
   font-size: 12px;
@@ -130,7 +126,7 @@ li {
 
 .list_content {
   width: 375px;
-  height: 672px;
+  height: 673px;
   overflow: hidden;
 }
 

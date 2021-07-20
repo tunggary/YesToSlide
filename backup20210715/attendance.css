@@ -49,6 +49,11 @@ li {
   width: 315px;
   height: 19px;
   margin: 0 40px 0 20px;
+  display: inline;
+}
+.logout_btn {
+  cursor: pointer;
+  margin-left: 183px;
 }
 
 .cordinator_gmail {
@@ -86,7 +91,7 @@ li {
 }
 
 .att_bottom.active .content {
-  height: 618px;
+  height: 611px;
 }
 .att_excel,
 .att_bottom .label span,

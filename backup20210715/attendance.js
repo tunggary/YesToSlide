@@ -100,4 +100,8 @@ function do_after_adding_all_attendances() {
   prepare_open_expel_modal();
   prepare_cancel_expel_modal();
 }
+function clear() {
+  document.getElementById("attendanceUl").innerHTML = "";
+}
+
 do_after_adding_all_attendances();
