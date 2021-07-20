@@ -321,6 +321,7 @@ li {
 
 .bottom_content img {
   cursor: pointer;
+  border-radius: 15px;
 }
 
 #button_after_voting,
@@ -367,4 +368,9 @@ li {
   height: 22px;
   margin-top: 6px;
   border-radius: 5px;
+}
+
+.fixed-bottom,
+.fixed-top {
+  z-index: 0;
 }

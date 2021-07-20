@@ -3,7 +3,11 @@ function prepare_set_mobile_screen() {
     const tri = document.getElementsByClassName("tri")[0];
     const image_container = document.getElementsByClassName("image_container")[0];
     const list_content = document.getElementsByClassName("list_content")[0];
+    const bottom_img = document.querySelectorAll(".bottom_content img");
 
+    for (let i = 0; i < bottom_img.length; i++) {
+      bottom_img[i].style.border = "1px solid #dadce0";
+    }
     tri.style.display = "none"; //모바일이면 imageTab 맨위에 삼각형(화살표) 필요없음
     image_container.style.borderRadius = "0"; // 모바일이면 borderRadius 필요없음
 
