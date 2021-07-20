@@ -38,4 +38,7 @@
   // window.addEventListener('resize', () => {
   //   iframe_dom.style.height = window.innerHeight - 199
   // })
+  window.onload = function () {
+    document.getElementById('imageTabs').contentWindow.postMessage(window.innerHeight, '*')
+  }
 </script>
