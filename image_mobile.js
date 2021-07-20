@@ -8,6 +8,7 @@ function prepare_set_mobile_screen() {
     image_container.style.borderRadius = "0"; // 모바일이면 borderRadius 필요없음
 
     window.addEventListener("message", (e) => {
+      console.log(e.data);
       let screen_height = e.data - 199; //iframe 외부에 브라우저 높이 - 상단바,하단바 높이
       let gap = 823 - screen_height;
       image_container.style.height = `${823 - gap}px`; // 기존높이 823px
