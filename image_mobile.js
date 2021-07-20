@@ -1,5 +1,5 @@
 function prepare_set_mobile_screen() {
-  if (true) {
+  if (is_mobile()) {
     const tri = document.getElementsByClassName("tri")[0];
     const image_container = document.getElementsByClassName("image_container")[0];
     const list_content = document.getElementsByClassName("list_content")[0];
