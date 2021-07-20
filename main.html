@@ -32,13 +32,15 @@
   }
 </style>
 <script>
-  // const iframe_height = window.innerHeight - 199 // 199는 상단바,하단바 높이
-  // const iframe_dom = document.getElementById('imageTabs') //iframe
+  const iframe_height = window.innerHeight - 199 // 199는 상단바,하단바 높이
+  const iframe_dom = document.getElementById('imageTabs') //iframe
   // iframe_dom.style.height = iframe_height
   // window.addEventListener('resize', () => {
   //   iframe_dom.style.height = window.innerHeight - 199
   // })
-  window.onload = function () {
-    document.getElementById('imageTabs').contentWindow.postMessage(window.innerHeight, '*')
-  }
+  // window.onload = function () {
+
+  //   iframe_dom.style.height = iframe_height
+  //   document.getElementById('imageTabs').contentWindow.postMessage(window.innerHeight, '*')
+  // }
 </script>
