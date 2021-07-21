@@ -121,7 +121,7 @@ li {
   border: 1px solid #c9c9c9;
   border-radius: 13px;
   appearance: none;
-  background: url(./img/dropdown_button.png) no-repeat 98% 50%;
+  background: url(../img/dropdown_button.png) no-repeat 98% 50%;
 }
 
 .list_content {
@@ -148,7 +148,7 @@ li {
   height: 194px;
 }
 .column_1 .image_delete_btn {
-  background-image: url(img/사각형\ 1379.png);
+  background-image: url(../img/사각형\ 1379.png);
   width: 26px;
   height: 26px;
   text-align: center;

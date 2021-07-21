@@ -1,6 +1,6 @@
 /* modal */
 .par_back_img {
-  background: url("img/사각형\ 1653.png");
+  background: url("../img/사각형\ 1653.png");
   width: 311px;
   height: 197px;
   position: absolute;
@@ -12,7 +12,7 @@
 
 .x_img {
   margin-top: 16px;
-  background: url("img/modal_icon_expel_big.png");
+  background: url("../img/modal_icon_expel_big.png");
   width: 74px;
   height: 74px;
   margin-left: 120px;
@@ -25,14 +25,14 @@
 
 .crap_img {
   margin-top: 16px;
-  background: url("img/modal_icon_deleteall.png");
+  background: url("../img/modal_icon_deleteall.png");
   width: 74px;
   height: 74px;
   margin-left: 120px;
 }
 .del_img {
   margin-top: 16px;
-  background: url("img/modal_icon_delete_imageorvideo.png");
+  background: url("../img/modal_icon_delete_imageorvideo.png");
   width: 74px;
   height: 74px;
   margin-left: 120px;
@@ -40,7 +40,7 @@
 
 .image_img {
   margin-top: 16px;
-  background: url("img/button_images&videos_off@2x.png");
+  background: url("../img/button_images&videos_off@2x.png");
   width: 74px;
   height: 74px;
   margin-left: 120px;
@@ -150,21 +150,21 @@
 }
 #left-top {
   top: 0;
-  background-image: url(./img/frame-left-top.png);
+  background-image: url(../img/frame-left-top.png);
 }
 #left-bottom {
   bottom: 0;
-  background-image: url(./img/frame-left-bottom.png);
+  background-image: url(../img/frame-left-bottom.png);
 }
 #right-top {
   top: 0;
   right: 0;
-  background-image: url(./img/frame-right-top.png);
+  background-image: url(../img/frame-right-top.png);
 }
 #right-bottom {
   bottom: 0;
   right: 0;
-  background-image: url(./img/frame-right-bottom.png);
+  background-image: url(../img/frame-right-bottom.png);
 }
 .result {
   width: 314px;
