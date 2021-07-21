@@ -27,7 +27,7 @@
     <!-- 메인 컨테이너 -->
     <div class="image_container">
       <!-- 최상단 탭 -->
-      <div class="top-content">
+      <div class="top-content fixed-top">
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="pills-list-tab" data-bs-toggle="pill" data-bs-target="#pills-list"
@@ -53,14 +53,14 @@
             <option value="time">시간순 정렬</option>
             <option value="name">이름순 정렬</option>
           </select>
+          <select class="dropdown" id="option_vote" style="display: none;">
+            <option value="1">득표순 정렬</option>
+          </select>
           <select class="dropdown" id="option_filter">
-            <option value="view_all">전체 보기</option>
             <option value="view_image">사진만 보기</option>
             <option value="view_video">동영상만 보기</option>
             <option value="view_select">선택항목만 보기</option>
-          </select>
-          <select class="dropdown" id="option_vote" style="display: none;">
-            <option value="1">득표순 정렬</option>
+            <option value="view_all">전체 보기</option>
           </select>
           <select class="dropdown" id="option_column" style="display: none;" onchange="change_column(this)">
             <option value="column_1">1열로 보기</option>
@@ -74,14 +74,14 @@
         </div>
         <div class="tab-pane active" id="pills-list" role="tabpanel" aria-labelledby="pills-home-tab">
           <!-- 목록탭 하단 컨텐츠 -->
-          <div class="bottom_content">
+          <div class="bottom_content fixed-bottom">
             <img src="./img/button_send_imagesorvideos.png" id="send_imageOrVideo">
             <img src="./img/button_deleteall.png" id="all_delete_btn">
           </div>
         </div>
         <div class="tab-pane" id="pills-vote" role="tabpanel" aria-labelledby="pills-vote-tab">
           <!-- 투표탭 하단 컨텐츠 -->
-          <div class="bottom_content">
+          <div class="bottom_content fixed-bottom">
             <img src="./img/button_before_voting.png" id="button_before_voting" onclick="voting()">
             <img src="./img/button_after_voting.png" id="button_voting" onclick="voting()">
             <img src="./img/button_before_voting_m.png" id="button_after_voting" onclick="voting()">
@@ -184,12 +184,17 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+  <script src="image_mobile.js"></script>
   <script src="image_slideData.js"></script>
   <script src="image.js" async defer></script>
   <script src="image_crop.js"></script>
 
-
-
 </body>
+<canvas id="Canvas1" width="1463" height="823" style="border:0px solid;display: none;">
+</canvas>
+<canvas id="Canvas2" width="1463" height="823" style="border:0px solid;display: none;">
+</canvas>
+<canvas id="thumbnail" width="343" height="191" style="border:0px solid;display: none;">
+</canvas>
 
 </html>

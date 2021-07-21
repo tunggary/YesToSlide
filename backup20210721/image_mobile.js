@@ -1,19 +1,5 @@
-//controller에서 사이즈 변경시 마다 adjust_size를 호출 합니다.
-function adjust_size(height) {
-  const tri = document.getElementsByClassName("tri")[0];
-  const image_container = document.getElementsByClassName("image_container")[0];
-  const list_content = document.getElementsByClassName("list_content")[0];
-  const bottom_img = document.querySelectorAll(".bottom_content img");
-  let screen_height = height - 199; //iframe 외부에 브라우저 높이 - 상단바,하단바 높이
-  let gap = 823 - screen_height;
-  image_container.style.height = `${823 - gap}px`; // 기존높이 823px
-  list_content.style.height = `${673 - gap}px`; // 기존높이 673px
-}
-
 function prepare_set_mobile_screen() {
-  /*
-  if (parent.parent.sunny.is_controller()) {
-   
+  if (is_mobile()) {
     const tri = document.getElementsByClassName("tri")[0];
     const image_container = document.getElementsByClassName("image_container")[0];
     const list_content = document.getElementsByClassName("list_content")[0];
@@ -27,12 +13,25 @@ function prepare_set_mobile_screen() {
 
     window.addEventListener("message", (e) => {
       console.log(e.data);
-     
       let screen_height = e.data - 199; //iframe 외부에 브라우저 높이 - 상단바,하단바 높이
       let gap = 823 - screen_height;
       image_container.style.height = `${823 - gap}px`; // 기존높이 823px
       list_content.style.height = `${673 - gap}px`; // 기존높이 673px
     });
   }
-  */
+}
+
+function is_mobile() {
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    return true;
+  }
+
+  if (typeof window.orientation !== "undefined") {
+    return true;
+  }
+
+  var iOSios = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+  if (iOSios) return true;
+
+  return false;
 }

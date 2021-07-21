@@ -7,15 +7,42 @@ function setImage() {
     add_a_slide_to_ul(slide_info[i], false);
   }
   return;
+  console.log(slide_info);
+  let html = "";
+  for (let i = 0; i < slide_info.length; i++) {
+    html +=
+      `<li class="image_list" id="` +
+      slide_info[i].slideId +
+      `" style="display:block;">
+    <iframe class="image"
+      src="${slide_info[i].slideUrl}"
+      frameborder="0" width="345" height="194" allowfullscreen="true" mozallowfullscreen="true"
+      webkitallowfullscreen="true"></iframe>
+    <div class="image_info">
+      <img src="${slide_info[i].profileImage}">
+      <div>
+        <div class="image_title">${slide_info[i].title}</div>
+        <div class="image_name">${slide_info[i].name}</div>
+      </div>
+    </div>
+    <div class="image_scroll_veil"></div>
+    <div class="image_delete_btn">
+      <img src="./img/그룹 230.png" width="12" height="12">
+    </div>
+    <label class="form-check-label" for="selected_check"></label>
+    <input class="form-check-input shadow-none selected_check_label" type="checkbox" id="selected_check">
+    <div class="image_voting_number">15표 (1등)</div>
+    </li>`;
+  }
+  document.querySelector(".list_content ul").innerHTML = html;
 }
 
 //setImage(slide_info);
 
 function add_a_slide_to_ul(each, adding = false) {
-  //console.log(each);
+  console.log(each);
   if (adding) slide_info.push(each);
   var ul = document.getElementById("ul_in_list_content");
-  ul.classList.add("column_1");
   var li = document.createElement("li");
 
   li.classList.add("image_list");
@@ -25,13 +52,13 @@ function add_a_slide_to_ul(each, adding = false) {
   li.setAttribute("cname", name);
   li.setAttribute("cdate", each.CreateTime);
   li.style.display = "block";
-
+  console.log("each.ProfileImage", each.ProfileImage);
   li.innerHTML = `<iframe class="image"  
     src="${each.thumbImgUrl}"
-    frameborder="0" allowfullscreen="true" mozallowfullscreen="true"
+    frameborder="0" width="345" height="194" allowfullscreen="true" mozallowfullscreen="true"
     webkitallowfullscreen="true"></iframe>
     <div class="image_info">
-      <img src="${each.profileImage}">
+      <img src="${each.ProfileImage}">
       <div>
         <div class="image_title">${each.title}</div>
         <div class="image_name">${each.name}</div>
@@ -39,16 +66,17 @@ function add_a_slide_to_ul(each, adding = false) {
     </div>
     <div class="image_scroll_veil"></div>
     <div class="image_delete_btn">
-      <img src="./img/그룹 230.png">
+      <img src="./img/그룹 230.png" width="12" height="12">
     </div>
     <label class="form-check-label" for="selected_check"></label>
-    <input class="form-check-input shadow-none selected_check_label" type="checkbox" id="selected_check">
+    <input class="form-check-input shadow-none selected_check_label" type="checkbox" name="${each.thumbImgUrl_only}" id="selected_check" onclick="do_check_image(this);" >
     <div class="image_voting_number">15표 (1등)</div>
   `;
 
   //console.log(li);
   ul.appendChild(li);
-  // sortList();
+  sortList();
+  console.log(slide_info);
 }
 
 function add_slide_info(each) {

@@ -5,8 +5,8 @@
   height: 197px;
   position: absolute;
   z-index: 201;
-  top: 250px;
-  left: 30px;
+  top: 35%;
+  left: 8%;
   display: none;
 }
 
@@ -55,8 +55,8 @@
   height: 380px;
   position: absolute;
   z-index: 201;
-  top: 200px;
-  left: 15px;
+  top: 25%;
+  left: 3.5%;
   background-color: #ffffff;
   border-radius: 25px;
   display: none;

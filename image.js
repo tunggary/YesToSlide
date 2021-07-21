@@ -152,11 +152,37 @@ function all_check() {
   ckeck_State();
   if (all_check_btn.checked) {
     //checked된 상태, 모든 버튼 checked
+
     for (let i = 0; i < selected_check_label.length; i++) {
       selected_check_label[i].checked = true;
+      tobe_voting_images = {};
+    }
+
+    for (var i = 0; i < slide_info.length; i++) {
+      var voting_info = {
+        thumbId: "",
+        title: "",
+        name: "",
+        profileImage: "",
+        category: "image",
+        date: "",
+        CreateTime: "",
+        thumbImgUrl: "",
+        orgImgUrl: "",
+        slideUrl: "",
+        slideId: "",
+      };
+      voting_info.name = slide_info[i].name;
+      voting_info.profileImage = slide_info[i].ProfileImage;
+      voting_info.CreateTime = slide_info[i].CreateTime;
+      voting_info.thumbImgUrl = slide_info[i].thumbImgUrl;
+      voting_info.slideUrl = slide_info[i].slideUrl;
+      voting_info.title = slide_info[i].title;
+      tobe_voting_images[slide_info[i].thumbImgUrl_only] = voting_info;
     }
   } else {
     //unchecked된 상태, 모든 버튼 unchecked
+    tobe_voting_images = {};
     for (let i = 0; i < selected_check_label.length; i++) {
       selected_check_label[i].checked = false;
     }
@@ -250,7 +276,9 @@ let voting_state = "before";
 function voting() {
   if (voting_state == "before") {
     //투표시작하기
+
     voting_state = "voting";
+
     for (let i = 0; i < image_voting_number.length; i++) {
       selected_check_label[i].checked
         ? (image_voting_number[i].style.display = "block")
@@ -258,6 +286,8 @@ function voting() {
     }
     button_before_voting.style.display = "none";
     button_voting.style.display = "block";
+
+    parent.parent.sunny.send_voting_data(tobe_voting_images);
   } else if (voting_state == "voting") {
     //투표완료하기
     voting_state = "completed";
@@ -266,6 +296,9 @@ function voting() {
     button_after_voting.style.display = "block";
   } else {
     //투표끝내기
+    parent.parent.sunny.remove_voting_data();
+    parent.parent.sunny.end_voting();
+
     voting_state = "before";
     for (let i = 0; i < image_voting_number.length; i++) {
       image_voting_number[i].style.display = "none";
@@ -273,6 +306,55 @@ function voting() {
     button_before_voting.style.display = "block";
     button_after_voting.style.display = "none";
   }
+}
+
+// 투표 데이터 모으기
+var tobe_voting_images = {};
+function do_check_image(e) {
+  if (e.checked) {
+    var voting_info = {
+      thumbId: "",
+      title: "",
+      name: "하나",
+      profileImage: "./img/profile.jpg",
+      category: "image",
+      date: "",
+      CreateTime: "",
+      thumbImgUrl: "",
+      orgImgUrl: "",
+      slideUrl: "",
+      slideId: "",
+    };
+    var found = false;
+    for (var i = 0; i < slide_info.length; i++) {
+      if (slide_info[i].thumbImgUrl_only == e.name) {
+        /*
+        CreateTime: 20210720090256
+        category: "image"
+        date: "2021-07-07"
+        name: "Interns Toslide"
+        orgImgUrl: "https://drive.google.com/uc?&id=1-1gw95TyE6g5GUOTnb7AfSobIqqpNiUF"
+        profileImage: "./img/profile.jpg"
+        slideId: "SLIDES_API1977573856_0"
+        slideUrl: "https://docs.google.com/presentation/d/1VJtDd-8lFsGEZfm1NuR_oK-K0v8BBJPh53Cw8EOW5uk/preview?rm=minimal&slide=id.SLIDES_API1977573856_0"
+        thumbImgUrl: "https://drive.google.com/uc?&id=1AEqeo813aDiVGHdt4vdKHmtLhuYw0xUf"
+        thumbImgUrl_only: "1AEqeo813aDiVGHdt4vdKHmtLhuYw0xUf"
+        title: "sadsadas"
+        */
+        voting_info.name = slide_info[i].name;
+        voting_info.profileImage = slide_info[i].ProfileImage;
+        voting_info.CreateTime = slide_info[i].CreateTime;
+        voting_info.thumbImgUrl = slide_info[i].thumbImgUrl;
+        voting_info.slideUrl = slide_info[i].slideUrl;
+        voting_info.title = slide_info[i].title;
+      }
+    }
+    tobe_voting_images[e.name] = voting_info;
+  } else {
+    delete tobe_voting_images[e.name];
+  }
+  console.log(e.name);
+  console.log(tobe_voting_images);
 }
 
 //중복투표 활성화, 비활성화
@@ -352,6 +434,5 @@ function do_after_adding_all_images() {
   prepare_tab_check();
   prepare_open_send_modal();
   prepare_option_filter();
-  prepare_set_mobile_screen();
 }
 do_after_adding_all_images();
