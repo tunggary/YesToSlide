@@ -6,7 +6,6 @@ function setImage() {
   for (var i = 0; i < slide_info.length; i++) {
     add_a_slide_to_ul(slide_info[i], false);
   }
-  return;
 }
 
 //setImage(slide_info);
