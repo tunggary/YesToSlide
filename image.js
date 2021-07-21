@@ -296,15 +296,15 @@ function voting() {
     button_after_voting.style.display = "block";
   } else {
     //투표끝내기
-    parent.parent.sunny.remove_voting_data();
-    parent.parent.sunny.end_voting();
-
     voting_state = "before";
     for (let i = 0; i < image_voting_number.length; i++) {
       image_voting_number[i].style.display = "none";
     }
     button_before_voting.style.display = "block";
     button_after_voting.style.display = "none";
+
+    parent.parent.sunny.remove_voting_data();
+    parent.parent.sunny.end_voting();
   }
 }
 
