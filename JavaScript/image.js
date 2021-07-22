@@ -120,10 +120,17 @@ function prepare_cancel_delete_modal() {
 
 //scroll bar setting
 let list_content = null;
+let column_1 = null;
+let column_2 = null;
 function prepare_set_scroll() {
-  const column_1 = document.getElementsByClassName("column_1")[0];
-  const column_2 = document.getElementsByClassName("column_2")[0];
+  column_1 = document.getElementsByClassName("column_1")[0];
+  column_2 = document.getElementsByClassName("column_2")[0];
   list_content = document.getElementsByClassName("list_content")[0];
+
+  if (typeof column_2 === "undefined" && typeof column_1 === "undefined") {
+    document.getElementById("ul_in_list_content").classList.add("column_1");
+    column_1 = document.getElementsByClassName("column_1")[0];
+  }
   if (column_2 == null) {
     if (column_1.clientHeight > 656) {
       list_content.style.overflowY = "scroll";
@@ -131,7 +138,7 @@ function prepare_set_scroll() {
       list_content.style.overflowY = "hidden";
     }
   } else {
-    if (column_2.clientHeight > 656) {
+    if (image_list.length >= 3 || column_2.clientHeight > 656) {
       list_content.style.overflowY = "scroll";
     } else {
       list_content.style.overflowY = "hidden";
@@ -427,8 +434,6 @@ function do_after_adding_all_images() {
   prepare_open_delete_all_modal();
   prepare_open_delete_modal();
   prepare_cancel_delete_modal();
-
-  //2021-07-12 추가
   prepare_set_scroll();
   prepare_all_check_button();
   prepare_tab_check();
