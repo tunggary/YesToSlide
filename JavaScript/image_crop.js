@@ -28,7 +28,7 @@ function load_image(input) {
 function edit_image() {
   const image = document.getElementById("newPic");
   cropper = new Cropper(image, {
-    viewMode: 1,
+    viewMode: 0,
     dragMode: "move",
     aspectRatio: 16 / 9,
     center: false,
@@ -65,7 +65,6 @@ function get_image() {
       height: 176.5,
     });
     newCanvas.setAttribute("id", "newCanvas");
-
     showPic.classList.toggle("d-none");
     cropped_image.classList.toggle("d-none");
     result.innerHTML = "";
@@ -142,7 +141,6 @@ function sending() {
       thumbnailContext.drawImage(newCanvas, 0, 0, thumbnailCanvas.width, thumbnailCanvas.height);
       var thumbnailData = thumbnailCanvas.toDataURL("image/jpeg", 0.7);
 
-      // document.getElementById("thum").appendChild(thumbnailCanvas);
       //enlarge cropped one
       var canvas = document.getElementById("Canvas2");
       var canvasContext = canvas.getContext("2d");
