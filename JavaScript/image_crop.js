@@ -43,6 +43,18 @@ function rotateLeft() {
   if (gridding && !viewing) {
     cropper.rotate(-90);
     rotate_state--;
+    rotate_state %= 4;
+  }
+  if (!gridding) {
+    rotate_state_temp--;
+    rotate_state_temp %= 4;
+    //newImage 회전여부 확인 후 CSS설정
+    newImage.style.width = `${
+      rotate_state_temp == 0 || Math.abs(rotate_state_temp) == 2 ? "100%" : "176px"
+    }`;
+    newImage.style.height = "100%";
+    newImage.style.transform = `rotate(${rotate_state_temp * 90}deg)`;
+    newImage.style.objectFit = "contain";
   }
 }
 
@@ -50,6 +62,18 @@ function rotateRight() {
   if (gridding && !viewing) {
     cropper.rotate(90);
     rotate_state++;
+    rotate_state %= 4;
+  }
+  if (!gridding) {
+    rotate_state_temp++;
+    rotate_state_temp %= 4;
+    //newImage 회전여부 확인 후 CSS설정
+    newImage.style.width = `${
+      rotate_state_temp == 0 || Math.abs(rotate_state_temp) == 2 ? "100%" : "176px"
+    }`;
+    newImage.style.height = "100%";
+    newImage.style.transform = `rotate(${rotate_state_temp * 90}deg)`;
+    newImage.style.objectFit = "contain";
   }
 }
 
@@ -229,6 +253,7 @@ function sending() {
 
 let gridding = true;
 let newImage = null;
+let rotate_state_temp = 0;
 function toggle_grid() {
   if (!viewing) {
     if (toggle_grid_btn.getAttribute("value") === "on") {
@@ -255,6 +280,7 @@ function toggle_grid() {
     }
     showPic.classList.toggle("d-none");
     cropped_image.classList.toggle("d-none");
+    rotate_state_temp = rotate_state;
   }
 }
 
