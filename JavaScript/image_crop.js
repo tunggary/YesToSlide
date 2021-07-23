@@ -28,7 +28,7 @@ function load_image(input) {
 function edit_image() {
   const image = document.getElementById("newPic");
   cropper = new Cropper(image, {
-    viewMode: 0,
+    viewMode: 1,
     dragMode: "move",
     aspectRatio: 16 / 9,
     center: false,
@@ -96,6 +96,7 @@ function close_modal() {
   viewing = false;
   gridding = true;
   upload_message.value = null;
+  rotate_state = 0;
   toggle_grid_btn.setAttribute("src", "./img/toggle_grid_on.png");
   toggle_grid_btn.setAttribute("value", "on");
 
@@ -138,7 +139,7 @@ function sending() {
       thumbnailCanvas.height = "191";
       thumbnailContext.clearRect(0, 0, thumbnailCanvas.width, thumbnailCanvas.height);
 
-      thumbnailContext.drawImage(newCanvas, 0, 0, 343, 191);
+      thumbnailContext.drawImage(newCanvas, 0, 0, thumbnailCanvas.width, thumbnailCanvas.height);
       var thumbnailData = thumbnailCanvas.toDataURL("image/jpeg", 0.7);
 
       // document.getElementById("thum").appendChild(thumbnailCanvas);
@@ -168,31 +169,16 @@ function sending() {
       var thumbnailCanvas = document.getElementById("thumbnail");
       var thumbnailContext = thumbnailCanvas.getContext("2d");
 
-      thumbnailCanvas.width = "1000"; //"343";
-      thumbnailCanvas.height = "600"; //"191";
+      thumbnailCanvas.width = "343"; //"343";
+      thumbnailCanvas.height = "191"; //"191";
       thumbnailContext.clearRect(0, 0, thumbnailCanvas.width, thumbnailCanvas.height);
-
-      var hRatio = thumbnailCanvas.width / newImage.width;
-      var vRatio = thumbnailCanvas.height / newImage.height;
-      var ratio = Math.min(hRatio, vRatio);
-      var centerShift_x = (thumbnailCanvas.width - newImage.width * ratio) / 2;
-      var centerShift_y = (thumbnailCanvas.height - newImage.height * ratio) / 2;
-      thumbnailContext.translate(newImage.height, 0);
-      thumbnailContext.rotate(90 * (Math.PI / 180));
-      // thumbnailContext.translate(-500, -300);
-
       thumbnailContext.drawImage(
-        newImage,
+        rotateOriginal(),
         0,
         0,
-        newImage.width,
-        newImage.height,
-        0,
-        0,
-        newImage.width * ratio,
-        newImage.height * ratio
+        thumbnailCanvas.width,
+        thumbnailCanvas.height
       );
-
       var thumbnailData = thumbnailCanvas.toDataURL("image/jpeg", 0.7);
 
       // parent.parent.sunny.send_orginal_image_v2(
@@ -272,4 +258,138 @@ function toggle_grid() {
     showPic.classList.toggle("d-none");
     cropped_image.classList.toggle("d-none");
   }
+}
+
+function rotateOriginal() {
+  //여기 캔버스 크기 그대로 두고 중앙에 그려지고, 나머지 부분은 블러로 채워지도록 해야함
+
+  const src_info = document.getElementById("newPic").src;
+  let originalImage = document.createElement("img");
+  originalImage.setAttribute("src", src_info);
+  let rotateCount = rotate_state;
+
+  var originalCanvas = document.querySelector("#originalCanvas");
+  var originalContext = originalCanvas.getContext("2d");
+  var editedWidth = (editedHeight = 0);
+  var originalRatio = originalImage.width / originalImage.height;
+
+  originalContext.clearRect(0, 0, originalCanvas.width, originalCanvas.height);
+  originalContext.save();
+
+  var rotate = rotateCount % 4;
+  if (rotate < 0) rotate += 4;
+
+  if (rotate == 0 || rotate == 2) {
+    if (originalRatio < 16 / 9) {
+      editedHeight = originalCanvas.height;
+      editedWidth = editedHeight * originalRatio;
+    } else {
+      editedWidth = originalCanvas.width;
+      editedHeight = editedWidth / originalRatio;
+    }
+  } else {
+    if (originalRatio < 9 / 16) {
+      editedHeight = originalCanvas.width;
+      editedWidth = editedHeight * originalRatio;
+    } else {
+      editedWidth = originalCanvas.height;
+      editedHeight = editedWidth / originalRatio;
+    }
+  }
+
+  originalContext.filter = "blur(50px)";
+  switch (rotate) {
+    case 0:
+      originalContext.drawImage(originalImage, 0, 0, originalCanvas.width, originalCanvas.height);
+      originalContext.filter = "none";
+      if (originalRatio < 16 / 9) {
+        originalContext.drawImage(
+          originalImage,
+          (originalCanvas.width - editedWidth) / 2,
+          0,
+          editedWidth,
+          editedHeight
+        );
+      } else {
+        originalContext.drawImage(
+          originalImage,
+          0,
+          (originalCanvas.height - editedHeight) / 2,
+          editedWidth,
+          editedHeight
+        );
+      }
+      break;
+    case 1:
+      originalContext.rotate((Math.PI / 180) * 90);
+      originalContext.translate(0, -originalCanvas.width);
+      originalContext.drawImage(originalImage, 0, 0, originalCanvas.height, originalCanvas.width);
+      originalContext.filter = "none";
+      if (originalRatio < 9 / 16) {
+        originalContext.drawImage(
+          originalImage,
+          (originalCanvas.height - editedWidth) / 2,
+          0,
+          editedWidth,
+          editedHeight
+        );
+      } else {
+        originalContext.drawImage(
+          originalImage,
+          0,
+          (originalCanvas.width - editedHeight) / 2,
+          editedWidth,
+          editedHeight
+        );
+      }
+      break;
+    case 2:
+      originalContext.rotate((Math.PI / 180) * 180);
+      originalContext.translate(-originalCanvas.width, -originalCanvas.height);
+      originalContext.drawImage(originalImage, 0, 0, originalCanvas.width, originalCanvas.height);
+      originalContext.filter = "none";
+      if (originalRatio < 16 / 9) {
+        originalContext.drawImage(
+          originalImage,
+          (originalCanvas.width - editedWidth) / 2,
+          0,
+          editedWidth,
+          editedHeight
+        );
+      } else {
+        originalContext.drawImage(
+          originalImage,
+          0,
+          (originalCanvas.height - editedHeight) / 2,
+          editedWidth,
+          editedHeight
+        );
+      }
+      break;
+    case 3:
+      originalContext.rotate((Math.PI / 180) * 270);
+      originalContext.translate(-originalCanvas.height, 0);
+      originalContext.drawImage(originalImage, 0, 0, originalCanvas.height, originalCanvas.width);
+      originalContext.filter = "none";
+      if (originalRatio < 9 / 16) {
+        originalContext.drawImage(
+          originalImage,
+          (originalCanvas.height - editedWidth) / 2,
+          0,
+          editedWidth,
+          editedHeight
+        );
+      } else {
+        originalContext.drawImage(
+          originalImage,
+          0,
+          (originalCanvas.width - editedHeight) / 2,
+          editedWidth,
+          editedHeight
+        );
+      }
+      break;
+  }
+  originalContext.restore();
+  return originalCanvas;
 }
