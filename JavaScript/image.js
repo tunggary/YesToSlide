@@ -1,14 +1,202 @@
 //사진 선택하면 주황색 테두리 띄우기
 var image_list = null;
 var image_scroll_veil = null;
+function do_when_click_img(i) {
+  checkRadio();
+  image_list[i].classList.toggle("active");
+  // console.log(image_list[i]);
+
+  //console.log("cthumb ",image_list[i].getAttribute("cthumb"));
+  parent.parent.sunny.set_current_thumbId_for_sorting(image_list[i].getAttribute("cthumb"));
+  if (image_list[i].id == "none") {
+    console.log(image_list[i].getAttribute("cthumb"));
+    console.log(slide_info);
+    var found = false;
+    for (var j = 0; j < slide_info.length; j++) {
+      if (image_list[i].getAttribute("cthumb") == slide_info[j].thumbImgUrl_only) {
+        var info = {
+          Comment: "",
+          CreateTime: 12,
+          Email: "",
+          ID: "", //"SLIDES_API1348034400_0",
+          Kind: "Image",
+          Name: "",
+          OriginID: "", //"SLIDES_API504215932_0",
+          OriginPresent: "", //"1VH2gLwlr0LK1lYBzxlxI-tJARBU8te3MaHr2UwdONYM",
+          PresentationID: "",
+          ProfileImage: "",
+          orgImgUrl: "",
+          thumbImgUrl: "",
+        };
+
+        info.Comment = slide_info[j].title;
+        info.CreateTime = slide_info[j].CreateTime;
+        info.Name = slide_info[j].name;
+        info.OriginPresent = parent.parent.sunny.get_current_original_presentationID();
+        info.PresentationID = parent.parent.sunny.get_current_presentationID();
+        info.ProfileImage = slide_info[j].ProfileImage;
+        info.thumbImgUrl = slide_info[j].thumbImgUrl;
+        info.orgImgUrl = slide_info[j].orgImgUrl.replace("https://drive.google.com/uc?&id=", "");
+
+        console.log(info);
+
+        /*
+            CreateTime: "20210721193339"
+            ProfileImage: "https://lh3.googleusercontent.com/a/AATXAJy7wHTwoe5rldlDuYtGYGvKuM_ZMqCbBZ89GoIg=s96-c"
+            category: "image"
+            date: "2021-07-07"
+            name: "Interns Toslide"
+            orgImgUrl: "https://drive.google.com/uc?&id=115EF_kW7FSjUO4PCScXkKBZCsKoFygV8"
+            slideId: "none"
+            slideUrl: ""
+            thumbImgUrl: "https://drive.google.com/uc?&id=1ZoKTvOCQks84khQjQGqswzUeOEsme7KK"
+            thumbImgUrl_only: "1ZoKTvOCQks84khQjQGqswzUeOEsme7KK"
+            title: "sss"
+            */
+        console.log(slide_info[j]);
+        /*
+            alert(parent.parent.sunny.is_controller());
+            if(parent.parent.sunny.is_controller())
+            {
+              return;
+            }
+            */
+        if (parent.parent.sunny.is_controller()) {
+          parent.parent.sunny.navigate_slide(i);
+          return;
+        }
+        parent.parent.sunny.update_main_slide_image(
+          "",
+          info,
+          parent.parent.main_iframe,
+          "image_content",
+          "chat_boxID",
+          "chat_box_name",
+          "chat_box_comment",
+          "chat_profileID"
+        );
+
+        return;
+      }
+    }
+    console.log("info not found");
+    return;
+  }
+
+  if (parent.parent.sunny.is_controller()) {
+    parent.parent.sunny.navigate_slide(i);
+    return;
+  }
+  parent.parent.sunny.find_comment_from_spreadsheet_using_google_slideID(
+    image_list[i].id,
+    function (info) {
+      if (info.length == 0) {
+        //alert("no info for this picture");
+        parent.parent.sunny.update_main_slide_image(
+          image_list[i].id,
+          null,
+          parent.parent.main_iframe,
+          "image_content",
+          "chat_boxID",
+          "chat_box_name",
+          "chat_box_comment",
+          "chat_profileID"
+        );
+        //return;
+      } else {
+        parent.parent.sunny.update_main_slide_image(
+          image_list[i].id,
+          info[0],
+          parent.parent.main_iframe,
+          "image_content",
+          "chat_boxID",
+          "chat_box_name",
+          "chat_box_comment",
+          "chat_profileID"
+        );
+      }
+    }
+  );
+}
 function prepare_show_outline() {
   image_list = document.getElementsByClassName("image_list");
   image_scroll_veil = document.getElementsByClassName("image_scroll_veil");
   for (let i = 0; i < image_scroll_veil.length; i++) {
     image_scroll_veil[i].addEventListener("click", () => {
+      do_when_click_img(i);
+      return;
       checkRadio();
       image_list[i].classList.toggle("active");
       // console.log(image_list[i]);
+
+      //console.log("cthumb ",image_list[i].getAttribute("cthumb"));
+      parent.parent.sunny.set_current_thumbId_for_sorting(image_list[i].getAttribute("cthumb"));
+      if (image_list[i].id == "none") {
+        console.log(image_list[i].getAttribute("cthumb"));
+        console.log(slide_info);
+        var found = false;
+        for (var j = 0; j < slide_info.length; j++) {
+          if (image_list[i].getAttribute("cthumb") == slide_info[j].thumbImgUrl_only) {
+            var info = {
+              Comment: "",
+              CreateTime: 12,
+              Email: "",
+              ID: "", //"SLIDES_API1348034400_0",
+              Kind: "Image",
+              Name: "",
+              OriginID: "", //"SLIDES_API504215932_0",
+              OriginPresent: "", //"1VH2gLwlr0LK1lYBzxlxI-tJARBU8te3MaHr2UwdONYM",
+              PresentationID: "",
+              ProfileImage: "",
+              orgImgUrl: "",
+              thumbImgUrl: "",
+            };
+
+            info.Comment = slide_info[j].title;
+            info.CreateTime = slide_info[j].CreateTime;
+            info.Name = slide_info[j].name;
+            info.OriginPresent = parent.parent.sunny.get_current_original_presentationID();
+            info.PresentationID = parent.parent.sunny.get_current_presentationID();
+            info.ProfileImage = slide_info[j].ProfileImage;
+            info.thumbImgUrl = slide_info[j].thumbImgUrl;
+            info.orgImgUrl = slide_info[j].orgImgUrl.replace(
+              "https://drive.google.com/uc?&id=",
+              ""
+            );
+
+            console.log(info);
+
+            /*
+            CreateTime: "20210721193339"
+            ProfileImage: "https://lh3.googleusercontent.com/a/AATXAJy7wHTwoe5rldlDuYtGYGvKuM_ZMqCbBZ89GoIg=s96-c"
+            category: "image"
+            date: "2021-07-07"
+            name: "Interns Toslide"
+            orgImgUrl: "https://drive.google.com/uc?&id=115EF_kW7FSjUO4PCScXkKBZCsKoFygV8"
+            slideId: "none"
+            slideUrl: ""
+            thumbImgUrl: "https://drive.google.com/uc?&id=1ZoKTvOCQks84khQjQGqswzUeOEsme7KK"
+            thumbImgUrl_only: "1ZoKTvOCQks84khQjQGqswzUeOEsme7KK"
+            title: "sss"
+            */
+            console.log(slide_info[j]);
+            parent.parent.sunny.update_main_slide_image(
+              "",
+              info,
+              parent.parent.main_iframe,
+              "image_content",
+              "chat_boxID",
+              "chat_box_name",
+              "chat_box_comment",
+              "chat_profileID"
+            );
+
+            return;
+          }
+        }
+        console.log("info not found");
+        return;
+      }
 
       parent.parent.sunny.find_comment_from_spreadsheet_using_google_slideID(
         image_list[i].id,

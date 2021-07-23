@@ -50,18 +50,31 @@ function prepare_cancel_delete_modal() {
   }
 }
 
-function scroll_func() {
+function prepare_set_scroll() {
   const file_list = document.getElementsByClassName("file_list");
   const content = document.getElementsByClassName("content");
+  console.log(file_list.length);
   if (file_list.length >= 14) {
     content[0].style.overflowY = "scroll";
   } else {
     content[0].style.overflowY = "hidden";
   }
 }
-scroll_func();
 
+function load_previous_presentain(present_name) {
+  var r = confirm("열까요?");
+  if (r == false) {
+    return;
+  } else {
+    if (!parent.parent.sunny.is_controller()) {
+      parent.document.getElementById("image_content").src = "";
+      parent.handleBasicToolsClick("button_openfile");
+    }
+    parent.parent.sunny.open_presentation_from_history(present_name);
+  }
+}
 function add_each_file(each) {
+  console.log(each);
   var cnt = document.getElementById("fileUl").childElementCount;
   cnt++;
   var template =
@@ -72,7 +85,9 @@ function add_each_file(each) {
   <div class="file_img">
     <img src="./img/icon_google_slide.png" width="25" height="34">
   </div>
-  <div class="file_info">
+  <div class="file_info" style="cursor:pointer" onclick="load_previous_presentain('` +
+    each["title"] +
+    `')">
     <div class="file_name">` +
     each["title"] +
     `</div>
@@ -86,10 +101,30 @@ function add_each_file(each) {
   </li>`;
 
   $("#fileUl").append(template);
+  prepare_set_scroll();
 }
 
 function do_after_adding_all_files() {
   add_click_listener_to_presentatin_list();
   prepare_open_delete_modal();
   prepare_cancel_delete_modal();
+  prepare_set_scroll();
+}
+
+//controller에서 사이즈 변경시 마다 adjust_size를 호출 합니다.
+let tri = null;
+let file_container = null;
+let content = null;
+function adjust_size(height) {
+  tri = document.getElementsByClassName("tri")[0];
+  file_container = document.getElementsByClassName("file_container")[0];
+  content = document.getElementsByClassName("content")[0];
+
+  tri.style.display = "none"; //모바일이면 imageTab 맨위에 삼각형(화살표) 필요없음
+  file_container.style.borderRadius = "0"; // 모바일이면 borderRadius 필요없음
+
+  let screen_height = height - 199; //iframe 외부에 브라우저 높이 - 상단바,하단바 높이
+  let gap = 823 - screen_height;
+  file_container.style.height = `${screen_height}px`; // .file_container 기존높이 823px
+  content.style.height = `${780 - gap}px`; // .content 기존높이 780px
 }

@@ -16,7 +16,6 @@ li {
 }
 .fileTab {
   position: absolute;
-  width: 375px;
   top: 0;
   right: 0;
 }
@@ -33,7 +32,7 @@ li {
 }
 
 .file_container {
-  width: 100%;
+  width: 375px;
   height: 823px;
   border-radius: 26px;
   overflow: hidden;

@@ -81,7 +81,7 @@
   font-size: 12px;
   font-weight: bold;
   padding-top: 50px;
-  background-image: url(./img/image_box.png);
+  background-image: url(../img/image_box.png);
   cursor: pointer;
 }
 
@@ -169,6 +169,8 @@
 .result {
   width: 314px;
   height: 176.5px;
+  display: flex;
+  justify-content: center;
   background-color: black;
 }
 

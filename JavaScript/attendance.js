@@ -100,6 +100,31 @@ function do_after_adding_all_attendances() {
   prepare_open_expel_modal();
   prepare_cancel_expel_modal();
 }
+
 function clear() {
   document.getElementById("attendanceUl").innerHTML = "";
+}
+
+//controller에서 사이즈 변경시 마다 adjust_size를 호출 합니다.
+let tri = null;
+let att_top = null;
+let att_container = null;
+let content = null;
+function adjust_size(height) {
+  tri = document.getElementsByClassName("tri");
+  att_top = document.getElementsByClassName("att_top");
+  att_container = document.getElementsByClassName("att_container");
+  content = document.getElementsByClassName("content");
+  label = document.getElementsByClassName("label");
+  att_bottom = document.getElementsByClassName("att_bottom");
+
+  att_top[0].style.display = "none";
+  tri[0].style.display = "none";
+  att_container[0].style.borderRadius = "0px";
+  att_container[0].style.paddingTop = "0px";
+  att_bottom[0].classList.toggle("active");
+  label[0].style.display = "none";
+
+  let screen_height = height - 199; //iframe 외부에 브라우저 높이 - 상단바,하단바 높이
+  content[0].style.height = `${screen_height - 56}px`; // .content 기존높이 780px
 }

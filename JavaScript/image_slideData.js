@@ -6,10 +6,19 @@ function setImage() {
   for (var i = 0; i < slide_info.length; i++) {
     add_a_slide_to_ul(slide_info[i], false);
   }
+  return;
 }
 
 //setImage(slide_info);
 
+function change_a_slide_info(sinfo) {
+  for (var i = 0; i < slide_info.length; i++) {
+    if (slide_info[i].thumbImgUrl_only == sinfo.thumbImgUrl_only) {
+      slide_info[i] = sinfo;
+      break;
+    }
+  }
+}
 function add_a_slide_to_ul(each, adding = false) {
   console.log(each);
   if (adding) slide_info.push(each);
@@ -22,6 +31,7 @@ function add_a_slide_to_ul(each, adding = false) {
   var name = each.name.replace(/ /g, "_");
   li.name = name;
   li.setAttribute("cname", name);
+  li.setAttribute("cthumb", each.thumbImgUrl_only);
   li.setAttribute("cdate", each.CreateTime);
   li.style.display = "block";
   console.log("each.ProfileImage", each.ProfileImage);
@@ -150,6 +160,17 @@ function sortList(sorting_property = "") {
       //console.log(list.getElementsByTagName("LI"));
     }
   }
+
+  var b = list.getElementsByTagName("LI");
+  var sorted_imgages_by_property = [];
+  // Loop through all list-items:
+  for (i = 0; i < b.length; i++) {
+    sorted_imgages_by_property.push(b[i].getAttribute("cthumb"));
+    //console.log(b[i].getAttribute("cthumb"));
+  }
+
+  console.log("****************", sorted_imgages_by_property);
+  parent.parent.sunny.set_sorted_images(sorted_imgages_by_property);
 }
 
 //test용 코드
