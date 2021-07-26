@@ -1,5 +1,5 @@
-const att_bottom = document.getElementsByClassName("att_bottom");
-const label = document.getElementsByClassName("label");
+let att_bottom = document.getElementsByClassName("att_bottom");
+let label = document.getElementsByClassName("label");
 var participants_list = null;
 const toggleText = document.querySelector(".label span");
 const toggleImg = document.querySelector(".label img");

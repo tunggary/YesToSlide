@@ -48,7 +48,7 @@ function add_a_slide_to_ul(each, adding = false) {
     </div>
     <div class="image_scroll_veil"></div>
     <div class="image_delete_btn">
-      <img src="./img/그룹 230.png" width="12" height="12">
+      <img src="./img/delete_image_btn.png" width="12" height="12">
     </div>
     <label class="form-check-label" for="selected_check"></label>
     <input class="form-check-input shadow-none selected_check_label" type="checkbox" name="${each.thumbImgUrl_only}" id="selected_check" onclick="do_check_image(this);" >
@@ -108,20 +108,27 @@ function sortList(sorting_property = "") {
     }
   }
   var list, i, switching, b, shouldSwitch;
+
   list = document.getElementById("ul_in_list_content");
-  //console.log(list);
+
   switching = true;
-  //console.log(list.getElementsByTagName("LI"));
+
   /* Make a loop that will continue until
   no switching has been done: */
   while (switching) {
     // start by saying: no switching is done:
     switching = false;
     b = list.getElementsByTagName("LI");
+
     // Loop through all list-items:
     for (i = 0; i < b.length - 1; i++) {
-      // start by saying there should be no switching:
+      //console.log(b[i].getAttribute("cdate"));
       shouldSwitch = false;
+      if (b[i].getAttribute("cdate") == "" || typeof b[i].getAttribute("cdate") === "undefined") {
+        continue;
+      }
+      // start by saying there should be no switching:
+
       /* check if the next item should
       switch place with the current item: */
 
@@ -172,7 +179,6 @@ function sortList(sorting_property = "") {
   console.log("****************", sorted_imgages_by_property);
   parent.parent.sunny.set_sorted_images(sorted_imgages_by_property);
 }
-
 //test용 코드
 add_a_slide_to_ul(
   {

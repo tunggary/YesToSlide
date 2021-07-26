@@ -627,5 +627,13 @@ function do_after_adding_all_images() {
   prepare_tab_check();
   prepare_open_send_modal();
   prepare_option_filter();
+  if (slide_info.length >= 3) {
+    try {
+      list_content = document.getElementsByClassName("list_content")[0];
+      list_content.style.overflowY = "scroll";
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
 do_after_adding_all_images();

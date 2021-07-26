@@ -95,7 +95,7 @@
       <div class="dark_background"></div>
       <div class="par_back_img" id="all_delete_modal">
         <div class="crap_img"></div>
-        <img src="img/메시지 및 동영상을  모두 삭제하시겠습니까_.png">
+        <img src="img/delete_all_msg&video.png">
         <div class="yes_no">
           <img src="img/modal_button_positive1.png" class="delete_btn">
           <div style="width: 7px;"></div>
@@ -104,7 +104,7 @@
       </div>
       <div class="par_back_img" id="image_delete_modal">
         <div class="del_img"></div>
-        <img src="img/해당 사진을  삭제하시겠습니까_.png">
+        <img src="img/delete_image.png">
         <div class="yes_no">
           <img src="img/modal_button_positive2.png" class="delete_btn">
           <div style="width: 7px;"></div>
@@ -113,7 +113,7 @@
       </div>
       <div class="par_back_img" id="video_delete_modal">
         <div class="del_img"></div>
-        <img src="img/해당 동영상을  삭제하시겠습니까_.png">
+        <img src="img/delete_video.png">
         <div class="yes_no">
           <img src="img/modal_button_positive2.png" class="delete_btn">
           <div style="width: 7px;"></div>
@@ -122,16 +122,16 @@
       </div>
       <div class="par_back_img" id="select_image_modal">
         <div class="image_img"></div>
-        <img src="img/투표 진행할 사진을  선택해주세요..png">
+        <img src="img/select_image_voted.png">
         <div class="yes_no">
-          <img src="img/확인.png" class="delete_btn">
+          <img src="img/confirm.png" class="delete_btn">
           <div class="negative_btn"></div>
         </div>
       </div>
       <div id="send_imageOrVideo_modal">
         <div class="send_imageOrVideo_modal_top">
-          <img src="./img/보내기_아이콘.png" width="24" height="24">
-          <img src="./img/사진 및 동영상 보내기.png">
+          <img src="./img/icon_send.png" width="24" height="24">
+          <img src="./img/send_image&video.png">
           <img src="./img/modal_icon_expel.png" id="close_btn" onclick="close_modal()">
         </div>
         <div class="send_imageOrVideo_modal_middle">
@@ -191,9 +191,9 @@
   <script src="./JavaScript/image_crop.js"></script>
 
 </body>
-<canvas id="Canvas1" width="1463" height="823" style="border:0px solid;"></canvas>
-<canvas id="Canvas2" width="1463" height="823" style="border:0px solid;"></canvas>
-<canvas id="originalCanvas" width="1463" height="823" style="border:0px solid;"></canvas>
-<canvas id="thumbnail" width="343" height="191" style="border:0px solid;"></canvas>
+<canvas id="Canvas1" width="1463" height="823" style="border:0px solid; display: none;"></canvas>
+<canvas id="Canvas2" width="1463" height="823" style="border:0px solid; display: none;"></canvas>
+<canvas id="originalCanvas" width="1463" height="823" style="border:0px solid; display: none;"></canvas>
+<canvas id="thumbnail" width="343" height="191" style="border:0px solid; display: none;"></canvas>
 
 </html>

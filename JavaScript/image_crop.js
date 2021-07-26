@@ -171,6 +171,14 @@ function sending() {
       canvasContext.clearRect(0, 0, canvas.width, canvas.height);
       canvasContext.drawImage(newCanvas, 0, 0, canvas.width, canvas.height);
 
+      parent.parent.sunny.uploadToGD_base64(
+        thumbnailData,
+        msg,
+        canvas.toDataURL("image/PNG", 1),
+        "image"
+      );
+
+      /*
       //parent.sunny.uploadToGD_base64(newCanvas.toDataURL("image/PNG",1),msg,thumbnailData);
       parent.parent.sunny.uploadToGD_base64(
         thumbnailData,
@@ -178,7 +186,7 @@ function sending() {
         canvas.toDataURL("image/PNG", 1),
         "image"
       );
-      /*
+     
       try{
         parent.parent.sunny.uploadToGD_base64(newCanvas.toDataURL("image/PNG",1),msg);
       }
@@ -202,6 +210,13 @@ function sending() {
         thumbnailCanvas.height
       );
       var thumbnailData = thumbnailCanvas.toDataURL("image/jpeg", 0.7);
+
+      parent.parent.sunny.uploadToGD_base64(
+        thumbnailData,
+        msg,
+        rotateOriginal().toDataURL("image/PNG", 1),
+        "image"
+      );
 
       // parent.parent.sunny.send_orginal_image_v2(
       //   "main_iframe",
