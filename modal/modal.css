@@ -1,0 +1,81 @@
+.modal_block {
+  width: 300px;
+  height: 200px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.modal_block .modal_image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal_block .modal_image .file_name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.modal_string {
+  text-align: center;
+}
+
+.modal_input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.modal_block .modal_description {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgb(136, 137, 140);
+  color: rgb(136, 137, 140);
+  width: 75%;
+}
+
+.modal_block .modal_button,
+.modal_block .modal_one_button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.modal_block .positive {
+  background-color: rgb(238, 183, 146);
+  border-radius: 17px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 5px;
+
+  width: 45%;
+}
+
+.modal_block .negative {
+  background-color: rgb(221, 217, 216);
+  border-radius: 17px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 5px;
+
+  width: 45%;
+}
+
+.modal_block .modal_one_button .positive {
+  width: 90%;
+}
+
+.modal_block .modal_one_button .negative {
+  width: 90%;
+}

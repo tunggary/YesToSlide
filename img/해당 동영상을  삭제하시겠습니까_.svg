@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="311" height="51" viewBox="0 0 311 51">
+    <defs>
+        <style>
+            .cls-2{font-family:Roboto-Bold,Roboto}
+        </style>
+    </defs>
+    <text id="해당_동영상을_삭제하시겠습니까_" fill="#313233" font-family="AppleSDGothicNeo-Bold, Apple SD Gothic Neo" font-size="16px" font-weight="700">
+        <tspan x="111.988" y="15">해당</tspan><tspan y="15" class="cls-2"> </tspan><tspan y="15">동영상을</tspan><tspan y="15" class="cls-2"> </tspan><tspan x="96.16" y="37">삭제하시겠습니까</tspan><tspan y="37" class="cls-2">?</tspan>
+    </text>
+</svg>
