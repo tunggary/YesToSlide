@@ -3,7 +3,7 @@ modal_block  	id,width,height,radius
 modal_image 	src,width,height,title,titleSize,titleWeight	
 modal_input 	placeholder,fontSize
 modal_string  	fontSize,fontWeight
-modal_button 	type,positiveTitle,negativeTitle,fontSize,fontWeight
+modal_button 	type,positiveTitle,negativeTitle,fontSize,fontWeight,height,radius
 
 *주의 : id,width,height 반드시 설정해야함
 *폰트관련단위 : CSS에서 사용하는 단위

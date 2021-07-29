@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./general_modal.css">
+</head>
+
+<body>
+  <div class="dark_background_general" id="darkBg" style="display: none;"></div>
+  <div class="modal_container" id="modal_container" style="display:none"></div>
+
+  <button
+    onclick="create_div_for_one_input('행사 이름 입력','icon_google_slides_large.png','행사명',300,200);create_a_modal(one_input_fn);">one
+    input</button>
+  <button
+    onclick="create_div_for_two_inputs('행사','icon_google_slides_large.png','행사명','행사명을 입력','행사 설명','내용을 입력',300,300);create_a_modal(two_inputs_fn);">two
+    input</button>
+  <button
+    onclick="create_div_for_yes_no(310,197,'해당 동영상을<br>삭제하시겠습니까?','삭제','취소','modal_icon_delete_imageorvideo.png');create_a_modal(positive_fn);">yes
+    no</button>
+  <button
+    onclick="create_div_for_one_button('button_images&videos_off@2x.png','select_image_voted.png');create_a_modal();">one
+    button</button>
+  <script>
+    function one_input_fn() {
+      alert(document.getElementById("general_input1").value);
+      document.getElementById("darkBg").style.display = "none";
+      document.getElementById("modal_container").innerHTML = "";
+      document.getElementById("modal_container").style.display = "none";
+    }
+    function two_inputs_fn() {
+      alert(document.getElementById("general_input1").value);
+      alert(document.getElementById("general_input2").value);
+      document.getElementById("darkBg").style.display = "none";
+      document.getElementById("modal_container").innerHTML = "";
+      document.getElementById("modal_container").style.display = "none";
+    }
+    function positive_fn() {
+      alert("positive");
+      document.getElementById("darkBg").style.display = "none";
+      document.getElementById("modal_container").innerHTML = "";
+      document.getElementById("modal_container").style.display = "none";
+
+    }
+    function negative_fn() {
+      alert("negative");
+      document.getElementById("darkBg").style.display = "none";
+      document.getElementById("modal_container").innerHTML = "";
+      document.getElementById("modal_container").style.display = "none";
+    }
+  </script>
+  <script src="general_modal.js" async defer></script>
+
+</body>
+
+</html>

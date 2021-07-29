@@ -91,11 +91,17 @@ for (let i = 0; i < modal_length; i++) {
         child_Node.appendChild(divNega);
       }
 
-      //fontSize, Weight 설정
+      //fontSize, Weight, height 설정
       const fontSize = child_Node.getAttribute("fontSize");
       child_Node.style.fontSize = `${fontSize}px`;
       const fontWeight = child_Node.getAttribute("fontWeight");
       child_Node.style.fontWeight = `${fontWeight}`;
+      const height = child_Node.getAttribute("height");
+      const radius = child_Node.getAttribute("radius");
+      for (let k = 0; k < child_Node.children.length; k++) {
+        child_Node.children[k].style.height = `${height}px`;
+        child_Node.children[k].style.borderRadius = `${radius}px`;
+      }
     }
   }
 }
