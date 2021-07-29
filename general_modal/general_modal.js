@@ -110,12 +110,12 @@ function create_div_for_two_inputs(
     
     <div class="modal_input" fontSize="12" fontWeight="bold">
       <div class="input">
-        <label for="input_1">${inputTitle1}</label>
-        <input type="text" id="input_1" placeholder="${placeholder1}">
+        <label for="general_input1">${inputTitle1}</label>
+        <input type="text" id="general_input1" placeholder="${placeholder1}">
       </div>
       <div class="input">
-        <label for="input_2">${inputTitle2}</label>
-        <input type="text" id="input_2" placeholder="${placeholder2}">
+        <label for="general_input2">${inputTitle2}</label>
+        <input type="text" id="general_input2" placeholder="${placeholder2}">
       </div>
     </div>
     
