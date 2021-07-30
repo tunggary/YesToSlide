@@ -57,14 +57,9 @@ body {
   align-items: center;
 }
 
-.modal_block .modal_image .file_name {
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
 /* modal_string */
 .modal_string {
+  width: 80%;
   text-align: center;
 }
 
@@ -78,7 +73,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .modal_input .input input {
@@ -134,4 +129,44 @@ body {
 .modal_block .modal_one_button .negative {
   /* button 1개 일때 흰색 버튼 너비 */
   width: 90%;
+}
+
+/* modal_expel */
+.modal_expel,
+.btn-close {
+  opacity: 1;
+  background: none;
+  background-image: url(clode_button.png);
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 0;
+}
+
+/* modal_alert일 경우 */
+.toast {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  z-index: 300;
+  border: none;
+  transform: translateX(-50%);
+}
+
+#modal_alert {
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+/* modal_two_inputs일 경우 */
+#modal_two_inputs {
+  padding: 20px 0 10px 0;
+}
+
+#modal_two_inputs .file_name {
+  margin-top: 10px;
+  font-weight: 500;
 }

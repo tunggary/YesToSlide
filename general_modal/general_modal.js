@@ -7,7 +7,7 @@ function create_div_for_one_button(img1, img2) {
 
   div.innerHTML =
     `
-  <div class="modal_block" id="block_3" width="311" height="200" radius="26">
+  <div class="modal_block" id="modal_one_button" width="311" height="200" radius="26">
     <div class="modal_image" src="` +
     img1 +
     `" width="68" height="68"></div>
@@ -29,7 +29,7 @@ function create_div_for_yes_no(w, h, msg, posTitle, negTitle, img1) {
 
   div.innerHTML =
     `
-  <div class="modal_block" id="block_2" width="` +
+  <div class="modal_block" id="modal_yes_no" width="` +
     w +
     `" height="` +
     h +
@@ -58,7 +58,7 @@ function create_div_for_one_input(inputTitle, imgSrc, placeholder, w, h) {
   var div = document.createElement("div");
 
   div.innerHTML = `
-    <div class="modal_block" id="blovk_1" width="${w}" height="${h}" radius="30">
+    <div class="modal_block" id="modal_one_input" width="${w}" height="${h}" radius="30">
 
     <div class="modal_image" src="${imgSrc}" width="41" height="56"
       title="coordinator@gmail.com_20200709" titleSize="16" titleWeight="500"></div>
@@ -75,8 +75,6 @@ function create_div_for_one_input(inputTitle, imgSrc, placeholder, w, h) {
       height="44" radius="22" width="198"></div>
   </div>
   `;
-  //alert(div.innerHTML);
-
   document.getElementById("modal_container").appendChild(div);
 }
 
@@ -97,7 +95,7 @@ function create_div_for_two_inputs(
   var div = document.createElement("div");
 
   div.innerHTML = `
-    <div class="modal_block" id="blovk_1" width="${w}" height="${h}" radius="30">
+    <div class="modal_block" id="modal_two_inputs" width="${w}" height="${h}" radius="30">
 
     <div class="modal_image" src="${imgSrc}" width="41" height="56"
       title="${inputTitle}" titleSize="16" titleWeight="500" id="general_modal_title"></div>
@@ -116,9 +114,74 @@ function create_div_for_two_inputs(
     <div class="modal_button" type="3" positiveTitle="입력완료" negativeTitle="취소" fontSize="14" fontWeight="bold"
       height="44" radius="22" width="198"></div>
   </div>
+  
+  <div  class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+    <div class="modal_block" id="modal_alert" width="311" height="197" radius="26">
+      <div class="btn-close" data-bs-dismiss="toast" onclick="timerStop()"></div>
+      <div class="modal_image" src="./img/i_icon.png" width="74" height="74"></div>
+      <div class="modal_string" fontSize="16" fontWeight="bold" id="timerText"></div>
+    </div>
+  </div>
   `;
 
   document.getElementById("modal_container").appendChild(div);
+}
+
+function create_div_for_alert(msg, width, height) {
+  document.getElementById("darkBg").style.display = "block";
+
+  document.getElementById("modal_container").innerHTML = "";
+  document.getElementById("modal_container").style.display = "block";
+  var div = document.createElement("div");
+
+  div.innerHTML = `
+  <div class="modal_block" id="modal_alert" width="${width}" height="${height}" radius="26">
+    <div class="modal_expel"></div>
+    <div class="modal_image" src="./i_icon.png" width="74" height="74"></div>
+    <div class="modal_string" fontSize="16" fontWeight="bold">${msg}</div>
+  </div>
+  `;
+
+  document.getElementById("modal_container").appendChild(div);
+}
+
+let timer = null;
+let alerting = null;
+let toastList = null;
+
+function alertShow(msg) {
+  if (alerting == true) {
+    return;
+  }
+  alerting = true;
+  var toastElList = [].slice.call(document.querySelectorAll(".toast"));
+  toastList = toastElList.map(function (toastEl) {
+    return new bootstrap.Toast(toastEl);
+  });
+  document.getElementById("timerText").innerHTML = msg;
+  toastList[0].show();
+  timerStart();
+}
+
+function timerStart() {
+  // var count = 5;
+  // timer = setInterval(() => {
+  //   document.getElementById("timerHeader").innerHTML = `${count - 1}초후에 사라집니다`;
+  //   count--;
+  //   if (count == 0) {
+  //     timerStop();
+  //   }
+  // }, 1000);
+  timer = setTimeout(() => {
+    timerStop();
+  }, 5000);
+}
+
+function timerStop() {
+  toastList[0].hide();
+  clearInterval(timer);
+  // document.getElementById("timerHeader").innerHTML = "";
+  alerting = false;
 }
 
 function create_a_modal(pfn = null, nfn = null) {
@@ -173,6 +236,9 @@ function create_a_modal(pfn = null, nfn = null) {
         child_Node.style.fontSize = `${fontSize}px`;
         const fontWeight = child_Node.getAttribute("fontWeight");
         child_Node.style.fontWeight = `${fontWeight}`;
+      } else if (child_Node.className == "modal_expel") {
+        //modal_expel 설정
+        child_Node.onclick = just_close_modal;
       } else if (child_Node.className == "modal_string") {
         //modal_string 설정
         const fontSize = child_Node.getAttribute("fontSize");
@@ -231,9 +297,8 @@ function create_a_modal(pfn = null, nfn = null) {
 }
 
 function just_close_modal() {
+  timerStop(); //two inputs 모달일 경우 timer stop해주어야함
   document.getElementById("darkBg").style.display = "none";
   document.getElementById("modal_container").innerHTML = "";
   document.getElementById("modal_container").style.display = "none";
 }
-
-// create_a_modal();
