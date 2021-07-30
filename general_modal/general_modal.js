@@ -50,38 +50,32 @@ function create_div_for_yes_no(w, h, msg, posTitle, negTitle, img1) {
 
   document.getElementById("modal_container").appendChild(div);
 }
-function create_div_for_one_input(inputTitle, img1, placeholder, w, h) {
+function create_div_for_one_input(inputTitle, imgSrc, placeholder, w, h) {
   document.getElementById("darkBg").style.display = "block";
 
   document.getElementById("modal_container").innerHTML = "";
   document.getElementById("modal_container").style.display = "block";
   var div = document.createElement("div");
 
-  div.innerHTML =
-    `
-  <div class="modal_block" id="block_1" width="` +
-    w +
-    `" height="` +
-    h +
-    `" radius="20">
+  div.innerHTML = `
+    <div class="modal_block" id="blovk_1" width="${w}" height="${h}" radius="30">
 
-   
-    <div class="modal_image" src="` +
-    img1 +
-    `" width="45" height="56" title="Filepptx"
-      titleSize="10" titleWeight="bold"></div>
-    <div class="modal_string" fontSize="15" fontWeight="100">` +
-    inputTitle +
-    `</div>
+    <div class="modal_image" src="${imgSrc}" width="41" height="56"
+      title="coordinator@gmail.com_20200709" titleSize="16" titleWeight="500"></div>
     
-    <div class="modal_input" placeholder="` +
-    placeholder +
-    `" fontSize="13"></div>
-    
-    <div class="modal_button" type="3" positiveTitle="입력완료" negativeTitle="취소" fontSize="14" fontWeight="600">
+    <div class="modal_input" fontSize="12" fontWeight="bold">
+      <div class="input">
+        <label for="input_1">${inputTitle}</label>
+        <input type="text" id="general_input1" autocomplete="off" placeholder="${placeholder}">
+      </div>
+      
     </div>
+    
+    <div class="modal_button" type="3" positiveTitle="입력완료" negativeTitle="취소" fontSize="14" fontWeight="bold"
+      height="44" radius="22" width="198"></div>
   </div>
   `;
+  //alert(div.innerHTML);
 
   document.getElementById("modal_container").appendChild(div);
 }
@@ -106,16 +100,16 @@ function create_div_for_two_inputs(
     <div class="modal_block" id="blovk_1" width="${w}" height="${h}" radius="30">
 
     <div class="modal_image" src="${imgSrc}" width="41" height="56"
-      title="coordinator@gmail.com_20200709" titleSize="16" titleWeight="500"></div>
+      title="${inputTitle}" titleSize="16" titleWeight="500" id="general_modal_title"></div>
     
     <div class="modal_input" fontSize="12" fontWeight="bold">
       <div class="input">
-        <label for="general_input1">${inputTitle1}</label>
-        <input type="text" id="general_input1" placeholder="${placeholder1}">
+        <label for="input_1" id="general_input1_label">${inputTitle1}</label>
+        <input type="text" id="general_input1" autocomplete="off" placeholder="${placeholder1}">
       </div>
       <div class="input">
-        <label for="general_input2">${inputTitle2}</label>
-        <input type="text" id="general_input2" placeholder="${placeholder2}">
+        <label for="input_2" id="general_input2_label">${inputTitle2}</label>
+        <input type="text" id="general_input2" autocomplete="off" placeholder="${placeholder2}">
       </div>
     </div>
     
