@@ -88,9 +88,9 @@
       let input2_label = document.getElementById("general_input2_label")
 
       if (input1.value == "") {
-        alertShow(`5자이상 30자이내 ${input1_label.textContent} 입력 바랍니다`)
+        alertShow(`5자이상 30자이내 ${input1_label.innerText} 입력 바랍니다`)
       } else if (input2.value == "") {
-        alertShow(`5자이상 30자이내 ${input2_label.textContent} 입력 바랍니다`)
+        alertShow(`5자이상 30자이내 ${input2_label.innerText} 입력 바랍니다`)
       } else {
 
         alert(input1.value)
