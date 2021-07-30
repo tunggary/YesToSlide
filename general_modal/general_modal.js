@@ -297,7 +297,9 @@ function create_a_modal(pfn = null, nfn = null) {
 }
 
 function just_close_modal() {
-  timerStop(); //two inputs 모달일 경우 timer stop해주어야함
+  if (document.getElementsByClassName("modal_block")[0].getAttribute("id") == "modal_two_inputs") {
+    timerStop(); //two inputs 모달일 경우 timer stop해주어야함
+  }
   document.getElementById("darkBg").style.display = "none";
   document.getElementById("modal_container").innerHTML = "";
   document.getElementById("modal_container").style.display = "none";
