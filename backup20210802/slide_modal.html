@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="./general_modal/general_modal.css">
+</head>
+
+<body>
+
+  <div class="dark_background_general" id="darkBg" style="display: none;"></div>
+  <div class="modal_container" id="modal_container" style="display:none"></div>
+
+  <button onclick="create_div_for_two_inputs(
+    '행사',
+    './img/icon_google_slides_large.png',
+    '행사명',
+    'Google Slide 파일의 행사명을 30자 이내로 입력해주세요.',
+    '행사 설명',
+    'Google Slide 파일의 행사 설명을 30자 이내로 입력해주세요.',
+    452,
+    332
+    );
+    create_a_modal(two_inputs_fn);">
+    two input
+  </button>
+
+
+  <script>
+    function two_inputs_fn() {
+      let input1 = document.getElementById("general_input1")
+      let input1_label = document.getElementById("general_input1_label")
+      let input2 = document.getElementById("general_input2")
+      let input2_label = document.getElementById("general_input2_label")
+
+      if (input1.value == "") {
+        alertShow(`5자이상 30자이내<br>${input1_label.innerText} 입력 바랍니다`)
+      } else if (input2.value == "") {
+        alertShow(`5자이상 30자이내<br>${input2_label.innerText} 입력 바랍니다`)
+      } else {
+
+        alert(input1.value)
+        alert(input2.value)
+        document.getElementById("darkBg").style.display = "none";
+        document.getElementById("modal_container").innerHTML = "";
+        document.getElementById("modal_container").style.display = "none";
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="./general_modal/general_modal.js" async defer></script>
+
+  <style>
+    .modal_input {
+      margin-top: 10px;
+    }
+
+    .modal_input .input input {
+      width: 343px;
+      height: 40px;
+    }
+  </style>
+</body>
+
+</html>

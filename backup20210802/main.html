@@ -1,0 +1,32 @@
+<body>
+  <iframe id="imageTabs" src="./image.html" width="375" height="828" frameborder="0" scrolling="no"></iframe>
+  <iframe id="attendanceTabs" src="./attendance.html" frameborder="0" width="375" height="828" scrolling="no"></iframe>
+  <iframe id="fileTabs" src="./file.html" frameborder="0" width="375" height="828" scrolling="no"></iframe>
+</body>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-image: url(./img/background_.jpg);
+    height: 100vh;
+    width: 100%;
+  }
+</style>
+<script>
+  const iframe_height = window.innerHeight - 199 // 199는 상단바,하단바 높이
+  const iframe_dom = document.getElementById('imageTabs') //iframe
+  // iframe_dom.style.height = iframe_height
+  // window.addEventListener('resize', () => {
+  //   iframe_dom.style.height = window.innerHeight - 199
+  // })
+  // window.onload = function () {
+
+  //   iframe_dom.style.height = iframe_height
+  //   document.getElementById('imageTabs').contentWindow.postMessage(window.innerHeight, '*')
+  // }
+</script>

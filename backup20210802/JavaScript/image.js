@@ -1,129 +1,7 @@
 //사진 선택하면 주황색 테두리 띄우기
 var image_list = null;
 var image_scroll_veil = null;
-function do_when_click_img(thumbImgUrl_only) {
-  console.log(thumbImgUrl_only);
-
-  var li = document.getElementById(thumbImgUrl_only + "_for_li");
-  console.log(li);
-
-  checkRadio();
-  li.classList.toggle("active");
-  parent.parent.sunny.set_current_thumbId_for_sorting(li.getAttribute("cthumb"));
-
-  console.log(li.getAttribute("slideId"));
-  if (li.getAttribute("slideId") == "none" || true) {
-    console.log(li.getAttribute("cthumb"));
-    console.log(slide_info);
-    var found = false;
-    for (var j = 0; j < slide_info.length; j++) {
-      if (li.getAttribute("cthumb") == slide_info[j].thumbImgUrl_only) {
-        var info = {
-          Comment: "",
-          CreateTime: 12,
-          Email: "",
-          ID: "", //"SLIDES_API1348034400_0",
-          Kind: "Image",
-          Name: "",
-          OriginID: "", //"SLIDES_API504215932_0",
-          OriginPresent: "", //"1VH2gLwlr0LK1lYBzxlxI-tJARBU8te3MaHr2UwdONYM",
-          PresentationID: "",
-          ProfileImage: "",
-          orgImgUrl: "",
-          thumbImgUrl: "",
-        };
-
-        info.Comment = slide_info[j].title;
-        info.CreateTime = slide_info[j].CreateTime;
-        info.Name = slide_info[j].name;
-        info.OriginPresent = parent.parent.sunny.get_current_original_presentationID();
-        info.PresentationID = parent.parent.sunny.get_current_presentationID();
-        info.ProfileImage = slide_info[j].ProfileImage;
-        info.thumbImgUrl = slide_info[j].thumbImgUrl;
-        info.orgImgUrl = slide_info[j].orgImgUrl.replace("https://drive.google.com/uc?&id=", "");
-
-        console.log(info);
-
-        /*
-            CreateTime: "20210721193339"
-            ProfileImage: "https://lh3.googleusercontent.com/a/AATXAJy7wHTwoe5rldlDuYtGYGvKuM_ZMqCbBZ89GoIg=s96-c"
-            category: "image"
-            date: "2021-07-07"
-            name: "Interns Toslide"
-            orgImgUrl: "https://drive.google.com/uc?&id=115EF_kW7FSjUO4PCScXkKBZCsKoFygV8"
-            slideId: "none"
-            slideUrl: ""
-            thumbImgUrl: "https://drive.google.com/uc?&id=1ZoKTvOCQks84khQjQGqswzUeOEsme7KK"
-            thumbImgUrl_only: "1ZoKTvOCQks84khQjQGqswzUeOEsme7KK"
-            title: "sss"
-            */
-        console.log(slide_info[j]);
-        /*
-            alert(parent.parent.sunny.is_controller());
-            if(parent.parent.sunny.is_controller())
-            {
-              return;
-            }
-            */
-        if (parent.parent.sunny.is_controller()) {
-          parent.parent.sunny.navigate_slide(i);
-          return;
-        }
-        parent.parent.sunny.update_main_slide_image(
-          "",
-          info,
-          parent.parent.main_iframe,
-          "image_content",
-          "chat_boxID",
-          "chat_box_name",
-          "chat_box_comment",
-          "chat_profileID"
-        );
-
-        return;
-      }
-    }
-    console.log("info not found");
-    return;
-  }
-
-  if (parent.parent.sunny.is_controller()) {
-    parent.parent.sunny.navigate_slide(i);
-    return;
-  }
-
-  parent.parent.sunny.find_comment_from_spreadsheet_using_google_slideID(
-    li.getAttribute("slideId"),
-    function (info_rst) {
-      if (info_rst.length == 0) {
-        //alert("no info for this picture");
-        parent.parent.sunny.update_main_slide_image(
-          li.getAttribute("slideId"),
-          info,
-          parent.parent.main_iframe,
-          "image_content",
-          "chat_boxID",
-          "chat_box_name",
-          "chat_box_comment",
-          "chat_profileID"
-        );
-        //return;
-      } else {
-        parent.parent.sunny.update_main_slide_image(
-          li.getAttribute("slideId"),
-          info[0],
-          parent.parent.main_iframe,
-          "image_content",
-          "chat_boxID",
-          "chat_box_name",
-          "chat_box_comment",
-          "chat_profileID"
-        );
-      }
-    }
-  );
-
-  return;
+function do_when_click_img(i) {
   checkRadio();
   image_list[i].classList.toggle("active");
   // console.log(image_list[i]);
@@ -241,7 +119,6 @@ function do_when_click_img(thumbImgUrl_only) {
   );
 }
 function prepare_show_outline() {
-  return;
   image_list = document.getElementsByClassName("image_list");
   image_scroll_veil = document.getElementsByClassName("image_scroll_veil");
   for (let i = 0; i < image_scroll_veil.length; i++) {
@@ -356,9 +233,6 @@ function prepare_show_outline() {
 }
 
 function checkRadio() {
-  image_list = document.getElementsByClassName("image_list");
-  image_scroll_veil = document.getElementsByClassName("image_scroll_veil");
-
   for (let i = 0; i < image_scroll_veil.length; i++) {
     if (image_list[i].classList.contains("active")) {
       image_list[i].classList.remove("active");
@@ -383,80 +257,14 @@ function prepare_open_delete_all_modal() {
 // 사진삭제버튼 누르면 모달 띄우기 & 검은색 뒷배경 띄우기
 var image_delete_btn = null;
 var image_delete_modal = null;
-
-/*
-function do_image_delete(e)
-{
-  image_delete_modal = document.getElementById("image_delete_modal");
-  var slideId = e.currentTarget.myParam;
-  console.log(slideId);
-  image_delete_modal.style.display = "block";
-  dark_background[0].style.display = "block";
-}
-*/
-
-var tobe_deleted_image_slideId = "";
-var tobe_deleted_image_slideId_org = "";
-function delete_a_image(thumbImgUrl_only) {
-  image_delete_modal = document.getElementById("image_delete_modal");
-
-  console.log(thumbImgUrl_only);
-  console.log(slide_info);
-  var found = false;
-  for (var i = 0; i < slide_info.length; i++) {
-    console.log(slide_info[i].thumbImgUrl_only);
-    console.log(thumbImgUrl_only);
-    if (thumbImgUrl_only == slide_info[i].thumbImgUrl_only) {
-      console.log(slide_info[i]);
-
-      console.log(slide_info[i].slideId);
-      if (slide_info[i].slideId == "none") {
-        break;
-      }
-
-      found = true;
-      org_slideId = slide_info[i].slideId_origin;
-      console.log(slide_info[i].slideId_origin);
-      tobe_deleted_image_slideId_org = slide_info[i].slideId_origin;
-      tobe_deleted_image_slideId = slide_info[i].slideId;
-      break;
-    }
-  }
-
-  if (found) {
-    image_delete_modal.style.display = "block";
-    dark_background[0].style.display = "block";
-  } else {
-    tobe_deleted_image_slideId = "";
-    tobe_deleted_image_slideId_org = "";
-    alert("image already deleted or not yet prepared");
-  }
-}
 function prepare_open_delete_modal() {
-  return;
   image_delete_btn = document.getElementsByClassName("image_delete_btn");
   image_delete_modal = document.getElementById("image_delete_modal");
   for (let i = 0; i < image_delete_btn.length; i++) {
-    console.log(i);
-
-    try {
-      image_delete_btn[i].removeEventListener("click", do_image_delete);
-    } catch (err) {
-      console.log(err.message);
-    }
-    image_delete_btn[i].addEventListener("click", do_image_delete, false);
-    console.log(image_delete_btn[i].name);
-    console.log(image_delete_btn[i]);
-    image_delete_btn[i].myParam = image_delete_btn[i].name;
-
-    /*
     image_delete_btn[i].addEventListener("click", () => {
-
-      console.log(i, slide_info[i]);
       image_delete_modal.style.display = "block";
       dark_background[0].style.display = "block";
     });
-    */
   }
 }
 
@@ -477,161 +285,25 @@ var delete_btn = null;
 var negative_btn = null;
 var par_back_img = null;
 var close_btn = null;
-
-function do_delete_image(e) {
-  //var i = e.currentTarget.myParam;
-  par_back_img = document.getElementsByClassName("par_back_img");
-
-  parent.parent.sunny_slides_sheets.delete_a_slide(
-    parent.parent.sunny.get_current_presentationID(),
-    tobe_deleted_image_slideId,
-    function (rst) {
-      console.log(rst);
-    }
-  );
-  parent.parent.sunny_slides_sheets.delete_a_slide(
-    parent.parent.sunny.get_current_original_presentationID(),
-    tobe_deleted_image_slideId_org,
-    function (rst) {
-      console.log(rst);
-    }
-  );
-
-  image_delete_modal = document.getElementById("image_delete_modal");
-  image_delete_modal.style.display = "none";
-  dark_background[0].style.display = "none";
-
-  console.log(slide_info.length, slide_info);
-  var thumbImgUrl_only = "";
-  for (var j = 0; j < slide_info.length; j++) {
-    if (slide_info[j].slideId == tobe_deleted_image_slideId) {
-      thumbImgUrl_only = slide_info[j].thumbImgUrl_only;
-      slide_info.splice(j, 1);
-      break;
-    }
-  }
-  console.log(slide_info.length, slide_info);
-
-  console.log(thumbImgUrl_only + "_for_li");
-  var child = document.getElementById(thumbImgUrl_only + "_for_li");
-  console.log(child);
-
-  document.getElementById("ul_in_list_content").removeChild(child);
-
-  parent.parent.sunny.clear_image_content();
-
-  //each.slideId+"_image"
-  //setTimeout(() => {
-  //parent.parent.load_all_images_to_image_list();
-  //}, 5000);
-}
-
-function do_cancel_delete_image(e) {
-  image_delete_modal = document.getElementById("image_delete_modal");
-  image_delete_modal.style.display = "none";
-  dark_background[0].style.display = "none";
-}
-function do_close_sending_img(e) {
-  send_imageOrVideo_modal.style.display = "none";
-  dark_background[0].style.display = "none";
-}
 function prepare_cancel_delete_modal() {
-  delete_btn = document.getElementsByClassName("delete_btn_each");
-  negative_btn = document.getElementsByClassName("negative_btn_each");
+  delete_btn = document.getElementsByClassName("delete_btn");
+  negative_btn = document.getElementsByClassName("negative_btn");
   par_back_img = document.getElementsByClassName("par_back_img");
   close_btn = document.getElementById("close_btn");
   for (let i = 0; i < delete_btn.length; i++) {
-    try {
-      console.log("delete do_delete_image");
-      delete_btn[i].removeEventListener("click", do_delete_image);
-    } catch (err) {
-      console.log(err.message);
-    }
-
-    console.log("add do_delete_image");
-    delete_btn[i].addEventListener("click", do_delete_image, false);
-    delete_btn[i].myParam = i;
-  }
-
-  for (let i = 0; i < negative_btn.length; i++) {
-    try {
-      console.log("delete do_delete_image");
-      negative_btn[i].removeEventListener("click", do_cancel_delete_image);
-    } catch (err) {
-      console.log(err.message);
-    }
-
-    console.log("add do_cancel_image");
-    negative_btn[i].addEventListener("click", do_cancel_delete_image, false);
-    //negative_btn[i].myParam = i;
-
-    /*
+    delete_btn[i].addEventListener("click", () => {
+      par_back_img[i].style.display = "none";
+      dark_background[0].style.display = "none";
+    });
     negative_btn[i].addEventListener("click", () => {
       par_back_img[i].style.display = "none";
       dark_background[0].style.display = "none";
     });
-    */
   }
-
-  try {
-    console.log("delete do_delete_image");
-    close_btn.removeEventListener("click", do_cancel_deledo_close_sending_imgte_image);
-  } catch (err) {
-    console.log(err.message);
-  }
-
-  close_btn.addEventListener("click", do_close_sending_img, false);
-
-  /*
   close_btn.addEventListener("click", () => {
     send_imageOrVideo_modal.style.display = "none";
     dark_background[0].style.display = "none";
   });
-  */
-}
-function do_delete_image_all(e) {
-  dark_background = document.getElementsByClassName("dark_background");
-  all_delete_modal = document.getElementById("all_delete_modal");
-
-  all_delete_modal.style.display = "none";
-  dark_background[0].style.display = "none";
-  console.log("delete all images");
-}
-function do_cancel_delete_image_all(e) {
-  dark_background = document.getElementsByClassName("dark_background");
-  all_delete_modal = document.getElementById("all_delete_modal");
-
-  all_delete_modal.style.display = "none";
-  dark_background[0].style.display = "none";
-  console.log("cancel_delete_image_all");
-}
-function prepare_cancel_delete_all_modal() {
-  delete_btn = document.getElementsByClassName("delete_btn_all");
-  negative_btn = document.getElementsByClassName("negative_btn_all");
-
-  for (let i = 0; i < delete_btn.length; i++) {
-    try {
-      console.log("delete do_delete_image_all ");
-      delete_btn[i].removeEventListener("click", do_delete_image_all);
-    } catch (err) {
-      console.log(err.message);
-    }
-
-    console.log("add do_delete_image_all");
-    delete_btn[i].addEventListener("click", do_delete_image_all, false);
-  }
-
-  for (let i = 0; i < negative_btn.length; i++) {
-    try {
-      console.log("delete do_cancel_delete_image_all");
-      negative_btn[i].removeEventListener("click", do_cancel_delete_image_all);
-    } catch (err) {
-      console.log(err.message);
-    }
-
-    console.log("add do_cancel_delete_image_all");
-    negative_btn[i].addEventListener("click", do_cancel_delete_image_all, false);
-  }
 }
 
 //scroll bar setting
@@ -691,7 +363,6 @@ function all_check() {
         date: "",
         CreateTime: "",
         thumbImgUrl: "",
-        thumbImgUrl_only: "",
         orgImgUrl: "",
         slideUrl: "",
         slideId: "",
@@ -702,7 +373,6 @@ function all_check() {
       voting_info.thumbImgUrl = slide_info[i].thumbImgUrl;
       voting_info.slideUrl = slide_info[i].slideUrl;
       voting_info.title = slide_info[i].title;
-      voting_info.thumbImgUrl_only = slide_info[i].thumbImgUrl_only;
       tobe_voting_images[slide_info[i].thumbImgUrl_only] = voting_info;
     }
   } else {
@@ -739,56 +409,9 @@ let option_sort = document.getElementById("option_sort");
 let option_vote = document.getElementById("option_vote");
 let option_column = document.getElementById("option_column");
 let option_filter = document.getElementById("option_filter");
-function fn0_for_prepare_tab_check() {
-  if (voting_state === "before") {
-    //정렬옵션,필터옵션 활성화
-    option_sort.style.display = "block";
-    option_filter.style.display = "block";
-    option_column.style.display = "none";
-    option_vote.style.display = "none";
-    //all체크 버튼 활성화
-    all_check_btn.removeAttribute("disabled");
-    //1 column 으로 강제변경
-    option_column.value = "column_1";
-    option_column.onchange();
-    //투표결과 안보이게 하기
-    for (let i = 0; i < image_voting_number.length; i++) {
-      image_voting_number[i].style.display = "none";
-    }
-    //전체 목록탭에 보이기
-    option_filter.value = "view_all";
-    filtering();
-  } else {
-    alert("현재 투표가 진행중입니다. 투표를 종료해 주세요.");
-    nav_link[1].click();
-  }
-}
-function fn1_for_prepare_tab_check() {
-  //체크가 안되어 있으면 모달창 띄우기
-  if (none_checked()) {
-    dark_background[0].style.display = "block";
-    document.getElementById("select_image_modal").style.display = "block";
-    nav_link[0].click();
-  } else {
-    option_sort.style.display = "none";
-    option_filter.style.display = "none";
-    option_column.style.display = "block";
-    option_vote.style.display = "block";
-    all_check_btn.setAttribute("disabled", "disabled"); //all체크 버튼 비활성화
-    // 선택된 사진만 투표창에 보이기
-    option_filter.value = "view_select";
-    filtering();
-  }
-}
 function prepare_tab_check() {
   //목록탭이 선택되었을때 option 2가지 보이기
-  try {
-    nav_link[0].removeEventListener("click", fn0_for_prepare_tab_check);
-  } catch (err) {}
-
-  nav_link[0].addEventListener("click", fn0_for_prepare_tab_check);
-  /*
-  () => {
+  nav_link[0].addEventListener("click", () => {
     //투표탭에서 나올때 투표진행중인지 확인
     if (voting_state === "before") {
       //정렬옵션,필터옵션 활성화
@@ -813,15 +436,8 @@ function prepare_tab_check() {
       nav_link[1].click();
     }
   });
-  */
   //투표탭이 선택되었을때 option 2가지 보이기
-
-  try {
-    nav_link[1].removeEventListener("click", fn1_for_prepare_tab_check);
-  } catch (err) {}
-  nav_link[1].addEventListener("click", fn1_for_prepare_tab_check);
-
-  /*() => {
+  nav_link[1].addEventListener("click", () => {
     //체크가 안되어 있으면 모달창 띄우기
     if (none_checked()) {
       dark_background[0].style.display = "block";
@@ -838,7 +454,6 @@ function prepare_tab_check() {
       filtering();
     }
   });
-  */
 }
 function none_checked() {
   for (let i = 0; i < selected_check_label.length; i++) {
@@ -901,7 +516,6 @@ function do_check_image(e) {
       date: "",
       CreateTime: "",
       thumbImgUrl: "",
-      thumbImgUrl_only: "",
       orgImgUrl: "",
       slideUrl: "",
       slideId: "",
@@ -927,7 +541,6 @@ function do_check_image(e) {
         voting_info.CreateTime = slide_info[i].CreateTime;
         voting_info.thumbImgUrl = slide_info[i].thumbImgUrl;
         voting_info.slideUrl = slide_info[i].slideUrl;
-        voting_info.thumbImgUrl_only = slide_info[i].thumbImgUrl_only;
         voting_info.title = slide_info[i].title;
       }
     }
@@ -963,15 +576,10 @@ function prepare_option_filter() {
   });
 }
 function filtering() {
-  image_list = document.getElementsByClassName("image_list");
-  if (option_filter.value === "view_all") {
+  if (option_filter.value === "view_video") {
     for (let i = 0; i < selected_check_label.length; i++) {
       image_list[i].style.display = "block";
-    }
-  } else if (option_filter.value === "view_select") {
-    for (let i = 0; i < selected_check_label.length; i++) {
-      image_list[i].style.display = "block";
-      if (!selected_check_label[i].checked) {
+      if (slide_info[i].category !== "video") {
         image_list[i].style.display = "none";
       }
     }
@@ -982,12 +590,16 @@ function filtering() {
         image_list[i].style.display = "none";
       }
     }
-  } else if (option_filter.value === "view_video") {
+  } else if (option_filter.value === "view_select") {
     for (let i = 0; i < selected_check_label.length; i++) {
       image_list[i].style.display = "block";
-      if (slide_info[i].category !== "video") {
+      if (!selected_check_label[i].checked) {
         image_list[i].style.display = "none";
       }
+    }
+  } else {
+    for (let i = 0; i < selected_check_label.length; i++) {
+      image_list[i].style.display = "block";
     }
   }
   prepare_set_scroll();
@@ -1006,12 +618,10 @@ function change_column(param) {
 }
 
 function do_after_adding_all_images() {
-  console.log("do_after_adding_all_images 111");
   prepare_show_outline();
   prepare_open_delete_all_modal();
   prepare_open_delete_modal();
   prepare_cancel_delete_modal();
-  prepare_cancel_delete_all_modal();
   prepare_set_scroll();
   prepare_all_check_button();
   prepare_tab_check();
