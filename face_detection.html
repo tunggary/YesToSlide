@@ -28,9 +28,10 @@
 </head>
 
 <body>
-  <div id="container">
-  </div>
   <input type="file" onchange="load_image(this)">
+  <div id="container"></div>
+  <button onclick="detect()">얼굴감지</button>
+
   <script>
 
     function load_image(input) {
@@ -40,7 +41,6 @@
       img.src = URL.createObjectURL(input.files[0])
       img.setAttribute('id', 'img')
       document.getElementById('container').appendChild(img)
-      detect()
     }
 
     async function detect() {
@@ -73,6 +73,7 @@
       }
     }
   </script>
+
 </body>
 
 </html>

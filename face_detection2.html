@@ -10,17 +10,8 @@
 
   <style>
     .rect {
-      border: 2px solid #a64ceb;
-      /* left: -1000px; */
+      border: 2px solid red;
       position: absolute;
-      /* top: -1000px; */
-    }
-
-    #img {
-      background-color: black;
-      width: 500px;
-      height: 500px;
-      object-fit: contain;
     }
   </style>
 </head>
@@ -30,19 +21,38 @@
     <input type="file" onchange="loadImage(this)">
     <div class="demo-container">
     </div>
+    <button onclick="detect()">얼굴감지</button>
   </div>
   <script>
     function loadImage(input) {
       if (input.files[0] == undefined) {
         return;
       }
-      document.getElementsByClassName('demo-container')[0].innerHTML = ""
-      var img = document.createElement("img");
-      img.setAttribute("id", "img");
-      img.src = URL.createObjectURL(input.files[0]);
-      document.getElementsByClassName('demo-container')[0].appendChild(img)
-      detect()
+      var reader = new FileReader();
+
+      //Read the contents of Image File.
+      reader.readAsDataURL(input.files[0]);
+      reader.onload = function (e) {
+
+        //Initiate the JavaScript Image object.
+        var image = new Image();
+
+        //Set the Base64 string return from FileReader as source.
+        image.src = URL.createObjectURL(input.files[0])
+        //Validate the File Height and Width.
+        image.onload = function () {
+          var height = this.height;
+          var width = this.width;
+          var ratio = width / height;
+          image.style.width = `${500 * ratio}px`;
+          image.style.height = `${500}px`;
+        };
+        image.setAttribute("id", "img");
+        document.getElementsByClassName('demo-container')[0].innerHTML = ""
+        document.getElementsByClassName('demo-container')[0].appendChild(image)
+      };
     }
+
     function detect() {
       var img = document.getElementById('img');
 
