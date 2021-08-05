@@ -35,7 +35,10 @@
   <script>
 
     function load_image(input) {
-      if (input.files[0] == undefined) return;
+      if (input.files[0] == undefined) {
+        alert('파일선택 후 얼굴감지 버튼을 누르세요')
+        return;
+      }
       document.getElementById('container').innerHTML = ""
       let img = document.createElement('img')
       img.src = URL.createObjectURL(input.files[0])

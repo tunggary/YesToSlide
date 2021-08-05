@@ -26,6 +26,7 @@
   <script>
     function loadImage(input) {
       if (input.files[0] == undefined) {
+        alert('파일선택 후 얼굴감지 버튼을 누르세요');
         return;
       }
       var reader = new FileReader();
