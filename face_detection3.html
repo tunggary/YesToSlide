@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./face-api-models/face-api.min.js"></script>
+  <style>
+    .container {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img {
+      height: 500px;
+    }
+
+    canvas {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="file" onchange="load_image(this)">
+  <div class="container"></div>
+  <button onclick="detect()">얼굴인식</button>
+</body>
+
+<script>
+  Promise.all([
+    faceapi.nets.tinyFaceDetector.loadFromUri("./face-api-models"),
+    faceapi.nets.faceLandmark68Net.loadFromUri("./face-api-models"),
+    faceapi.nets.faceRecognitionNet.loadFromUri("./face-api-models"),
+    faceapi.nets.faceExpressionNet.loadFromUri("./face-api-models"),
+  ]);
+
+  function load_image(input) {
+    if (input.files[0] == undefined) {
+      return;
+    }
+    document.getElementsByClassName("container")[0].innerHTML = "";
+    let img = document.createElement("img");
+    img.src = URL.createObjectURL(input.files[0]);
+    img.setAttribute("id", "myImg");
+    document.getElementsByClassName("container")[0].appendChild(img);
+  }
+
+  async function detect() {
+    const input = document.getElementById("myImg");
+    const canvas = faceapi.createCanvasFromMedia(input);
+    document.getElementsByClassName("container")[0].append(canvas);
+    const displaySize = { width: input.width, height: input.height };
+    faceapi.matchDimensions(canvas, displaySize);
+    const detections = await faceapi.detectAllFaces(input, new faceapi.TinyFaceDetectorOptions());
+    console.log(detections);
+    const resizedDetections = faceapi.resizeResults(detections, displaySize);
+    canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+    faceapi.draw.drawDetections(canvas, resizedDetections);
+  }
+
+</script>
+
+</html>
