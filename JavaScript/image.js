@@ -679,94 +679,116 @@ function prepare_set_scroll() {
 }
 
 //all check button
-let all_check_btn = document.getElementById("all_check");
+let all_check_btn = document.getElementById("all_check_img");
 let background = document.getElementsByClassName("background");
 let selected_check_label = document.getElementsByClassName("selected_check_label");
-function prepare_all_check_button() {
-  all_check_btn.addEventListener("click", (e) => {
-    all_check();
-  });
-}
-function all_check() {
-  ckeck_State();
-  if (all_check_btn.checked) {
-    //checked된 상태, 모든 버튼 checked
-
+function all_check(param = "") {
+  if (param == "none_checked" || all_check_btn.getAttribute("value") == "none_checked") {
+    //all_check
+    all_check_btn.setAttribute("src", "./img/all_checked.png");
+    all_check_btn.setAttribute("value", "all_checked");
     for (let i = 0; i < selected_check_label.length; i++) {
       selected_check_label[i].checked = true;
-      tobe_voting_images = {};
     }
-
-    parent.parent.sunny_slides_sheets.get_contentUrl_for_all_slides(
-      parent.parent.sunny.get_current_presentationID(),
-      function (rst) {
-        //console.log(tobe_voting_images);
-        //console.log(rst);
-        for (var i = 0; i < slide_info.length; i++) {
-          for (j = 0; j < rst.length; j++) {
-            if (slide_info[i].thumbImgUrl_only == rst[j].imageId) {
-              slide_info[i].contentUrl = rst[j].contentUrl;
-              continue;
-            }
-          }
-        }
-
-        for (var i = 0; i < slide_info.length; i++) {
-          var voting_info = {
-            thumbId: "",
-            title: "",
-            name: "",
-            profileImage: "",
-            category: "image",
-            date: "",
-            CreateTime: "",
-            thumbImgUrl: "",
-            thumbImgUrl_only: "",
-            orgImgUrl: "",
-            slideUrl: "",
-            slideId: "",
-          };
-          voting_info.name = slide_info[i].name;
-          voting_info.profileImage = slide_info[i].ProfileImage;
-          voting_info.CreateTime = slide_info[i].CreateTime;
-          voting_info.thumbImgUrl = slide_info[i].thumbImgUrl;
-          voting_info.slideUrl = slide_info[i].contentUrl;
-          voting_info.title = slide_info[i].title;
-          voting_info.thumbImgUrl_only = slide_info[i].thumbImgUrl_only;
-
-          tobe_voting_images[slide_info[i].thumbImgUrl_only] = voting_info;
-        }
-      }
-    );
-  } else {
-    //unchecked된 상태, 모든 버튼 unchecked
-    tobe_voting_images = {};
-    for (let i = 0; i < selected_check_label.length; i++) {
-      selected_check_label[i].checked = false;
-    }
-  }
-}
-function ckeck_State() {
-  if (all_check_btn.value === "unchecked") {
-    all_check_btn.value = "checked";
-  } else if (all_check_btn.value === "checked") {
-    all_check_btn.value = "disabled";
+  } else if (param == "all_checked" || all_check_btn.getAttribute("value") == "all_checked") {
+    //disabled
+    all_check_btn.setAttribute("src", "./img/disabled_checked.png");
+    all_check_btn.setAttribute("value", "disabled_checked");
     for (let i = 0; i < selected_check_label.length; i++) {
       selected_check_label[i].checked = false;
       selected_check_label[i].style.display = "none";
     }
-    all_check_btn.checked = false;
-    all_check_btn.setAttribute("disabled", "disabled");
-    background[0].style.zIndex = "200";
   } else {
-    all_check_btn.value = "unchecked";
+    //none_check
+    all_check_btn.setAttribute("src", "./img/none_checked.png");
+    all_check_btn.setAttribute("value", "none_checked");
     for (let i = 0; i < selected_check_label.length; i++) {
+      selected_check_label[i].checked = false;
       selected_check_label[i].style.display = "block";
     }
-    all_check_btn.removeAttribute("disabled");
-    background[0].style.zIndex = "-1";
   }
 }
+
+// function all_check() {
+//   ckeck_State();
+//   if (all_check_btn.checked) {
+//     //checked된 상태, 모든 버튼 checked
+
+// for (let i = 0; i < selected_check_label.length; i++) {
+//   selected_check_label[i].checked = true;
+//   tobe_voting_images = {};
+// }
+
+//     parent.parent.sunny_slides_sheets.get_contentUrl_for_all_slides(
+//       parent.parent.sunny.get_current_presentationID(),
+//       function (rst) {
+//         //console.log(tobe_voting_images);
+//         //console.log(rst);
+//         for (var i = 0; i < slide_info.length; i++) {
+//           for (j = 0; j < rst.length; j++) {
+//             if (slide_info[i].thumbImgUrl_only == rst[j].imageId) {
+//               slide_info[i].contentUrl = rst[j].contentUrl;
+//               continue;
+//             }
+//           }
+//         }
+
+//         for (var i = 0; i < slide_info.length; i++) {
+//           var voting_info = {
+//             thumbId: "",
+//             title: "",
+//             name: "",
+//             profileImage: "",
+//             category: "image",
+//             date: "",
+//             CreateTime: "",
+//             thumbImgUrl: "",
+//             thumbImgUrl_only: "",
+//             orgImgUrl: "",
+//             slideUrl: "",
+//             slideId: "",
+//           };
+//           voting_info.name = slide_info[i].name;
+//           voting_info.profileImage = slide_info[i].ProfileImage;
+//           voting_info.CreateTime = slide_info[i].CreateTime;
+//           voting_info.thumbImgUrl = slide_info[i].thumbImgUrl;
+//           voting_info.slideUrl = slide_info[i].contentUrl;
+//           voting_info.title = slide_info[i].title;
+//           voting_info.thumbImgUrl_only = slide_info[i].thumbImgUrl_only;
+
+//           tobe_voting_images[slide_info[i].thumbImgUrl_only] = voting_info;
+//         }
+//       }
+//     );
+//   } else {
+//     //unchecked된 상태, 모든 버튼 unchecked
+//     tobe_voting_images = {};
+//     for (let i = 0; i < selected_check_label.length; i++) {
+//       selected_check_label[i].checked = false;
+//     }
+//   }
+// }
+// function ckeck_State() {
+//   if (all_check_btn.value === "unchecked") {
+//     all_check_btn.value = "checked";
+//   } else if (all_check_btn.value === "checked") {
+//     all_check_btn.value = "disabled";
+//     for (let i = 0; i < selected_check_label.length; i++) {
+//       selected_check_label[i].checked = false;
+//       selected_check_label[i].style.display = "none";
+//     }
+//     all_check_btn.checked = false;
+//     all_check_btn.setAttribute("disabled", "disabled");
+//     background[0].style.zIndex = "200";
+//   } else {
+//     all_check_btn.value = "unchecked";
+//     for (let i = 0; i < selected_check_label.length; i++) {
+//       selected_check_label[i].style.display = "block";
+//     }
+//     all_check_btn.removeAttribute("disabled");
+//     background[0].style.zIndex = "-1";
+//   }
+// }
 
 //목록,투표 중 어떤 탭이 선택되었는지 확인 후 드롭다운 옵션 보이기, 선택된 사진만 투표창에 보이기
 let nav_link = document.getElementsByClassName("nav-link");
@@ -779,8 +801,7 @@ var just_click_voting_tab = false;
 function fn0_for_prepare_tab_check() {
   if (voting_state === "before") {
     //all체크 버튼 비활성화, 체크박스 숨기기
-    all_check_btn.value = "checked";
-    all_check();
+    all_check("disabled_checked");
     //정렬옵션,필터옵션 활성화
     option_sort.style.display = "block";
     option_filter.style.display = "block";
@@ -790,9 +811,9 @@ function fn0_for_prepare_tab_check() {
     option_column.value = "column_1";
     option_column.onchange();
     //투표결과 안보이게 하기
-    for (let i = 0; i < image_voting_number.length; i++) {
-      image_voting_number[i].style.display = "none";
-    }
+    // for (let i = 0; i < image_voting_number.length; i++) {
+    //   image_voting_number[i].style.display = "none";
+    // }
     //전체 목록탭에 보이기
 
     if (current_sorting_order == "cvoting") {
@@ -800,12 +821,13 @@ function fn0_for_prepare_tab_check() {
       current_sorting_order = prev_sorting_order;
       sortList();
     }
-    //투표순 정렬
-    option_sort.value = "vote";
-    change_sorting();
+
     //전체보기
     option_filter.value = "view_all";
     filtering();
+    //투표순 정렬
+    option_sort.value = "vote";
+    change_sorting_vote();
   } else {
     alert("현재 투표가 진행중입니다. 투표를 종료해 주세요.");
     just_click_voting_tab = true;
@@ -851,8 +873,8 @@ function fn1_for_prepare_tab_check() {
     option_filter.style.display = "none";
     option_column.style.display = "block";
     option_vote.style.display = "block";
-    all_check_btn.checked = false;
-    all_check_btn.setAttribute("disabled", "disabled"); //all체크 버튼 비활성화
+    //all체크 버튼 비활성화
+    all_check_btn.setAttribute("src", "./img/disabled_checked.png");
     // 선택된 사진만 투표창에 보이기
     option_filter.value = "view_select";
     filtering();
@@ -1216,7 +1238,6 @@ function do_after_adding_all_images() {
   prepare_cancel_delete_modal();
   prepare_cancel_delete_all_modal();
   prepare_set_scroll();
-  prepare_all_check_button();
   prepare_tab_check();
   prepare_open_send_modal();
   prepare_option_filter();

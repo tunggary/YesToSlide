@@ -45,17 +45,16 @@
       </div>
       <div class="tab-content" id="pills-tabContent">
         <!-- 상단 옵션 -->
-        <div class="option">
+        <div class="option" style="margin-top: 5px;">
           <div class="all_select_option">
-            <input class=" form-check-input shadow-none" type="checkbox" id="all_check" value="unchecked"
-              style="cursor: pointer;">
-            <label class=" form-check-label" for="all_check" style="cursor: pointer;">Vote</label>
+            <img src="./img/none_checked.png" id="all_check_img" value="none_checked" onclick="all_check()">
+            <!-- <input class=" form-check-input shadow-none" type="checkbox" id="all_check" style="cursor: pointer;">
+            <label class=" form-check-label" for="all_check" style="cursor: pointer;">ALL</label> -->
             <div class="separate_bar"></div>
-            <div class="background" onclick="all_check();"></div>
           </div>
           <select class="dropdown" id="option_sort" onchange="change_sorting(this);this.blur()">
+            <option value="time">시간순 정렬</option>
             <option value="newest">최신순 정렬</option>
-            <option value="time" selected="selected">시간순 정렬</option>
             <option value="name">이름순 정렬</option>
             <option value="vote">투표순 정렬</option>
           </select>

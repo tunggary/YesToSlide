@@ -123,6 +123,7 @@ var current_sorting_order = "time";
 var prev_sorting_order = "";
 
 function change_sorting(selectObject) {
+  console.log(selectObject.value);
   var value = selectObject.value;
   //console.log(slide_info);
   if (current_sorting_order != value) {
@@ -153,7 +154,11 @@ function change_sorting(selectObject) {
 function change_sorting_vote() {
   let contents = document.getElementsByClassName("image_list");
   let parents = document.getElementById("ul_in_list_content");
-
+  for (let i = 0; i < contents.length; i++) {
+    if (contents[i].style.display == "none") {
+      contents[i].children[6].innerHTML = "0표";
+    }
+  }
   for (let i = 0; i < contents.length; i++) {
     for (let j = 0; j < contents.length - 1 - i; j++) {
       //slide_info가 아닌 image_list의 text를 직접 가져와서 처리
