@@ -800,7 +800,10 @@ function fn0_for_prepare_tab_check() {
       current_sorting_order = prev_sorting_order;
       sortList();
     }
-
+    //투표순 정렬
+    option_sort.value = "vote";
+    change_sorting();
+    //전체보기
     option_filter.value = "view_all";
     filtering();
   } else {
