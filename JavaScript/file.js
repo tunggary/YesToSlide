@@ -129,3 +129,15 @@ function adjust_size(height) {
   file_container.style.height = `${screen_height}px`; // .file_container 기존높이 823px
   content.style.height = `${780 - gap}px`; // .content 기존높이 780px
 }
+
+window.onload = function(){
+  var old_version = document.getElementById('version').innerHTML;
+  check_version_v3("../../js/version_v3.txt",old_version,"file",function(rst){
+    if(rst =="ignore")
+      console.log(" file 버전 업그레이드 해주세요");
+    else if(rst=="fail")
+    {
+      location.reload();
+    }  
+  });
+}

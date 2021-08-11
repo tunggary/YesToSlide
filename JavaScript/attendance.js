@@ -17,7 +17,9 @@ label[0].addEventListener("click", function () {
 });
 
 //참가자 선택기능
-function participant_toggle_event(e) {
+function participant_toggle_event(e)
+{
+ 
   participants_list = document.getElementsByClassName("participants_list");
   var i = e.currentTarget.myParam;
   console.log(i);
@@ -25,25 +27,34 @@ function participant_toggle_event(e) {
   participants_list[i].classList.toggle("active");
 }
 function add_click_listener_to_attendances() {
-  participants_list = document.getElementsByClassName("participants_list");
 
+  participants_list = document.getElementsByClassName("participants_list");
+  
   for (let i = 0; i < participants_list.length; i++) {
-    try {
-      participants_list[i].removeEventListener("click", participant_toggle_event);
-    } catch (err) {
+
+
+    try{
+      participants_list[i].removeEventListener('click', participant_toggle_event);
+    }
+    catch(err)
+    {
       console.log(err.message);
+  
     }
 
-    participants_list[i].addEventListener("click", participant_toggle_event, false);
+    participants_list[i].addEventListener("click",participant_toggle_event,false);
     participants_list[i].myParam = i;
 
+    
     /*
     participants_list[i].addEventListener("click", () => {
       checkRadio();
       participants_list[i].classList.toggle("active");
     });
     */
+    
   }
+
 }
 
 function checkRadio() {
@@ -89,16 +100,14 @@ function prepare_cancel_expel_modal() {
 }
 
 function add_attendance(each) {
-  console.log(each);
+  //console.log(each);
 
   var cnt = document.getElementById("attendanceUl").childElementCount;
   cnt++;
   var template =
     `<li class="participants_list">
     <div class="profile_img">
-      <img src="` +
-    each["imageUrl"] +
-    `">
+      <img src="`+each["imageUrl"]+`">
     </div>
     <div class="profile_info">
       <div class="participants_name">` +
@@ -148,4 +157,16 @@ function adjust_size(height) {
 
   let screen_height = height - 199; //iframe 외부에 브라우저 높이 - 상단바,하단바 높이
   content[0].style.height = `${screen_height - 56}px`; // .content 기존높이 780px
+}
+
+window.onload = function(){
+  var old_version = document.getElementById('version').innerHTML;
+  check_version_v3("../../js/version_v3.txt",old_version,"attendance",function(rst){
+    if(rst =="ignore")
+      console.log(" attendance 버전 업그레이드 해주세요");
+    else if(rst=="fail")
+    {
+      location.reload();
+    }  
+  });
 }

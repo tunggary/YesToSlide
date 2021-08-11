@@ -1,7 +1,6 @@
 //slide data
 var slide_info = [];
 
-//210713 수정
 function setImage() {
   for (var i = 0; i < slide_info.length; i++) {
     add_a_slide_to_ul(slide_info[i], false);
@@ -9,30 +8,45 @@ function setImage() {
   return;
 }
 
-//setImage(slide_info);
-
 function change_a_slide_info(sinfo) {
+  console.log(slide_info);
   for (var i = 0; i < slide_info.length; i++) {
     if (slide_info[i].thumbImgUrl_only == sinfo.thumbImgUrl_only) {
       slide_info[i] = sinfo;
+      var li = document.getElementById(sinfo.thumbImgUrl_only + "_for_li");
+      li.setAttribute("slideId", sinfo.slideId);
+
+      console.log(slide_info[i]);
       break;
     }
   }
+  console.log(slide_info);
 }
 function add_a_slide_to_ul(each, adding = false) {
   console.log(each);
   if (adding) slide_info.push(each);
+
   var ul = document.getElementById("ul_in_list_content");
   var li = document.createElement("li");
   ul.classList.add("column_1");
 
   li.classList.add("image_list");
-  li.id = each.slideId;
-  var name = each.name.replace(/ /g, "_");
+  //li.id = each.slideId+"_image";
+  li.id = each.thumbImgUrl_only + "_for_li";
+  var name = "";
+
+  try {
+    name = each.name.replace(/ /g, "_");
+  } catch (err) {
+    return;
+  }
+
   li.name = name;
+
   li.setAttribute("cname", name);
   li.setAttribute("cthumb", each.thumbImgUrl_only);
   li.setAttribute("cdate", each.CreateTime);
+  li.setAttribute("slideId", each.slideId);
   li.style.display = "block";
   console.log("each.ProfileImage", each.ProfileImage);
   li.innerHTML = `<iframe class="image"  
@@ -46,8 +60,8 @@ function add_a_slide_to_ul(each, adding = false) {
         <div class="image_name">${each.name}</div>
       </div>
     </div>
-    <div class="image_scroll_veil"></div>
-    <div class="image_delete_btn">
+    <div class="image_scroll_veil" onclick="do_when_click_img('${each.thumbImgUrl_only}')"></div>
+    <div class="image_delete_btn" onclick="delete_a_image('${each.thumbImgUrl_only}')">
       <img src="./img/delete_image_btn.png" width="12" height="12">
     </div>
     <label class="form-check-label" for="selected_check"></label>
@@ -94,6 +108,7 @@ function change_sorting(selectObject) {
   }
 
   //setImage();
+  console.log("do_after_adding_all_images", 555);
   do_after_adding_all_images();
 }
 
@@ -178,7 +193,24 @@ function sortList(sorting_property = "") {
 
   console.log("****************", sorted_imgages_by_property);
   parent.parent.sunny.set_sorted_images(sorted_imgages_by_property);
+
+  /*
+  console.log("current_sorting_order ",current_sorting_order);
+  //console.log(slide_info);
+  if (current_sorting_order == "newest") {
+    slide_info = slide_info.sort(parent.parent.sunny.dynamicSort("-CreateTime"));
+  
+  } else if (current_sorting_order == "time") {
+    slide_info = slide_info.sort(parent.parent.sunny.dynamicSort("CreateTime"));
+  
+  } else if (current_sorting_order == "name") {
+    slide_info = slide_info.sort(parent.parent.sunny.dynamicSort("name"));
+  
+  }
+  console.log(slide_info);
+  */
 }
+
 //test용 코드
 add_a_slide_to_ul(
   {
@@ -221,3 +253,4 @@ add_a_slide_to_ul(
   },
   true
 );
+setImage(slide_info);

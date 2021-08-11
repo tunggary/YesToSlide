@@ -18,10 +18,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
   <link rel="stylesheet" href="./CSS/image.css">
   <link rel="stylesheet" href="./CSS/modal.css">
+  <!-- <script src="../../js/utils.js"></script> -->
 </head>
 
-<body>
+<body style="background-color: black;">
+  <span id="version" style="display: none;">v.1.0.4</span>
   <section class="imageTab">
+    <div class="dark_background_general" id="darkBg" style="display: none;"></div>
+    <div class="modal_container" id="modal_container" style="display:none"></div>
     <!-- 삼각형 화살표 -->
     <div class="tri"></div>
     <!-- 메인 컨테이너 -->
@@ -43,18 +47,20 @@
         <!-- 상단 옵션 -->
         <div class="option">
           <div class="all_select_option">
-            <input class=" form-check-input shadow-none" type="checkbox" id="all_check" value="unchecked">
-            <label class=" form-check-label" for="all_check">ALL</label>
+            <input class=" form-check-input shadow-none" type="checkbox" id="all_check" value="unchecked"
+              style="cursor: pointer;">
+            <label class=" form-check-label" for="all_check" style="cursor: pointer;">Vote</label>
             <div class="separate_bar"></div>
             <div class="background" onclick="all_check();"></div>
           </div>
           <select class="dropdown" id="option_sort" onchange="change_sorting(this);this.blur()">
-            <option value="newest" selected="selected">최신순 정렬</option>
-            <option value="time">시간순 정렬</option>
+            <option value="newest">최신순 정렬</option>
+            <option value="time" selected="selected">시간순 정렬</option>
             <option value="name">이름순 정렬</option>
+            <option value="vote">투표순 정렬</option>
           </select>
           <select class="dropdown" id="option_vote" style="display: none;">
-            <option value="1">득표순 정렬</option>
+            <option value="vote">투표순 정렬</option>
           </select>
           <select class="dropdown" id="option_filter">
             <option value="view_image">사진만 보기</option>
@@ -95,25 +101,36 @@
       <div class="dark_background"></div>
       <div class="par_back_img" id="all_delete_modal">
         <div class="crap_img"></div>
-        <img src="img/delete_all_msg&video.png">
+        <img src="img/메시지 및 동영상을  모두 삭제하시겠습니까_.png">
         <div class="yes_no">
-          <img src="img/modal_button_positive1.png" class="delete_btn">
+          <img src="img/modal_button_positive1.png" class="delete_btn_all">
           <div style="width: 7px;"></div>
-          <img src="img/modal_button_negative.png" class="negative_btn">
+          <img src="img/modal_button_negative.png" class="negative_btn_all">
         </div>
       </div>
       <div class="par_back_img" id="image_delete_modal">
         <div class="del_img"></div>
-        <img src="img/delete_image.png">
+        <img src="img/해당 사진을  삭제하시겠습니까_.png">
         <div class="yes_no">
-          <img src="img/modal_button_positive2.png" class="delete_btn">
+          <img src="img/modal_button_positive2.png" class="delete_btn_each">
           <div style="width: 7px;"></div>
-          <img src="img/modal_button_negative.png" class="negative_btn">
+          <img src="img/modal_button_negative.png" class="negative_btn_each">
+        </div>
+      </div>
+      <div class="par_back_img" id="collecting_off_modal">
+        <div class="del_img"></div>
+        <div class="collecting_off_string">
+          <p> 수합을 중지하고</p>
+          <p>투표를 시작하시겠습니까?</p>
+        </div>
+        <div class="yes_no">
+          <div class="voting_start">확인</div>
+          <div class="voting_cancel">취소</div>
         </div>
       </div>
       <div class="par_back_img" id="video_delete_modal">
         <div class="del_img"></div>
-        <img src="img/delete_video.png">
+        <img src="img/해당 동영상을  삭제하시겠습니까_.png">
         <div class="yes_no">
           <img src="img/modal_button_positive2.png" class="delete_btn">
           <div style="width: 7px;"></div>
@@ -122,16 +139,16 @@
       </div>
       <div class="par_back_img" id="select_image_modal">
         <div class="image_img"></div>
-        <img src="img/select_image_voted.png">
+        <img src="img/투표 진행할 사진을  선택해주세요..png">
         <div class="yes_no">
-          <img src="img/confirm.png" class="delete_btn">
+          <img src="img/확인.png" class="delete_btn" onclick="hide_select_image_modal()">
           <div class="negative_btn"></div>
         </div>
       </div>
       <div id="send_imageOrVideo_modal">
         <div class="send_imageOrVideo_modal_top">
-          <img src="./img/icon_send.png" width="24" height="24">
-          <img src="./img/send_image&video.png">
+          <img src="./img/보내기_아이콘.png" width="24" height="24">
+          <img src="./img/사진 및 동영상 보내기.png">
           <img src="./img/modal_icon_expel.png" id="close_btn" onclick="close_modal()">
         </div>
         <div class="send_imageOrVideo_modal_middle">
@@ -179,22 +196,52 @@
           <img src="./img/button_send.png" onclick="sending()">
         </div>
       </div>
+
     </div>
   </section>
+  <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/context-filter-polyfill@0.2.4/dist/index.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
-  <script src="./JavaScript/image_slideData.js"></script>
-  <script src="./JavaScript/image_mobile.js"></script>
-  <script src="./JavaScript/image.js" async defer></script>
-  <script src="./JavaScript/image_crop.js"></script>
+  <script src="./JavaScript/image_slideData.js?a=20210803"></script>
+  <script src="./JavaScript/image_mobile.js?a=20210803"></script>
+  <script src="./JavaScript/image.js?a=20210804" async defer></script>
+  <script src="./JavaScript/image_crop.js?a=20210803"></script>
+  <script src="https://cdn.jsdelivr.net/npm/context-filter-polyfill@0.2.4/dist/index.min.js"></script>
+  <style>
+    .voting_start,
+    .voting_cancel {
+      background-color: rgb(249, 196, 159);
+      width: 144px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 17px;
+      font-size: 14px;
+      font-weight: bolder;
+      cursor: pointer;
+    }
 
+    .voting_cancel {
+      background-color: rgb(235, 235, 235);
+      margin-left: 5px;
+    }
+
+    .collecting_off_string {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .collecting_off_string p {
+      margin-bottom: 0;
+    }
+  </style>
 </body>
-<canvas id="Canvas1" width="1463" height="823" style="border:0px solid;display:none;"></canvas>
-<canvas id="Canvas2" width="1463" height="823" style="border:0px solid;display:none;"></canvas>
-<canvas id="originalCanvas" width="1463" height="823" style="border:0px solid;display:none;"></canvas>
-<canvas id="thumbnail" width="343" height="191" style="border:0px solid;display:none;"></canvas>
+<canvas id="Canvas1" width="1463" height="823" style="border:0px solid;display: none;"></canvas>
+<canvas id="Canvas2" width="1463" height="823" style="border:0px solid;display: none;"></canvas>
+<canvas id="originalCanvas" width="1463" height="823" style="border:0px solid;display: none;"></canvas>
+<canvas id="thumbnail" width="343" height="191" style="border:0px solid;display: none;"></canvas>
 
 </html>

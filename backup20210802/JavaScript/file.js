@@ -116,6 +116,7 @@ let tri = null;
 let file_container = null;
 let content = null;
 function adjust_size(height) {
+  console.log(height);
   tri = document.getElementsByClassName("tri")[0];
   file_container = document.getElementsByClassName("file_container")[0];
   content = document.getElementsByClassName("content")[0];
