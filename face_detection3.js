@@ -29,6 +29,7 @@ async function detect() {
   const resizedDetections = faceapi.resizeResults(detections, displaySize);
   canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
   faceapi.draw.drawDetections(canvas, resizedDetections);
+  console.log(resizedDetections);
 
   let Xsum = 0,
     Ysum = 0;
@@ -60,13 +61,21 @@ async function detect() {
     Xsum += x + width / 2;
     Ysum += y + height / 2;
   }
-
-  Xavg = Xsum / resizedDetections.length;
-  Yavg = Ysum / resizedDetections.length;
+  Xmin = resizedDetections.length ? Xmin : input.offsetLeft;
+  Xmax = resizedDetections.length ? Xmax : input.offsetLeft + input.offsetWidth;
+  Ymin = resizedDetections.length ? Ymin : input.offsetTop;
+  Ymax = resizedDetections.length ? Ymax : input.offsetTop + input.offsetHeight;
+  Xavg = resizedDetections.length
+    ? Xsum / resizedDetections.length
+    : input.offsetLeft + input.offsetWidth / 2;
+  Yavg = resizedDetections.length
+    ? Ysum / resizedDetections.length
+    : input.offsetTop + input.offsetHeight / 2;
   rectWidth = Xmax - Xmin;
   rectHeight = Ymax - Ymin;
   positionLeft = Xmin;
   positionTop = Ymin;
+  console.log(Xavg, Yavg, rectWidth, rectHeight, positionLeft, positionTop);
 
   if (rectWidth >= rectHeight) {
     rectWidth = Xmax - Xmin + input.offsetWidth / 5;
