@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", "serif";
+  background-color: transparent;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+}
+.fileTab {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.tri {
+  position: relative;
+  left: 193.2px;
+  width: 0px;
+  height: 0px;
+  border-top: 5px solid none;
+  border-bottom: 5px solid #ffffff;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+}
+
+.file_container {
+  width: 375px;
+  height: 823px;
+  border-radius: 26px;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.content {
+  margin-top: 20px;
+  padding: 0 16px;
+  height: 780px;
+  overflow-y: hidden;
+}
+
+.file_list {
+  display: flex;
+  align-items: center;
+  width: 343px;
+  height: 52px;
+  color: #313233;
+  margin-bottom: 8px;
+  padding: 0px 17px 0 14px;
+  border-radius: 12px;
+}
+
+.file_list:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.file_list.active {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.file_num {
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 11px;
+  width: 21px;
+  padding: 0;
+}
+
+.file_img {
+  margin-right: 15px;
+}
+
+.file_name {
+  width: 218px;
+  height: 18px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.file_date {
+  width: 218px;
+  height: 18px;
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+.file_delete_btn {
+  cursor: pointer;
+}
+
+.content::-webkit-scrollbar {
+  width: 4px;
+  opacity: 0.2;
+  border-radius: 4px;
+}
+.content::-webkit-scrollbar-thumb {
+  background-color: rgb(163, 163, 163);
+  border-radius: 4px;
+}
+.content::-webkit-scrollbar-track {
+  background-color: rgb(202, 201, 201);
+  border-radius: 4px;
+}
+
+.dark_background {
+  width: 375px;
+  height: 828px;
+  background-color: #313233;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  display: none;
+}

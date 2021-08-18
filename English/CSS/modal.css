@@ -1,0 +1,253 @@
+/* modal */
+.par_back_img {
+  background: url("../img/사각형\ 1653.png");
+  width: 311px;
+  height: 197px;
+  position: absolute;
+  z-index: 201;
+  top: 35%;
+  left: 8%;
+  display: none;
+}
+
+.x_img {
+  margin-top: 16px;
+  background: url("../img/modal_icon_expel_big.png");
+  width: 74px;
+  height: 74px;
+  margin-left: 120px;
+}
+.yes_no {
+  margin-top: 12.5px;
+  display: flex;
+  justify-content: center;
+}
+
+.crap_img {
+  margin-top: 16px;
+  background: url("../img/modal_icon_deleteall.png");
+  width: 74px;
+  height: 74px;
+  margin-left: 120px;
+}
+.del_img {
+  margin-top: 16px;
+  background: url("../img/modal_icon_delete_imageorvideo.png");
+  width: 74px;
+  height: 74px;
+  margin-left: 120px;
+}
+
+.image_img {
+  margin-top: 16px;
+  background: url("../img/button_images&videos_off@2x.png");
+  width: 74px;
+  height: 74px;
+  margin-left: 120px;
+}
+
+.yes_no img {
+  cursor: pointer;
+}
+
+#send_imageOrVideo_modal {
+  width: 345px;
+  height: 380px;
+  position: absolute;
+  z-index: 201;
+  top: 25%;
+  left: 3.5%;
+  background-color: #ffffff;
+  border-radius: 25px;
+  display: none;
+}
+
+.send_imageOrVideo_modal_top {
+  margin: 20px 14px 0 14px;
+}
+
+#close_btn {
+  cursor: pointer;
+}
+.send_imageOrVideo_modal_middle {
+  margin: 20px 14px 0 14px;
+  width: 314px;
+}
+
+.upload_box {
+  width: 100%;
+  height: 175px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  padding-top: 50px;
+  background-image: url(../img/image_box.png);
+  cursor: pointer;
+}
+
+.upload_UI {
+  position: relative;
+  width: 100%;
+  height: 32px;
+  text-align: center;
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+#change_image_label {
+  margin-right: 68px;
+}
+
+.upload_UI img {
+  cursor: pointer;
+}
+
+.upload_UI_veil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+#upload_message {
+  width: 314px;
+  margin-top: 12px;
+  font-size: 10px;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(173, 175, 179);
+}
+#upload_message::placeholder {
+  color: rgb(173, 175, 179);
+  text-align: center;
+}
+
+.send_imageOrVideo_modal_bottom {
+  margin: 13px 14px 0 14px;
+  cursor: pointer;
+}
+
+.showPic {
+  width: 314px;
+  height: 176.5px;
+  background-color: black;
+}
+
+.cropped_image {
+  position: relative;
+  width: max-content;
+  height: max-content;
+}
+
+.frame {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+}
+#left-top {
+  top: 0;
+  background-image: url(../img/frame-left-top.png);
+}
+#left-bottom {
+  bottom: 0;
+  background-image: url(../img/frame-left-bottom.png);
+}
+#right-top {
+  top: 0;
+  right: 0;
+  background-image: url(../img/frame-right-top.png);
+}
+#right-bottom {
+  bottom: 0;
+  right: 0;
+  background-image: url(../img/frame-right-bottom.png);
+}
+#border {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 316px;
+  height: 179.5px;
+  border: 2px solid #ff8836;
+}
+.result {
+  width: 314px;
+  height: 176.5px;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}
+
+/* cropper */
+.cropper-modal {
+  background-color: #464646;
+  opacity: 0.7;
+}
+.cropper-dashed {
+  border: #ff8836 1px solid;
+  opacity: 1;
+}
+.cropper-dashed.dashed-h {
+  border-right: none;
+  border-left: none;
+}
+.cropper-dashed.dashed-v {
+  border-top: none;
+  border-bottom: none;
+}
+.cropper-view-box {
+  outline-color: #ff8836;
+  outline-width: 2px;
+}
+.cropper-line {
+  background: none;
+}
+.cropper-point {
+  display: none;
+}
+.cropper-point.point-se {
+  border-bottom: 6px solid #ff8836;
+  border-right: 6px solid #ff8836;
+  width: 16px;
+  height: 16px;
+  margin: 0 2px 2px 0;
+  background-color: transparent;
+  display: block;
+  opacity: 1;
+}
+
+.cropper-point.point-sw {
+  border-bottom: 6px solid #ff8836;
+  border-left: 6px solid #ff8836;
+  width: 16px;
+  height: 16px;
+  margin: 0 0 2px 2px;
+  background-color: transparent;
+  display: block;
+}
+
+.cropper-point.point-nw {
+  border-top: 6px solid #ff8836;
+  border-left: 6px solid #ff8836;
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0 2px;
+  background-color: transparent;
+  display: block;
+}
+
+.cropper-point.point-ne {
+  border-top: 6px solid #ff8836;
+  border-right: 6px solid #ff8836;
+  width: 16px;
+  height: 16px;
+  margin: 2px 2px 0 0;
+  background-color: transparent;
+  display: block;
+}
+.cropper-point {
+  opacity: 1;
+}

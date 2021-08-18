@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="./logos/yestoslide_favicon_real.png" type="image/png" sizes="16x16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+  <link rel="stylesheet" href="./CSS/image.css">
+  <link rel="stylesheet" href="./CSS/modal.css">
+  <script src="../../js/utils.js"></script>
+</head>
+
+<body>
+  <span id="version" style="display: none;">v.1.0.4</span>
+  <section class="imageTab">
+    <!-- 삼각형 화살표 -->
+    <div class="tri"></div>
+    <!-- 메인 컨테이너 -->
+    <div class="image_container">
+      <!-- 최상단 탭 -->
+      <div class="top-content fixed-top">
+        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-list-tab" data-bs-toggle="pill" data-bs-target="#pills-list"
+              type="button" role="tab" aria-controls="pills-list" aria-selected="true">List</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-vote-tab" data-bs-toggle="pill" data-bs-target="#pills-vote"
+              type="button" role="tab" aria-controls="pills-vote" aria-selected="false">Vote</button>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content" id="pills-tabContent">
+        <!-- 상단 옵션 -->
+        <div class="option">
+          <div class="all_select_option">
+            <input class=" form-check-input shadow-none" type="checkbox" id="all_check" value="unchecked"
+              style="cursor: pointer;">
+            <input class=" form-check-input shadow-none d-none" type="checkbox" id="all_check_twin" value="unchecked"
+              style="cursor: pointer;">
+            <label class=" form-check-label" for="all_check" style="cursor: pointer;">All</label>
+            <div class="separate_bar"></div>
+            <div class="background" onclick="all_check();" style="cursor: pointer;">
+
+            </div>
+          </div>
+          <select class="dropdown" id="option_sort" onchange="change_sorting(this);this.blur()">
+            <option value="newest">Newest</option>
+            <option value="time" selected="selected">
+              Time sequence</option>
+            <option value="name">Name</option>
+            <option value="voting">Vote</option>
+          </select>
+          <select class="dropdown" id="option_vote" style="display: none;">
+            <option value="1">득표순 정렬</option>
+          </select>
+          <select class="dropdown" id="option_filter">
+            <option value="view_image">Photos</option>
+            <option value="view_video">Videos</option>
+            <option value="view_select">Selected</option>
+            <option value="view_all">All</option>
+          </select>
+          <select class="dropdown" id="option_column" style="display: none;" onchange="change_column(this)">
+            <option value="column_1">1 column</option>
+            <option value="column_2">2 column</option>
+          </select>
+        </div>
+        <!-- 사진 및 동영상 컨텐츠 -->
+        <div class="list_content">
+          <ul id="ul_in_list_content">
+          </ul>
+        </div>
+        <div class="tab-pane active" id="pills-list" role="tabpanel" aria-labelledby="pills-home-tab">
+          <!-- 목록탭 하단 컨텐츠 -->
+          <div class="bottom_content fixed-bottom">
+            <img src="./img/button_send_imagesorvideos.png" id="send_imageOrVideo">
+            <img src="./img/button_deleteall.png" id="all_delete_btn">
+          </div>
+        </div>
+        <div class="tab-pane" id="pills-vote" role="tabpanel" aria-labelledby="pills-vote-tab">
+          <!-- 투표탭 하단 컨텐츠 -->
+          <div class="bottom_content fixed-bottom">
+            <img src="./img/button_before_voting.png" id="button_before_voting" onclick="voting()">
+            <img src="./img/button_after_voting.png" id="button_voting" onclick="voting()">
+            <img src="./img/button_before_voting_m.png" id="button_after_voting" onclick="voting()">
+            <img src="./img/button_duplicablevoting.png" id="button_duplicable_voting" onclick="duplicating()">
+            <img src="./img/button_duplicablevoting_active.png" id="button_duplicable_voting_active"
+              onclick="duplicating()">
+          </div>
+        </div>
+      </div>
+      <!-- 모달 -->
+      <div class="dark_background"></div>
+      <div class="par_back_img" id="all_delete_modal">
+        <div class="crap_img"></div>
+        <img src="img/delete_all_msg&video.png">
+        <div class="yes_no">
+          <img src="img/modal_button_positive1.png" class="delete_btn_all">
+          <div style="width: 7px;"></div>
+          <img src="img/modal_button_negative.png" class="negative_btn_all">
+        </div>
+      </div>
+      <div class="par_back_img" id="image_delete_modal">
+        <div class="del_img"></div>
+        <img src="img/delete_image.png">
+        <div class="yes_no">
+          <img src="img/modal_button_positive2.png" class="delete_btn_each">
+          <div style="width: 7px;"></div>
+          <img src="img/modal_button_negative.png" class="negative_btn_each">
+        </div>
+      </div>
+      <div class="par_back_img" id="collecting_off_modal">
+        <div class="del_img"></div>
+        <div class="collecting_off_string">
+          <p> Stop collecting</p>
+          <p>and start voting?</p>
+        </div>
+        <div class="yes_no">
+          <div class="voting_start">Start</div>
+          <div class="voting_cancel">Cancel</div>
+        </div>
+      </div>
+      <div class="par_back_img" id="video_delete_modal">
+        <div class="del_img"></div>
+        <img src="img/delete_video.png">
+        <div class="yes_no">
+          <img src="img/modal_button_positive2.png" class="delete_btn">
+          <div style="width: 7px;"></div>
+          <img src="img/modal_button_negative.png" class="negative_btn">
+        </div>
+      </div>
+      <div class="par_back_img" id="select_image_modal">
+        <div class="image_img"></div>
+        <img src="img/select_image_voted.png">
+        <div class="yes_no">
+          <img src="img/확인.png" class="delete_btn" onclick="hide_select_image_modal()">
+          <div class="negative_btn"></div>
+        </div>
+      </div>
+      <div id="send_imageOrVideo_modal">
+        <div class="send_imageOrVideo_modal_top">
+          <img src="./img/icon_send.png" width="24" height="24">
+          <img src="./img/send_image&video.png">
+          <img src="./img/modal_icon_expel.png" id="close_btn" onclick="close_modal()">
+        </div>
+        <div class="send_imageOrVideo_modal_middle">
+          <div class="upload_box">
+            <label for="upload_image">
+              <img src="./img/icon_upload.png">
+              <div class="upload_text">
+                Upload
+              </div>
+            </label>
+          </div>
+          <input type="file" class="d-none" id="upload_image" onchange="if(this.files[0]){load_image(this)}">
+          <div class="showPic d-none"></div>
+          <div class="cropped_image d-none">
+            <div class="result"></div>
+            <span class="frame" id="left-top"></span>
+            <span class="frame" id="left-bottom"></span>
+            <span class="frame" id="right-top"></span>
+            <span class="frame" id="right-bottom"></span>
+            <span id="border"></span>
+          </div>
+          <div class="upload_UI">
+            <input type="file" class="d-none" id="change_image"
+              onchange="if(this.files[0]){close_modal();load_image(this)}">
+            <label for="change_image">
+              <img src="./img/button_change_picture.png">
+            </label>
+            <img src="./img/toggle_grid_on.png" onclick="toggle_grid()" value="on" id="toggle_grid_btn">
+            <div>
+              <img src="./img/button_rotate_left.png" onclick="rotateLeft()">
+              <img src="./img/button_rotate_right.png" onclick="rotateRight()">
+            </div>
+            <div>
+              <img src="./img/button_undo.png" onclick="undo()">
+              <img src="./img/button_confirm.png" onclick="get_image()">
+            </div>
+            <div class="upload_UI_veil"></div>
+          </div>
+          <div class="upload_message">
+            <input type="text" id="upload_message" placeholder="You can enter a message of up to 30 characters."
+              autocomplete="off" maxlength="30">
+          </div>
+        </div>
+        <div class="send_imageOrVideo_modal_bottom">
+          <img src="./img/button_send.png" onclick="sending()">
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+  <script src="./JavaScript/image_slideData.js?a=20210803"></script>
+  <script src="./JavaScript/image_mobile.js?a=20210803"></script>
+  <script src="./JavaScript/image.js?a=20210804" async defer></script>
+  <script src="./JavaScript/image_crop.js?a=20210803"></script>
+  <script src="https://cdn.jsdelivr.net/npm/context-filter-polyfill@0.2.4/dist/index.min.js"></script>
+  <style>
+    .voting_start,
+    .voting_cancel {
+      background-color: rgb(249, 196, 159);
+      width: 144px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 17px;
+      font-size: 14px;
+      font-weight: bolder;
+      cursor: pointer;
+    }
+
+    .voting_cancel {
+      background-color: rgb(235, 235, 235);
+      margin-left: 5px;
+    }
+
+    .collecting_off_string {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .collecting_off_string p {
+      margin-bottom: 0;
+    }
+  </style>
+</body>
+<canvas id="Canvas1" width="1463" height="823" style="border:0px solid;display: none;"></canvas>
+<canvas id="Canvas2" width="1463" height="823" style="border:0px solid;display: none;"></canvas>
+<canvas id="originalCanvas" width="1463" height="823" style="border:0px solid;display: none;"></canvas>
+<canvas id="thumbnail" width="343" height="191" style="border:0px solid;display: none;"></canvas>
+
+</html>

@@ -110,7 +110,6 @@ function do_after_adding_all_files() {
   prepare_cancel_delete_modal();
   prepare_set_scroll();
 }
-
 //controller에서 사이즈 변경시 마다 adjust_size를 호출 합니다.
 let tri = null;
 let file_container = null;
@@ -130,14 +129,12 @@ function adjust_size(height) {
   content.style.height = `${780 - gap}px`; // .content 기존높이 780px
 }
 
-window.onload = function(){
-  var old_version = document.getElementById('version').innerHTML;
-  check_version_v3("../../js/version_v3.txt",old_version,"file",function(rst){
-    if(rst =="ignore")
-      console.log(" file 버전 업그레이드 해주세요");
-    else if(rst=="fail")
-    {
+window.onload = function () {
+  var old_version = document.getElementById("version").innerHTML;
+  check_version_v3("../../js/version_v3.txt", old_version, "file", function (rst) {
+    if (rst == "ignore") console.log(" file 버전 업그레이드 해주세요");
+    else if (rst == "fail") {
       location.reload();
-    }  
+    }
   });
-}
+};

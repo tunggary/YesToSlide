@@ -1,0 +1,34 @@
+모달 창을 한 군데서 처리하면 나중에 모달창이 수정되어도 힘들지 않을 것 같아서 
+성윤 인턴의 코드를 수정해서 만들었습니다
+
+
+다음 두 DIV를 body tag 바로 밑에 놓고
+<div class="dark_background_general" id="darkBg" style="display: none;"></div>
+<div class="modal_container" id="modal_container" style="display:none"></div>
+
+다음과 같이 4종류 모달을 생성할 수 있습니다
+
+입력 하나인 모달이고  확인 버튼 눌렀을때 실행할 함수(one_input_fn) 전달
+create_div_for_one_input('행사 이름 입력','icon_google_slides_large.png','행사명',300,200);
+create_a_modal(one_input_fn);
+
+
+입력 두개인 모달이고  확인 버튼 눌렀을때 실행할 함수(two_inputs_fn) 전달
+create_div_for_two_inputs('행사','icon_google_slides_large.png','행사명','내용',300,300);
+create_a_modal(two_inputs_fn);
+
+yes no 모달이고  확인과 취소 버튼 눌렀을때 실행할 함수 (positive_fn,negative_fn) 전달 
+create_div_for_yes_no(310,197,'해당 동영상을<br>삭제하시겠습니까?','삭제','취소','modal_icon_delete_imageorvideo.png');
+create_a_modal(positive_fn,negative_fn);
+
+information 모달   
+create_div_for_one_button('button_images&videos_off@2x.png','select_image_voted.png');
+create_a_modal();
+
+함수를 지정하지 않으면 기본 함수 (just_close_modal)가 실행되도록 했습니다
+function just_close_modal()
+{
+  document.getElementById("darkBg").style.display ="none";
+  document.getElementById("modal_container").innerHTML = "";
+  document.getElementById("modal_container").style.display ="none";
+}

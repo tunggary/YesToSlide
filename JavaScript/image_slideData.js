@@ -64,6 +64,7 @@ function add_a_slide_to_ul(each, adding = false,do_sorting=true) {
   li.name = name;
   
   li.setAttribute("cname", name);
+  
   li.setAttribute("cvoting",0);
   li.setAttribute("cthumb", each.thumbImgUrl_only);
   li.setAttribute("cdate", each.CreateTime);
@@ -127,6 +128,20 @@ function clear() {
 var current_sorting_order = "time";
 var prev_sorting_order = "";
 
+function change_sorting_order_only_by_value(value)
+{
+  var sortingSelect = document.getElementById("option_sort");
+  
+  current_sorting_order = value;
+  for (var i = 0; i < sortingSelect.length; ++i) {
+   
+    if(sortingSelect[i].value == value)
+    {
+      sortingSelect[i].selected = true;
+    }
+      
+  }
+}
 function change_sorting(selectObject) {
   var value = selectObject.value;
   //console.log(slide_info);
@@ -142,6 +157,9 @@ function change_sorting(selectObject) {
     } else if (current_sorting_order == "name") {
       //slide_info.sort(parent.parent.sunny.dynamicSort("name"));
       sortList("cname");
+    } else if (current_sorting_order == "voting") {
+      //slide_info.sort(parent.parent.sunny.dynamicSort("name"));
+      sortList("cvoting");
     }
 
     //console.log(slide_info);
@@ -154,6 +172,7 @@ function change_sorting(selectObject) {
 
 function reset_voting_attributes()
 {
+  console.log("reset_voting_attributes");
   var list = document.getElementById("ul_in_list_content");
   var listItem = list.getElementsByTagName("li");
 
@@ -169,14 +188,18 @@ function sortList(sorting_property = "") {
       sorting_property = "cdate";
     } else if (current_sorting_order == "name") {
       sorting_property = "cname";
+    }else if (current_sorting_order == "voting") {
+      sorting_property = "cvoting";
     }
   }
-  if(sorting_property == "voting")
-   sorting_property = "cvoting";
+  
 
+
+ 
   var list, i, switching, b, shouldSwitch;
   
   list = document.getElementById("ul_in_list_content");
+  
   
   switching = true;
 
@@ -234,6 +257,9 @@ function sortList(sorting_property = "") {
       else if(sorting_property == "cvoting")
       {
         
+        //console.log(b[i].getAttribute(sorting_property), b[i + 1].getAttribute(sorting_property));
+        //console.log(b[i]);
+        //console.log(b[i+1]);
         if ( b[i].getAttribute(sorting_property) <  b[i + 1].getAttribute(sorting_property))
         {
         
@@ -242,6 +268,7 @@ function sortList(sorting_property = "") {
         }
       } 
       else {
+       
         if (
           b[i].getAttribute(sorting_property).toLowerCase() >
           b[i + 1].getAttribute(sorting_property).toLowerCase()
@@ -296,12 +323,13 @@ function sortList(sorting_property = "") {
 
 function updating_voting_rst(li_Id,voting_cnt)
 {
+  console.log("updating_voting_rst",voting_cnt);
   var id = parent.parent.sha256(li_Id);
   document.getElementById(id).innerHTML  =voting_cnt+"표";
   //console.log(document.getElementById(li_Id+"_for_li").getAttribute("cvoting"));
   document.getElementById(li_Id+"_for_li").setAttribute("cvoting", voting_cnt);
   current_sorting_order ="cvoting";
-  sortList("voting");
+  sortList("cvoting");
 }
 /*
 //test용 코드

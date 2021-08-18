@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", "serif";
+  background-color: transparent;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+}
+
+.attendance {
+  position: absolute;
+  width: 375px;
+  top: 0;
+  right: 0;
+}
+
+.tri {
+  position: relative;
+  left: 297px;
+  width: 0px;
+  height: 0px;
+  border-top: 5px solid none;
+  border-bottom: 5px solid #ffffff;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+}
+.att_container {
+  width: 375px;
+  border-radius: 26px;
+  color: #313233;
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 20px;
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  background-color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+
+.title_coordinator {
+  width: 315px;
+  height: 19px;
+  margin: 0 40px 0 20px;
+  display: inline;
+}
+
+.logout_btn {
+  cursor: pointer;
+  margin-left: 150px;
+}
+
+.cordinator_gmail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+  width: 375px;
+  height: 66px;
+  border-bottom: 1px solid #c9c9c9;
+}
+.att_middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 16px 0 20px;
+}
+.att_bottom .label {
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #c9c9c9;
+  position: relative;
+}
+
+.att_bottom .content {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  overflow-y: auto;
+}
+
+.att_bottom.active .content {
+  height: 611px;
+}
+.att_excel,
+.att_bottom .label span,
+.att_bottom img {
+  cursor: pointer;
+}
+
+.participants_list {
+  width: 343px;
+  height: 52px;
+  margin: 0 0 8px 16px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.participants_list:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.participants_list.active {
+  background-color: #ffffff;
+}
+
+.participants_name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.participants_email {
+  width: 250px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile_img img {
+  border-radius: 17px;
+  width: 34px;
+  height: 34px;
+  margin: 0 10px;
+}
+
+.close_btn {
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.content::-webkit-scrollbar {
+  width: 4px;
+  opacity: 0.2;
+  border-radius: 4px;
+}
+.content::-webkit-scrollbar-thumb {
+  background-color: rgb(163, 163, 163);
+  border-radius: 4px;
+}
+.content::-webkit-scrollbar-track {
+  background-color: rgb(202, 201, 201);
+  border-radius: 4px;
+}
+
+.dark_background {
+  width: 375px;
+  height: 828px;
+  background-color: #313233;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  display: none;
+}
