@@ -1288,7 +1288,7 @@ function do_after_adding_all_images() {
     }
   }
 }
-
+do_after_adding_all_images();
 window.onload = function () {
   var old_version = document.getElementById("version").innerHTML;
   check_version_v3("../../js/version_v3.txt", old_version, "image", function (rst) {
