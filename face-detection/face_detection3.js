@@ -1,8 +1,8 @@
 Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri("./face-detection/face-api-models"),
-  faceapi.nets.faceLandmark68Net.loadFromUri("./face-detection/face-api-models"),
-  faceapi.nets.faceRecognitionNet.loadFromUri("./face-detection/face-api-models"),
-  faceapi.nets.faceExpressionNet.loadFromUri("./face-detection/face-api-models"),
+  faceapi.nets.tinyFaceDetector.loadFromUri("./face-api-models"),
+  faceapi.nets.faceLandmark68Net.loadFromUri("./face-api-models"),
+  faceapi.nets.faceRecognitionNet.loadFromUri("./face-api-models"),
+  faceapi.nets.faceExpressionNet.loadFromUri("./face-api-models"),
 ]);
 
 function load_image(input) {
